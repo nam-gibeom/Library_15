@@ -57,47 +57,20 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 ### メソッド
 
-#### public List\<BookBean> findIsbn() throws DAOException
-ISBN番号で資料情報を取得する
+
+#### public List\<BookBean> findIsbn(String isbn) throws DAOException
+指定されたISBN番号に属する資料情報を取得する  
 
 - 戻り値
-    - List \<BookBean>
-        - 検索したISBN番号の資料情報リスト
+    - public List \<BookBean>
+        - 指定されたISBN番号に属する資料情報のリスト
 - 引数
-    - ?
-- 使用するSQL
-    - __SELECT * FROM cataloglist where isbn = ? ORDER BY code__
-
-categoryテーブルから取得したレコードは、CategoryBeanのArrayListに格納して返す  
-
-##### メソッドの流れ  
-
-```java
-// SQL文の作成
-// コネクションを確立する（フィールドを使用）
-// PreparedStatementオブジェクトの取得
-// SQLの実行
-// CategoryBeanのArrayListオブジェクトの作成
-while (レコードが存在する間レコードの取得) {
-   // レコードをCategoryBeanに格納
-   // CategoryBeanをリストに追加
-}
-// リストを返す
-```
-
-#### public List\<BookBean> (int categoryCode) throws DAOException
-指定されたカテゴリコードに属するアイテムを取得する  
-
-- 戻り値
-    - public List \<ItemBean>
-        - 指定されたカテゴリコードに属するアイテムのリスト
-- 引数
-    - int categoryCode
-        - カテゴリコード
+    - String isbn
+        - ISBN番号
 - 使用するSQL
     - __SELECT * FROM item WHERE category_code = ? ORDER BY code__
 
-itemテーブルから取得したレコードは、ItemBeanのArrayListに格納して返す
+cataloglistテーブルから取得したレコードは、BookBeanのArrayListに格納して返す
 		
 ##### メソッドの流れ
 
@@ -115,20 +88,50 @@ while (レコードが存在する間レコードの取得) {
 // リストを返す
 ```
  
-#### public ItemBean findByPrimayKey(int key) throws DAOException
-指定されたアイテムコードのアイテムを取得する
+#### public BookBean addStock(String isbn,date arrival_date) throws DAOException
+資料を在庫台帳に新規登録する
 
 - 戻り値
-    - ItemBean
-        - 指定されたアイテムコードのアイテム。
-        - 該当のアイテムがない場合はnullが返される"
+    - なし
 - 引数
-    - int key
-        - アイテムコード
+    - String isbn
+        - ISBN番号
+    - date arrival_date
+        - 入荷年月日
 - 使用するSQL
-    - __SELECT * FROM item WHERE code = ?__
+    - __insert into stocklist(isbn,arrival_date) values(?,?)__
 
-itemテーブルから取得したレコードは、ItemBeanに格納して返す
+
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// コネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 引数で与えられたアイテムコードをPreparedStatementオブジェクトに設定する
+// SQLの実行
+// ItemBeanのArrayListオブジェクトの作成
+if (レコードが存在する) {
+    // レコードをItemBeanに格納
+    // レコードを格納したItemBeanを返す
+}
+else {
+   // nullを返す
+}
+```
+#### public BookBean addCatalog(String isbn,) throws DAOException
+資料を在庫台帳に新規登録する
+
+- 戻り値
+    - なし
+- 引数
+    - String isbn
+        - ISBN番号
+    - date arrival_date
+        - 入荷年月日
+- 使用するSQL
+    - __insert into stocklist(isbn,arrival_date) values(?,?)__
+
 
 ##### メソッドの流れ
 
