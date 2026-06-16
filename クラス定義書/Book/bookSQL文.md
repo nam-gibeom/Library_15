@@ -6,9 +6,16 @@ SQL分
 
 登録
 - INSERT INTO catalogligt VALUES(?,?,?,?,?,?)
-- INSERT INTO stick list VALUES(?,?,?,?,?)
+- INSERT INTO stocklist VALUES(?,?,?,?,?)
 
 廃棄
+- UPDATE stocklist SET discard_date = ? , 備考 = ? WHERE   = ?
 
+貸出
+- 
+- 
+返却
+- 
+- 
 
 
