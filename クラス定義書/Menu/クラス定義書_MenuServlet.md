@@ -74,6 +74,7 @@ doPost()が呼び出された時にもdoGet()を呼び出す
         2. (id,name)が登録された情報と一致するならfindName()を呼びだす
         3. 戻り値のnameをrequestスコープに入れる 
         4. top.jspにフォワード(gotoPage)
+        5. 一致しない場合、login.jspにフォワードし、エラーメッセージを表示
     - action = logout
         1. login.jspにフォワード(gotoPage)
     - action = regist

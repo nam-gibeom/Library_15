@@ -69,7 +69,7 @@ SQLで'id'引数に当たる会員の名前を取得する
 - 引数 
   - String id
 - 使用するSQL 
-  - \__SELECT staff_name FROM adminlist WHERE staff_id = ? \_\_
+  - __SELECT staff_name FROM adminlist WHERE staff_id = ?__
 
 
 
@@ -79,6 +79,7 @@ SQLで'id'引数に当たる会員の名前を取得する
 // SQL文の作成
 // コネクションを確立する（フィールドを使用）
 // PreparedStatementオブジェクトの取得
+// 引数をPreparedStatementオブジェクトに設定する
 // SQLの実行
 // String nameを返す
 ```
@@ -95,7 +96,7 @@ SQLで'id'引数に当たる会員の名前を取得する
   - String id
 
 - 使用するSQL 
-  - \__SELECT staff_password FROM adminlist WHERE Staff_id = ? \_\_
+  - __SELECT staff_password FROM adminlist WHERE Staff_id = ?__
 
 ##### メソッドの流れ
 
@@ -103,6 +104,7 @@ SQLで'id'引数に当たる会員の名前を取得する
 // SQL文の作成
 // コネクションを確立する（フィールドを使用）
 // PreparedStatementオブジェクトの取得
+// 引数をPreparedStatementオブジェクトに設定する
 // SQLの実行
 // String passを返す
 ```
