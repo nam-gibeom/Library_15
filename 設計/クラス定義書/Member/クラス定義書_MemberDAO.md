@@ -53,7 +53,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 ### メソッド
 
-#### public List\<String> searchLastIDNAME() throws DAOException
+#### public List\<String> searchLastIdName() throws DAOException
 テーブル上、最後に登録された人のIDと名前を取得する
 
 - 戻り値
