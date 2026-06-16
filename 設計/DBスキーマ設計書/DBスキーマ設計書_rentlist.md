@@ -1,0 +1,21 @@
+# DBスキーマ設計書
+
+| DB | スキーマ|
+| :---: | :---: |
+| library_15 | public |
+
+## テーブル設計
+
+### rentlist
+
+__貸出管理テーブル__  
+貸出情報を管理する
+
+| # | 列名 | データ型 | 主キー | 制約 | 説明 |
+| :---: | :---: | :---: | :---: | :---: | :--- |
+| 1 | member_id | integer | 〇 | 外部キー(memberlist,member_id) | 会員ID<br>会員情報テーブルと紐づくコード |
+| 2 | book_id | integer | 〇 | 外部キー(stocklist,book_id) | 資料ID<br>在庫管理テーブルと紐づくコード |
+| 3 | rent_date | date | 〇 |  | 貸出年月日 |
+| 4 | return_deadline | date |  |  | 返却期日 |
+| 5 | return_date | date |  |  | 返却年月日 |
+| 6 | note | remark |  |  | 備考 |

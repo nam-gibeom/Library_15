@@ -1,0 +1,18 @@
+# DBスキーマ設計書
+
+| DB | スキーマ|
+| :---: | :---: |
+| library_15 | public |
+
+## テーブル設計
+
+### adminlist
+
+__職員アカウントテーブル__  
+職員のアカウント情報を管理する
+
+| # | 列名 | データ型 | 主キー | 制約 | 説明 |
+| :---: | :---: | :---: | :---: | :---: | :--- |
+| 1 | staff_id | integer | 〇 |  | 職員ID<br>を一意に特定する |
+| 2 | staff_name | text |  | NOT NULL | 職員名 |
+| 3 | staff_password | integer |  | NOT NULL | パスワード |
