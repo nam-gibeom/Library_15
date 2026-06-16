@@ -18,6 +18,7 @@ doGet,doPost共通で同じ処理を実装する
 | 2 | regist | registResult.jsp | 登録確認画面を表示する |
 | 3 | update | memberUpdate.jsp | 変更後、初期ページに戻る |
 | 4 | cancel | memberCancel.jsp | 変更後、初期ページに戻る |
+| 5 | confirm | memberRegist.jsp | 登録初期ページに戻る |
 
 #### Service, DTO
 - MemberService
@@ -69,7 +70,7 @@ doPost()が呼び出された時にもdoGet()を呼び出す
 2. actionの値に応じて下記の通り処理を行う
     - action = search
         1. もとのページ(変更または退会)にフォワード(gotoPage)
-    - action = add
+    - action = regist
         1. requestパラメータ(member_n...ame, member_address, member_tel, member_mail, member_birth)の取得
         2. パラメータを用いてMemberServiceをインスタンス化して処理を行う。
         3. MemberServiceで登録した行のID(member_id)を取得し、検索も行って名前を取得する
@@ -83,6 +84,8 @@ doPost()が呼び出された時にもdoGet()を呼び出す
         1.  requestパラメータ(member_id)の取得
         2.  パラメータを用いてMemberServiceをインスタンス化して処理を行う。
         3.  初期画面(UI104)にフォワード(gotoPage)
+    - action = confirm
+        1.   初期画面(UI101)にフォワード(gotoPage)
     - 上記以外のaction
         1. エラーメッセージを"message"としてrequestスコープに格納
         2. エラーページ(UI004)にフォワード(gotoPage)

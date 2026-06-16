@@ -32,9 +32,9 @@
 
 ### メソッド
 
-ーーー
-#### private List\<MemberBean> add(int code) throws ServletException, IOException 
-インスタンス化されたDAOでSearchMember()メソッドを行ってRequestスコープに登録する
+---
+#### private List\<String> addMemberService(String member_name, String member_address, String member_tel, String member_mail, String member_birth) 
+サーブレットからもらった５つと加えて当日の日付DAOを実行し、その会員のIDと名前を返す
 
 ##### Service, DTO
 
@@ -43,50 +43,68 @@
 
 ##### 処理の流れ
 
-1. requestパラメータ(action)の取得
-2. actionの値に応じて下記の通り処理を行う
-    - action = search
-        1. もとのページ(変更または退会)にフォワード(gotoPage)
-    - action = add
-        1. requestパラメータ(member_n...ame, member_address, member_tel, member_mail, member_birth)の取得
-        2. パラメータを用いてMemberServiceをインスタンス化して処理を行う。
-        3. MemberServiceで登録した行のID(member_id)を取得し、検索も行って名前を取得する
-        4. 取得したIDと名前を"member_id", "member_name"としてrequestスコープに格納
-        5. 登録完了画面(UI102)にフォワード(gotoPage)
-    - action = update
-        1. requestパラメータ(member_n...ame, member_address, member_tel, member_mail, member_birth)の取得
-        2. パラメータを用いてMemberServiceをインスタンス化して処理を行う。
-        3. 初期画面(UI103)にフォワード(gotoPage)
-    - action = cancel
-        1.  requestパラメータ(member_id)の取得
-        2.  パラメータを用いてMemberServiceをインスタンス化して処理を行う。
-        3.  初期画面(UI104)にフォワード(gotoPage)
-    - 上記以外のaction
-        1. エラーメッセージを"message"としてrequestスコープに格納
-        2. エラーページ(UI004)にフォワード(gotoPage)
-
-<div style="page-break-before:always"></div>
+1. Javaパッケージを用いて当日の日付を変数に保存(current_date)
+2. 引数としてもらった５つと変数Current_dateを用いてDAOの「addMember」メソッドを実行
+3. DAO「searchLastIDNAME」メソッドを実行して結果を変数に保存する
+4. 保存された変数を戻り値として返す
+---
 
 
-ーーー
 
-#### private void gotoPage(HttpServletRequest request,HttpServletResponse response, String page) throws ServletException,IOException
-指定されたページにフォワードする
 
-- 戻り値
-    - void
-        - なし
-- 引数
-    - HttpServletRequest request
-        - doGetのリクエストオブジェクト
-    - HttpServletResponse response
-        - doGetのレスポンスオブジェクト
-    - String page
-        - フォワード先のページ
+#### private List\<String> SearchAndMove(int member_id, String action) 
+member_idを検索してもとのページの位置を表示する
 
-##### メソッドの流れ  
+##### Service, DTO
+
+- MemberDAO
+- MemberBean
+
+##### 処理の流れ
 
 ```java
-// 指定されたページでRequestDispatcherのオブジェクトを取得
-// フォワードする
+public class SearchMove {
+    public MemberBean;
+    public URL;
+
+    public SearchMove(MemberBean bean, String url) {
+        this.MemberBean = bean;
+        this.URL = url;
+    }
+
+}
 ```
+
+1. サーブレットからもらったIDを用いてDAOの「searchMember」を実行し、Beanを保存
+2. サーブレットからもらったactionのうち、変更の場合にはそれに当てはまるjspのアドレスを、削除の場合にも同じくしてURL変数に保存
+3. 上記のSearchMoveクラスをインスタンス化して中にBeanとURLを入れて戻り値にして変換
+
+--- 
+
+#### private void updateMemberService(int member_id, String member_name, String member_address, String member_tel, String member_mail, String member_birth) 
+もらった引数とおり、そのまま変更を行う
+
+##### Service, DTO
+
+- MemberDAO
+- MemberBean
+
+##### 処理の流れ
+
+
+1. サーブレットからもらった引数を用いてDAOの「updateMember」を実行する
+
+--- 
+#### private void updateMemberService(int member_id) 
+入力したIDと現在の日付を使って退会メソッドを実行
+
+##### Service, DTO
+
+- MemberDAO
+- MemberBean
+
+##### 処理の流れ
+
+
+1. Javaパッケージを用いて当日の日付を変数に保存(current_date)
+2. サーブレットからもらったIDとcurrent_dateを用いてDAOの「cancelMember」を実行する
