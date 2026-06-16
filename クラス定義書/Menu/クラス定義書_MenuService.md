@@ -2,12 +2,12 @@
 ## menuService
 
 | package | class |
-| :---: | :---: |  |
+| :---: | :---: | 
 | la.service | (public) MenuService | 
 
 ### 機能概要
 
-職員のログインログアウトのメソッドを実行するためのServiceクラス(model)  
+職員のログインログアウト、また画面遷移のメソッドを実行するためのServiceクラス(model)  
 
 
 #### エラー制御
