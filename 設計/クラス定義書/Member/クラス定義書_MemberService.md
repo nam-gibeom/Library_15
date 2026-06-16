@@ -44,9 +44,9 @@
 ##### 処理の流れ
 
 1. Javaパッケージを用いて当日の日付を変数に保存(current_date)
-2. 引数としてもらった５つと変数Current_dateを用いてDAOの「addMember」メソッドを実行
-3. DAO「searchLastIDNAME」メソッドを実行して結果を変数に保存する
-4. 保存された変数を戻り値として返す
+2. 引数としてもらった５つと変数Current_dateを用いてDAOの「__addMember__」メソッドを実行
+3. DAO「__searchLastIDNAME__」メソッドを実行して結果を変数に保存する
+4. 保存されたIDと名前を戻り値として返す
 ---
 
 
@@ -75,7 +75,7 @@ public class SearchMove {
 }
 ```
 
-1. サーブレットからもらったIDを用いてDAOの「searchMember」を実行し、Beanを保存
+1. サーブレットからもらったIDを用いてDAOの「__searchMember__」を実行し、Beanを保存
 2. サーブレットからもらったactionのうち、変更の場合にはそれに当てはまるjspのアドレスを、削除の場合にも同じくしてURL変数に保存
 3. 上記のSearchMoveクラスをインスタンス化して中にBeanとURLを入れて戻り値にして変換
 
@@ -95,7 +95,7 @@ public class SearchMove {
 1. サーブレットからもらった引数を用いてDAOの「updateMember」を実行する
 
 --- 
-#### private void updateMemberService(int member_id) 
+#### private void cancelMemberService(int member_id) 
 入力したIDと現在の日付を使って退会メソッドを実行
 
 ##### Service, DTO
