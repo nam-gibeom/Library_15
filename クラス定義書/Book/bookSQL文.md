@@ -5,7 +5,8 @@ SQL分
 - SELECT * FROM cataloglist WHERE category_code = ?
 
 登録
--
+- INSERT INTO catalogligt VALUES(?,?,?,?,?,?)
+- INSERT INTO stick list VALUES(?,?,?,?,?)
 
 廃棄
 

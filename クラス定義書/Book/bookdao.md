@@ -1,6 +1,6 @@
 # DAO
 
-## ItemDAO
+## BookDAO
 資料情報のデータ操作をするためのDAOクラス
 
 | package | class |
