@@ -239,8 +239,8 @@ else {
    // nullを返す
 }
 ```
-#### public BookBean addCatalog(String isbn,String title,int category_code,String writer,String publisher,date publish_date) throws DAOException
-資料を資料目録に新規登録する
+#### public BookBean addCatalog(String isbn,) throws DAOException
+資料を在庫台帳に新規登録する
 
 - 戻り値
     - なし
