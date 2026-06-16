@@ -150,3 +150,35 @@ else {
    // nullを返す
 }
 ```
+
+#### public BookBean findMember(String member_id) throws DAOException
+会員の現在貸出状況を確認
+
+- 戻り値
+    - なし
+- 引数
+    - String isbn
+        - ISBN番号
+    - date arrival_date
+        - 入荷年月日
+- 使用するSQL
+    - __insert into stocklist(isbn,arrival_date) values(?,?)__
+
+
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// コネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 引数で与えられたアイテムコードをPreparedStatementオブジェクトに設定する
+// SQLの実行
+// ItemBeanのArrayListオブジェクトの作成
+if (レコードが存在する) {
+    // レコードをItemBeanに格納
+    // レコードを格納したItemBeanを返す
+}
+else {
+   // nullを返す
+}
+```
