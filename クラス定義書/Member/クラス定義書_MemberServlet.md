@@ -71,7 +71,7 @@ doPost()が呼び出された時にもdoGet()を呼び出す
     - action = search
         1. もとのページ(変更または退会)にフォワード(gotoPage)
     - action = regist
-        1. requestパラメータ(member_n...ame, member_address, member_tel, member_mail, member_birth)の取得
+        1. requestパラメータ(member_name, member_address, member_tel, member_mail, member_birth)の取得
         2. パラメータを用いてMemberServiceをインスタンス化して処理を行う。
         3. MemberServiceで登録した行のID(member_id)を取得し、検索も行って名前を取得する
         4. 取得したIDと名前を"member_id", "member_name"としてrequestスコープに格納

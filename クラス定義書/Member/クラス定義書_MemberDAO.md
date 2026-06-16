@@ -132,7 +132,7 @@ MemberListテーブルから取得したレコードは、MemberBeanに格納し
     - 当時の年月日
 
 - 使用するSQL
-  - __insert into memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate) values(?, ?, ?, ?, ?, ?)   
+  - __insert into memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate) values(?, ?, ?, ?, ?, ?)__
 
 MemberListテーブルにレコードを登録後、MemberBeanのArrayListとして返す。  
 
