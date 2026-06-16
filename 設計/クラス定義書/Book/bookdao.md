@@ -119,7 +119,7 @@ else {
    // nullを返す
 }
 ```
-#### public BookBean addCatalog(String isbn,) throws DAOException
+#### public BookBean addCatalog(String isbn) throws DAOException
 資料を在庫台帳に新規登録する
 
 - 戻り値
