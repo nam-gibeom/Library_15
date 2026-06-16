@@ -3,6 +3,7 @@ SQL分
 - SELECT * FROM cataloglist WHERE isbn = ?
 - SELECT * FROM cataloglist WHERE title like ?
 - SELECT * FROM cataloglist WHERE category_code = ?
+- SELECT * FROM stocklist WHERE book_id = ?
 
 登録
 - INSERT INTO catalogligt VALUES(?,?,?,?,?,?)

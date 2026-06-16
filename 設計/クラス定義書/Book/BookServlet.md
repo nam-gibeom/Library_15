@@ -14,12 +14,12 @@ doGet,doPost共通で同じ処理を実装する
 
 | # | action名 | 遷移先 | 機能 |
 | :---: | :---: | :---: | :--- |
-| 1 | booksearch | Booksearch.jsp <br>  BookAdd.jsp   | 操作が行ったページを更新して表示 |
-| 2 | booksearchID | BookDiscard.jsp | 操作が行ったページを更新して表示 |
-| 3 | Membersearch | BookRr.jsp | 操作が行ったページを更新して表示 |
-| 4 | add | BookAdd.jsp | 登録後、初期ページに戻る |
-| 5 | discard | BookDiscard.jsp | 変更後、初期ページに戻る |
-| 6 | confirm | BookConfirm.jsp | 登録確認ページを表示する |
+| 1 | booksearch |  Booksearch.jsp <br>  BookAdd.jsp <br>  BookDiscard.jsp <br> BookRr.jsp |  操作が行ったページを更新して表示 |
+| 2 | add | BookAdd.jsp | 登録後、初期ページに戻る |
+| 3 | discard | BookDiscard.jsp | 変更後、初期ページに戻る |
+| 4 | confirm | BookConfirm.jsp | 登録確認ページを表示する |
+| 5 | rent | BookRr.jsp | 変更後、初期ページに戻る  |
+| 6 | return | BookRr.jsp |  変更後、初期ページに戻る |
 
 #### Service, DTO
 - BookService
@@ -57,7 +57,7 @@ doPost()が呼び出された時にもdoGet()を呼び出す
 
 | # | パラメータ名 | 内容 | 備考 |
 | :---: | :---: | :---: | :--- |
-| 1 | action | membersearch・booksearch・booksearchID:検索が行われたページの表示 <br> add:資料の登録画面を表示 <br> discard:資料の廃棄画面の表示 <br> cancel:　資料の廃棄画面の表示 | 機能を示す|
+| 1 | action | booksearch:検索が行われたページの表示 <br> add:資料の登録画面を表示 <br> discard:資料の廃棄画面の表示 <br> confirm:資料の貸出確認画面 <br> rent:資料の貸出、返却画面の表示 <br> return:資料の貸出、返却画面の表示 | 機能を示す|
 | 2 | book | BookBean | 資料情報を表示 |
 
 ##### Service,DTO
@@ -75,22 +75,10 @@ doPost()が呼び出された時にもdoGet()を呼び出す
         1. requestパラメータ(member_id)の取得
         2. パラメータを用いてBookServiceをインスタンス化して処理を行う。
         3. BookServiceで登録した行のID(member_id)を取得し、検索も行って資料Idとタイトルを取得する
-        4. 取得したIDとタイトルを"member_id", "title"としてrequestスコープに格納
+        4-1. 取得したIDとタイトルを"member_id", "title"としてrequestスコープに格納
+        4-2. 取得した資料の情報を"isbn", "title","category_code","author","rent"としてrequestスコープに格納
+        4-3.取得した資料の情報を"book_id","isbn", "title","arrival_date","としてrequestスコープに格納
         5. 資料の貸出、返却画面(UI202)にフォワード(gotoPage)
-
-    - action = booksearch
-        1. requestパラメータ(isbn,titleの中で一つ)の取得
-        2. パラメータを用いてBookServiceをインスタンス化して処理を行う。
-        3. BookServiceで登録した行のisbn番号(isbn),資料名(title)を取得し、検索も行って資料の情報を取得する
-        4. 取得した資料の情報を"isbn", "title","category_code","author","rent"としてrequestスコープに格納
-        5. 資料の登録画面(UI204)と資料の検索画面(UI201)にフォワード(gotoPage)
-
-    - action = booksearchID
-        1. requestパラメータ(資料ID)の取得
-        2. パラメータを用いてBookServiceをインスタンス化して処理を行う。
-        3. BookServiceで登録した行の資料ID(book_id),を取得し、検索も行って資料の情報を取得する
-        4. 取得した資料の情報を"book_id","isbn", "title","arrival_date","としてrequestスコープに格納
-        5. 資料の廃棄画面(UI205)にフォワード(gotoPage)
 
     - action = add
         1. requestパラメータ(isbn, title, category_code, author, publisher, publish_date)の取得
@@ -106,6 +94,18 @@ doPost()が呼び出された時にもdoGet()を呼び出す
 
     - action = confirm
         1.   資料の貸出確認画面(UI203)にフォワード(gotoPage)
+    
+    - action = rent
+        1.  requestパラメータ資料ID,資料名,返却期日(book_id,title,int型の整数)の取得
+        2. パラメータを用いてBookServiceをインスタンス化して処理を行う。
+        3. 取得したIDと資料名、返却期日を"book_id", "title, int型の整数"としてrequestスコープに格納
+        4. 資料の貸出、返却画面(UI202)にフォワード(gotoPage)
+
+    - action = return
+        1.  requestパラメータ資料IDと資料名(book_id,title)の取得
+        2. パラメータを用いてBookServiceをインスタンス化して処理を行う。 
+        3. 取得したIDと資料名"book_id", "title, "としてrequestスコープに格納
+        4. 資料の貸出、返却画面(UI202)にフォワード(gotoPage)
     
     - 上記以外のaction
         1. エラーメッセージを"message"としてrequestスコープに格納
