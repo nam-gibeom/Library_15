@@ -74,8 +74,8 @@
 3. DAOの「__getCatalogListInfo__」を実行
 4. IF ELSE文を使って貸出日数を（現在の日付ー出版日）が3ヶ月以上の場合15、じゃない場合は10日に設定する。（一つの変数に保存する）
 5. 検索された資料の数が二つ以上の場合、For文を使って以下を実行する。
-   1. 資料ごとにISBNまた資料名によって「__getBookIdByIsbn__」または「__getBookIdByTitle__」を使って現在の本の数を保存する。
-6. 
+   1. 資料ごとにISBNまた資料名によって「__getBookIdByIsbn__」または「__getBookIdByTitle__」を使って現在の総冊数を保存する。
+6. findRentBook（貸出中の冊数）/総冊数として変数に保存
 ---
 
 
