@@ -58,17 +58,17 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 ### メソッド
 
 
-#### public List\<BookBean> findIsbn(String isbn) throws DAOException
-指定されたISBN番号に属する資料情報を取得する  
+#### public List\<BookBean> findPublishDate(String isbn) throws DAOException
+指定されたISBN番号に属する資料の出版日を取得する  
 
 - 戻り値
     - public List \<BookBean>
-        - 指定されたISBN番号に属する資料情報のリスト
+        - 指定されたISBN番号に属する資料の出版日のリスト
 - 引数
     - String isbn
         - ISBN番号
 - 使用するSQL
-    - __SELECT * FROM item WHERE category_code = ? ORDER BY code__
+    - __SELECT publish_date FROM cataloglist WHERE  isbn = ?__
 
 cataloglistテーブルから取得したレコードは、BookBeanのArrayListに格納して返す
 		
@@ -87,7 +87,127 @@ while (レコードが存在する間レコードの取得) {
 }
 // リストを返す
 ```
- 
+#### public List\<BookBean> findinfo(int member_id) throws DAOException
+指定された会員番号に属する貸出中の資料の貸出履歴を取得する  
+
+- 戻り値
+    - public List \<BookBean>
+        - 指定された会員番号に属する貸出中の資料の貸出履歴のリスト
+- 引数
+    - int member_id
+        - 会員番号
+- 使用するSQL
+    - __SELECT member_id,book_id,rent_date,return_deadline FROM rentlist WHERE member_id = ?__
+
+rentlistテーブルから取得したレコードは、BookBeanのArrayListに格納して返す
+		
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// コネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 引数で与えられたカテゴリコードをPreparedStatementオブジェクトに設定する
+// SQLの実行
+// ItemBeanのArrayListオブジェクトの作成
+while (レコードが存在する間レコードの取得) {
+   // レコードをItemBeanに格納
+   // ItemBeanをリストに追加
+}
+// リストを返す
+```
+
+#### public List\<BookBean> calDelay() throws DAOException
+指定された会員番号に属する貸出中の資料の貸出履歴を取得する  
+
+- 戻り値
+    - public List \<BookBean>
+        - 指定された会員番号に属する貸出中の資料の貸出履歴のリスト
+- 引数
+    - なし
+- 使用するSQL
+    - __SELECT CURRENT_DATE - return_deadline AS days_diff FROM rentlist__
+
+rentlistテーブルから取得したレコードは、BookBeanのArrayListに格納して返す
+		
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// コネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 引数で与えられたカテゴリコードをPreparedStatementオブジェクトに設定する
+// SQLの実行
+// ItemBeanのArrayListオブジェクトの作成
+while (レコードが存在する間レコードの取得) {
+   // レコードをItemBeanに格納
+   // ItemBeanをリストに追加
+}
+// リストを返す
+```
+
+
+#### public List\<BookBean> findBookId(String isbn) throws DAOException
+指定されたISBN番号に属する資料のIDを取得する  
+
+- 戻り値
+    - public List \<BookBean>
+        - 指定されたISBN番号に属する資料のIDのリスト
+- 引数
+    - String isbn
+        - ISBN番号
+- 使用するSQL
+    - __SELECT book_id FROM stocklist WHERE isbn = ?__
+
+cataloglistテーブルから取得したレコードは、BookBeanのArrayListに格納して返す
+		
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// コネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 引数で与えられたカテゴリコードをPreparedStatementオブジェクトに設定する
+// SQLの実行
+// ItemBeanのArrayListオブジェクトの作成
+while (レコードが存在する間レコードの取得) {
+   // レコードをItemBeanに格納
+   // ItemBeanをリストに追加
+}
+// リストを返す
+```
+
+ #### public List\<BookBean> findRentBook(int book_id) throws DAOException
+指定された資料IDの貸出中の資料情報を取得する  
+
+- 戻り値
+    - public List \<BookBean>
+        - 指定された資料IDの貸出中の資料情報を取得したリスト
+- 引数
+    - int book_id
+        - 資料ID
+- 使用するSQL
+    - __SELECT book_id FROM rentlist WHERE book_id = ? AND return_date is null__
+
+cataloglistテーブルから取得したレコードは、BookBeanのArrayListに格納して返す
+		
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// コネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 引数で与えられたカテゴリコードをPreparedStatementオブジェクトに設定する
+// SQLの実行
+// ItemBeanのArrayListオブジェクトの作成
+while (レコードが存在する間レコードの取得) {
+   // レコードをItemBeanに格納
+   // ItemBeanをリストに追加
+}
+// リストを返す
+```
+
+
 #### public BookBean addStock(String isbn,date arrival_date) throws DAOException
 資料を在庫台帳に新規登録する
 
@@ -127,10 +247,50 @@ else {
 - 引数
     - String isbn
         - ISBN番号
-    - date arrival_date
+    - String title
         - 入荷年月日
+    - int category_code
+        - 分類コード
+    - String writer
+        - 著者
+    - String publisher
+        - 出版社
+    - date publish_date
+        - 出版日
 - 使用するSQL
-    - __insert into stocklist(isbn,arrival_date) values(?,?)__
+    - __insert into cataloglist(isbn,title,category_code,writer,publisher,publish_date) values(?,?,?,?,?,?)__
+
+
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// コネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 引数で与えられたアイテムコードをPreparedStatementオブジェクトに設定する
+// SQLの実行
+// ItemBeanのArrayListオブジェクトの作成
+if (レコードが存在する) {
+    // レコードをItemBeanに格納
+    // レコードを格納したItemBeanを返す
+}
+else {
+   // nullを返す
+}
+```
+#### public List\<BookBean> findDiscard(int book_id) throws DAOException
+資料IDで資料情報を検索する
+
+- 戻り値
+     - public List \<BookBean>
+        - 指定された資料IDに属する資料情報のリスト
+- 引数
+    - int book_id
+        - 資料ID
+
+
+- 使用するSQL
+    - __select * from stocklist where book_id = ?__
 
 
 ##### メソッドの流れ
@@ -151,20 +311,30 @@ else {
 }
 ```
 
-#### public BookBean findMember(String member_id) throws DAOException
-会員の現在貸出状況を確認
+#### public BookBean discardBook(date discard_date,String remarks) throws DAOException
+紛失した資料を廃棄する日付を廃棄年月日として記録する
 
 - 戻り値
     - なし
 - 引数
-    - String isbn
-        - ISBN番号
-    - date arrival_date
-        - 入荷年月日
+    - date discard_date
+        - 廃棄年月日
+    - String remarks
+        - 備考
+
 - 使用するSQL
-    - __insert into stocklist(isbn,arrival_date) values(?,?)__
+    - __insert into stocklist(discard_date,remarks) values(?,?)__
 
+#### public List\<RentBean> findMember(String member_id) throws DAOException
+会員の貸出状況を確認する。
 
+- 戻り値
+    - なし
+- 引数
+    - String member_id
+        - 会員ID
+- 使用するSQL 
+    - __select * from rentlist where member_id = ? and return_date is null__
 ##### メソッドの流れ
 
 ```java
@@ -181,4 +351,83 @@ if (レコードが存在する) {
 else {
    // nullを返す
 }
+// 引数で与えられたMember_IDをPreparedStatementオブジェクトに設定する
+// SQLの実行
+// <貸出台帳Bean>のArrayListオブジェクトの作成
+while (レコードが存在する) {
+    // <貸出台帳Bean>に格納
+  
+}
+  // レコードを格納したList<貸出台帳Bean>を返す
+
+```
+
+
+
+#### public void returnBook(String member_id, String book_id, String current_date) throws DAOException
+会員が資料を返却したらテーブルにその日付を登録
+
+- 戻り値
+    - なし
+- 引数
+    - String member_id
+      - 会員ID
+    - String book_id
+      - 資料ID
+    - String current_date
+      - 返却年月日に入れる日付 
+
+- 使用するSQL 
+    - __update rentlist set rent_date = ? where member_id = ? and book_id = ?__
+
+
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// コネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 与えられた引数をPreparedStatementオブジェクトに設定する
+// SQLの実行
+```
+
+
+#### public List\<貸出台帳Bean> rentBook(String member_id, String book_id, String current_date String return_deadline) throws DAOException
+会員が資料を返却したらテーブルにその日付を登録
+
+- 戻り値
+    - なし
+- 引数
+    - String member_id
+      - 会員ID
+    - String book_id
+      - 資料ID
+    - String current_date
+      - 返却年月日に入れる日付(JAVAで設定)
+    - String return_deadline
+      - 資料の出版日を参照してJavaで自動的に設定 
+
+- 使用するSQL 
+    - __insert into rentlist(member_id, book_id, rent_date, return_deadline) values(?, ?, ?, ?)__
+    - __select * from rentlist where member_id = ? and book_id = ? and rent_date = ?__
+
+##### メソッドの流れ
+
+```java
+// SQL文の作成
+// 一つ目のコネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 与えられた引数をPreparedStatementオブジェクトに設定する
+// SQLの実行
+// 二つ目のコネクションを確立する（フィールドを使用）
+// PreparedStatementオブジェクトの取得
+// 与えられた引数をPreparedStatementオブジェクトに設定する
+// SQLの実行
+// <貸出台帳Bean>のArrayListオブジェクトの作成
+while (レコードが存在する) {
+    // <貸出台帳Bean>に格納
+  
+}
+// レコードを格納したList<貸出台帳Bean>を返す
+
 ```
