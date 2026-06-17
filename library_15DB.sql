@@ -38,18 +38,6 @@ CREATE TABLE categorylist(
   category_name TEXT
 );
 
-DROP TABLE IF EXISTS memberlist;
-CREATE TABLE memberlist(
-  member_id SERIAL PRIMARY KEY,
-  member_name TEXT,
-  member_address TEXT,
-  member_tel TEXT,
-  member_mail TEXT,
-  member_birth DATE,
-  member_registdate DATE,
-  member_canceldate DATE
-);
-
 INSERT INTO categorylist VALUES(0,'ëçãL');
 INSERT INTO categorylist VALUES(1,'ìNäw');
 INSERT INTO categorylist VALUES(2,'óéj');
@@ -61,6 +49,18 @@ INSERT INTO categorylist VALUES(7,'å|èp');
 INSERT INTO categorylist VALUES(8,'åæåÍ');
 INSERT INTO categorylist VALUES(9,'ï∂äw');
 
+
+DROP TABLE IF EXISTS memberlist;
+CREATE TABLE memberlist(
+  member_id SERIAL PRIMARY KEY,
+  member_name TEXT,
+  member_address TEXT,
+  member_tel TEXT,
+  member_mail TEXT,
+  member_birth DATE,
+  member_registdate DATE,
+  member_canceldate DATE
+);
 
 
 INSERT INTO memberlist VALUES(1,'éRìcëæòY','Åß111-1111ìåãû','000-000-000','a@example.com',DATE '1999-01-02',DATE '2010-1-01',DATE '2013-11-21');
@@ -75,13 +75,15 @@ ALTER TABLE cataloglist OWNER TO postgres;
 DROP TABLE IF EXISTS rentlist;
 CREATE TABLE rentlist
 (
-  member_id SERIAL PRIMARY KEY,
+  rent_id SERIAL PRIMARY KEY,
+  member_id INTEGER,
   book_id INTEGER,
   rent_date DATE,
   return_deadline DATE,
   return_date DATE,
   remarks TEXT
 );
+
 
 DROP TABLE IF EXISTS stocklist;
 CREATE TABLE stocklist
