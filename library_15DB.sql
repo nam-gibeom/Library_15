@@ -93,7 +93,7 @@ DROP TABLE IF EXISTS stocklist;
 CREATE TABLE stocklist
 (
   book_id SERIAL PRIMARY KEY,
-  isbn TEXT REFERENCES cataloglist,
+  isbn TEXT,
   arrival_date DATE,
   discard_date DATE,
   remarks TEXT
