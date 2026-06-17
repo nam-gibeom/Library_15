@@ -20,10 +20,10 @@ CREATE TABLE cataloglist (
     publish_date DATE
 );
 
-INSERT INTO adminlist VALUES(1, 'ジャン', 30 );
-INSERT INTO adminlist VALUES(2, '平', 28 );
-INSERT INTO adminlist VALUES(3, '高', 46 );
-INSERT INTO adminlist VALUES(4, 'ナム', 57 );
-INSERT INTO adminlist VALUES(5, '若松', 31 );
+INSERT INTO adminlist VALUES(1, 'ジャン', 1111 );
+INSERT INTO adminlist VALUES(2, '平', 2222 );
+INSERT INTO adminlist VALUES(3, '高', 3333 );
+INSERT INTO adminlist VALUES(4, 'ナム', 4444 );
+INSERT INTO adminlist VALUES(5, '若松', 5555 );
 
 ALTER TABLE adminlist OWNER TO postgre;
