@@ -13,7 +13,7 @@ __貸出管理テーブル__
 
 | # | 列名 | データ型 | 主キー | 制約 | 説明 |
 | :---: | :---: | :---: | :---: | :---: | :--- |
-| 1 |rent_id | serial | 〇 | 外部キー(memberlist,member_id) |  |
+| 1 |rent_id | serial | 〇 |  |  |
 | 2 | member_id | integer |  | 外部キー(memberlist,member_id) | 会員ID<br>会員情報テーブルと紐づくコード |
 | 3 | book_id | integer |  | 外部キー(stocklist,book_id) | 資料ID<br>在庫管理テーブルと紐づくコード |
 | 4 | rent_date | date |  |  | 貸出年月日 |
