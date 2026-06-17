@@ -92,27 +92,7 @@ doPost()が呼び出された時にもdoGet()を呼び出す
 
 <div style="page-break-before:always"></div>
 
-<!-- #### public void init() throws ServletException
-Servletがインスタンス化された際に一度だけサーブレットコンテナから呼び出される初期化処理  
-後続の処理で共通に使用するカテゴリーのリストをアプリケーションスコープに格納する
 
-- 戻り値
-    - void
-        - なし
-- 引数
-    - なし
-
-##### DAO,DTO
-- ItemDAO
-- CategoryBean
-
-##### メソッドの流れ  
-
-```java
-// ItemDAOをインスタンス化
-// categoeyCodeの一覧を取得(ItemDAO.findAllCategoryCode)
-// 取得したカテゴリー一覧をcategoriesという名前でリクエストスコープに設定
-``` -->
 
 #### private void gotoPage(HttpServletRequest request,HttpServletResponse response, String page) throws ServletException,IOException
 指定されたページにフォワードする
