@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS cataloglist;
 CREATE TABLE cataloglist (
     isbn TEXT PRIMARY KEY,
     title TEXT, 
-    category_code INTEGER,
+    category_code INTEGER REFRENCES categorylist,
     author TEXT,
     publisher TEXT,
     publish_date DATE
@@ -76,8 +76,8 @@ DROP TABLE IF EXISTS rentlist;
 CREATE TABLE rentlist
 (
   rent_id SERIAL PRIMARY KEY,
-  member_id INTEGER,
-  book_id INTEGER,
+  member_id INTEGER REFRENCES memberlist,
+  book_id INTEGER REFRENCES stocklist,
   rent_date DATE,
   return_deadline DATE,
   return_date DATE,
@@ -93,7 +93,7 @@ DROP TABLE IF EXISTS stocklist;
 CREATE TABLE stocklist
 (
   book_id SERIAL PRIMARY KEY,
-  isbn TEXT,
+  isbn TEXT REFRENCES cataloglist,
   arrival_date DATE,
   discard_date DATE,
   remarks TEXT
