@@ -15,7 +15,6 @@ __在庫管理テーブル__
 | :---: | :---: | :---: | :---: | :---: | :--- |
 | 1 | book_id | serial | 〇 |  | 分類コード<br>を一意に特定する |
 | 2 | isbn | text |  | 外部キー(cataloglist,isbn) | ISBN番号<br>資料目録と紐づくコード |
-| 3 | title | text |  | 外部キー(cataloglist,title) | ISBN番号<br>資料目録と紐づくコード |
 | 3 | arrival_date | date |  |  | 入荷年月日 |
 | 4 | discard_date | date |  |  | 廃棄年月日 |
 | 5 | remarks | text |  |  | 備考 |
