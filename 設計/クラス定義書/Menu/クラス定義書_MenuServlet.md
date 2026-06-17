@@ -70,7 +70,7 @@ doPost()が呼び出された時にもdoGet()を呼び出す
 2. actionの値に応じて下記の通り処理を行う
     - action = login
         1. requestパラメータ(id,pass)の取得
-        2. (id,pass)が登録された情報と一致するならfindName()を呼びだす
+        2. (id,pass)が登録された情報と一致するならgetName()を呼びだす
         3. 戻り値のnameをrequestスコープに入れる 
         4. top.jspにフォワード(gotoPage)
         5. 一致しない場合、login.jspにフォワードし、エラーメッセージを表示
