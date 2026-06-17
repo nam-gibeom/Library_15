@@ -12,11 +12,11 @@ CREATE TABLE adminlist (
     );
     
 
-INSERT INTO adminlist VALUES('1', 'ジャン', '1111' );
-INSERT INTO adminlist VALUES('2', '平', '2222' );
-INSERT INTO adminlist VALUES('3', '高', '3333' );
-INSERT INTO adminlist VALUES('4', 'ナム', '4444' );
-INSERT INTO adminlist VALUES('5', '若松', '5555' );
+INSERT INTO adminlist VALUES('2907', '高', '2907' );
+INSERT INTO adminlist VALUES('2912', 'ジャン', '2912' );
+INSERT INTO adminlist VALUES('26011', '平', '26011' );
+INSERT INTO adminlist VALUES('2918', 'ナム', '2918' );
+INSERT INTO adminlist VALUES('0627', '若松', '0627' );
 
 
 
@@ -223,9 +223,11 @@ CREATE TABLE rentlist
   remarks TEXT
 );
 
-INSERT INTO rentlist VALUES(1,1, 24, DATE '20040322', DATE '20260617',null,null);
-INSERT INTO rentlist VALUES(2,2, 12, DATE '20040422', DATE '20260627',null,null);
-INSERT INTO rentlist VALUES(3,3, 36, DATE '20040522', DATE '20260614',null,null);
+INSERT INTO rentlist VALUES(1,1, 24, DATE '20260531', DATE '20260614',null,null);
+INSERT INTO rentlist VALUES(2,2, 12, DATE '20260601', DATE '20260615',null,null);
+INSERT INTO rentlist VALUES(3,3, 36, DATE '20260611', DATE '20260626',null,null);
+INSERT INTO rentlist VALUES(4,3, 66, DATE '20260613', DATE '20260628',null,null);
+INSERT INTO rentlist VALUES(5,1, 93, DATE '20260613', DATE '20260628',null,null);
 
 
 ALTER TABLE categorylist OWNER TO postgres;

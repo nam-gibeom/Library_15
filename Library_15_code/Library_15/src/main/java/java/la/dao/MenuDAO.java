@@ -26,14 +26,13 @@ public class MenuDAO {
         // SQL文の作成
         String sql = "SELECT staff_name FROM adminlist WHERE staff_id = ?";
 		
-        int ID = Integer.parseInt(id);
         
         try (// データベースへの接続
              Connection con = DriverManager.getConnection(url, user, pass);
 			 // PreparedStatementオブジェクトの取得
 			 PreparedStatement st = con.prepareStatement(sql);) {
 			// 商品番号の設定
-			st.setInt(1, ID);
+			st.setString(1, id);
 			
 			try (// SQLの実行
 			     ResultSet rs = st.executeQuery();) {
@@ -59,14 +58,13 @@ public class MenuDAO {
         // SQL文の作成
         String sql = "SELECT staff_password FROM adminlist WHERE Staff_id = ?";
         
-        int ID = Integer.parseInt(id);
 		
         try (// データベースへの接続
              Connection con = DriverManager.getConnection(url, user, pass);
 			 // PreparedStatementオブジェクトの取得
 			 PreparedStatement st = con.prepareStatement(sql);) {
 			// 商品番号の設定
-			st.setInt(1, ID);
+			st.setString(1, id);
 			
 			try (// SQLの実行
 			     ResultSet rs = st.executeQuery();) {
