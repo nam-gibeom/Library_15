@@ -56,7 +56,7 @@ doPost()が呼び出された時にもdoGet()を呼び出す
 
 | # | パラメータ名 | 内容 | 備考 |
 | :---: | :---: | :---: | :--- |
-| 1 | action | search:検索が行われたページの表示 <br> add:確認画面を表示 <br> update:初期ページの表示 <br> cancel:　初期ページの表示 | 機能を示す|
+| 1 | action | search:検索が行われたページの表示 <br> regist:確認画面を表示 <br> update:初期ページの表示 <br> cancel:初期ページの表示 <br> confirm:初期ページの表示 | 機能を示す|
 | 2 | member | MemberBean | 会員情報を表示 |
 
 ##### Service,DTO
@@ -77,7 +77,7 @@ doPost()が呼び出された時にもdoGet()を呼び出す
         4. 取得したIDと名前を"member_id", "member_name"としてrequestスコープに格納
         5. 登録完了画面(UI102)にフォワード(gotoPage)
     - action = update
-        1. requestパラメータ(member_n...ame, member_address, member_tel, member_mail, member_birth)の取得
+        1. requestパラメータ(member_name, member_address, member_tel, member_mail, member_birth)の取得
         2. パラメータを用いてMemberServiceをインスタンス化して処理を行う。
         3. 初期画面(UI103)にフォワード(gotoPage)
     - action = cancel
