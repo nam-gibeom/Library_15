@@ -29,7 +29,7 @@ CREATE TABLE cataloglist (
     publisher TEXT,
     publish_date DATE
 );
-INSERT INTO cataloglist VALUES('4163918272','センスの哲学',1,'千葉 雅也','文藝春秋',DATE '20240405');
+INSERT INTO cataloglist VALUES('9784163918273','センスの哲学',1,'千葉 雅也','文藝春秋',DATE '20240405');
 INSERT INTO cataloglist VALUES('9784101373713', 'イチローの流儀', 0, '小西慶三／著', '新潮社', DATE'20260401');
 INSERT INTO cataloglist VALUES('9784480081377', '存在と時間 上', 1, 'Heidegger,Martin／著 細谷貞雄／翻訳 ハイデッガーマルティン／著', '筑摩書房', DATE'19940601');
 INSERT INTO cataloglist VALUES('9784532176204', '自壊の病理 日本陸軍の組織分析', 2, '戸部良一／著', '日本経済新聞出版社', DATE'20170427');
