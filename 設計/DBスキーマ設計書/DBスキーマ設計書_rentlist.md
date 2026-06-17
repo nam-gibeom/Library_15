@@ -18,4 +18,4 @@ __貸出管理テーブル__
 | 3 | rent_date | date | 〇 |  | 貸出年月日 |
 | 4 | return_deadline | date |  |  | 返却期日 |
 | 5 | return_date | date |  |  | 返却年月日 |
-| 6 | note | remark |  |  | 備考 |
+| 6 | remarks | text |  |  | 備考 |
