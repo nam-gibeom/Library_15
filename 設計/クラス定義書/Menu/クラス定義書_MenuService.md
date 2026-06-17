@@ -59,22 +59,3 @@ DAOのメソッドを実行してパスワードを取得し、String passと　
 
 
 <div style="page-break-before:always"></div>
-
-
-#### public String move(String action) throwServiceException
-actionによって画面遷移を行うためのurlを戻す
-
-- 戻り値
-    - String url
-        - ログイン画面（UI001）のurl
-- 引数
-    - action
-      - サーブレットからもらったAction
-
-
-##### メソッドの流れ  
-
-```java
-// Actionまたはログイン成功によってページを遷移
-// この作業はIFとELSEIFを用いて作業
-```
