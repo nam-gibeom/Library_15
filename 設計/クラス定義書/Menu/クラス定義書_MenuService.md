@@ -34,9 +34,9 @@ DAOのメソッドを実行してパスワードを取得し、String passと　
     - String name
         - 職員の名前
 - 引数
-    - id
+    - String id
       - 入力してもらったID
-    - pass
+    - String pass
       - 入力してもらったパスワード
 
 
