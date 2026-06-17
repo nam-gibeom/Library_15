@@ -47,11 +47,13 @@
 ##### 処理の流れ
 
 1. Javaパッケージを用いて当日の日付を変数に保存(current_date)
-2. For文を用いてBook_idを用いて「getInfoByBookID」を実行し、出版日だけ獲得する
+2. For文を用いてBook_idを用いて「__getInfoByBookID__」を実行し、出版日だけ獲得する
 3. 出版年月日をもとに貸出可能日数を計算する
 4. Current_dateに貸出可能日数を足してreturn_deadlineを変数として設定
-5. 引数としてもらった2つとCurrent_date、return_deadlineをDAOの「__rentBook__」メソッドを実行してリストを保存
-6. 保存されたリストを戻り値として返す（貸出確認JSPに資料ID、資料名、返却期日三つのパラメータ必要）
+5. 引数としてもらった2つとreturn_deadlineをDAOの「__rentBook__」メソッドを実行してリストを保存（資料ID、返却期日）
+6. 資料IDごとに資料名を獲得するため「__getInfoByBookId__」を実行してgetTitle()メソッドで獲得する（資料名）
+7. 保存されたリストと資料名を戻り値として返す（貸出確認JSPに資料ID、資料名、返却期日三つのパラメータを）
+8. 
 ---
 
 
@@ -72,7 +74,7 @@
 
 
 <!-- ある会員の特定の資料を返却（貸出・返却画面で使う：返却ボタン）　-->
-#### private List\<貸出台帳Bean> showCurrentRentList(int member_id, int book_id) 
+#### private void returnBook(int member_id, int book_id) 
 貸出台帳に特定の会員と資料を見つけて返却年月日を記入後、またその人の貸出状況を表示
 
 ##### Service, DTO
@@ -162,7 +164,7 @@
 
 
 <!-- ISBNがない場合 -->
-#### private void addStock (String isbn, String title, int category_code, String author, String publisher, String publish_date) 
+#### private void addCatalog (String isbn, String title, int category_code, String author, String publisher, String publish_date) 
 
 
 ##### Service, DTO
@@ -204,4 +206,3 @@
 ##### 処理の流れ
 
 1. DAOの「discardBook」に全ての引数を入れて実行
-2. 上のsearchDiscardを実行して画面に表示
