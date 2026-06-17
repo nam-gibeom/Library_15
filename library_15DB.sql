@@ -12,11 +12,11 @@ CREATE TABLE adminlist (
     );
     
 
-INSERT INTO adminlist VALUES('1', 'ジャン', '1111' );
-INSERT INTO adminlist VALUES('2', '平', '2222' );
-INSERT INTO adminlist VALUES('3', '高', '3333' );
-INSERT INTO adminlist VALUES('4', 'ナム', '4444' );
-INSERT INTO adminlist VALUES('5', '若松', '5555' );
+INSERT INTO adminlist VALUES('2907', '高', '2907' );
+INSERT INTO adminlist VALUES('2912', 'ジャン', '2912' );
+INSERT INTO adminlist VALUES('26011', '平', '26011' );
+INSERT INTO adminlist VALUES('2918', 'ナム', '2918' );
+INSERT INTO adminlist VALUES('0627', '若松', '0627' );
 
 
 
