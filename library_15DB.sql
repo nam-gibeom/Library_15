@@ -81,9 +81,19 @@ CREATE TABLE memberlist(
 );
 
 
-INSERT INTO memberlist VALUES(1,'山田太郎','〒111-1111東京','000-000-000','a@example.com',DATE '19990102',DATE '2010101',DATE '20131121');
+INSERT INTO memberlist VALUES(1,'山田太郎','〒111-1111東京','000-000-000','a@example.com',DATE '19990102',DATE '20101101',DATE '20131121');
 INSERT INTO memberlist VALUES(2,'田中一郎','〒111-1112東京','000-000-111','b@example.com',DATE '20000104',DATE '2012101',DATE '20131202');
-INSERT INTO memberlist VALUES(3,'山本次郎','〒111-1113東京','000-000-222','c@example.com',DATE '20010202',DATE '2014101',DATE '20190911');
+INSERT INTO memberlist VALUES(3,'山本次郎','〒111-1113東京','000-000-222','c@example.com',DATE '20010202',DATE '20141101',DATE '20190911');
+INSERT INTO memberlist VALUES(4,'羽生 章洋','〒111-1114東京','000-080-222','d@example.com',DATE '20010902',DATE '20240101',DATE '20100911');
+INSERT INTO memberlist VALUES(5,'釜本 喜美子','〒111-1113東京','000-001-222','c@example.com',DATE '20010202',DATE '2014101',DATE '20190911');
+INSERT INTO memberlist VALUES(6,'安部 弘江','〒111-1113大阪','000-060-222','c@example.com',DATE '20010202',DATE '2014101',DATE '20190911');
+INSERT INTO memberlist VALUES(7,'松村 秀和','〒111-1113神戸','000-240-222','c@example.com',DATE '20010202',DATE '2014101',DATE '20190911');
+INSERT INTO memberlist VALUES(8,'萩原 恵理子','〒111-1113横浜','240-000-222','c@example.com',DATE '20010202',DATE '2014101',DATE '20190911');
+INSERT INTO memberlist VALUES(9,'松田正気','〒111-1113栃木','000-040-222','c@example.com',DATE '20010202',DATE '2014101',DATE '20190911');
+INSERT INTO memberlist VALUES(10,'元気太郎','〒111-1113北海道','000-050-222','c@example.com',DATE '20010202',DATE '2014101',DATE '20190911');
+
+
+
 
 ALTER TABLE categorylist OWNER TO postgres;
 ALTER TABLE memberlist OWNER TO postgres;

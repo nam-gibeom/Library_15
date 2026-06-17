@@ -48,10 +48,10 @@ DAOのメソッドを実行してパスワードを取得し、String passと　
 ##### メソッドの流れ
 
 ```java
-// DAOのfindPass(id)を実行
+// DAOのgetPass(id)を実行
 // 職員のパスワードを取得
 //　取得したパスワードとString passが一致するかを判断
-//一致する場合、DAOのfindName(id)を実行
+//一致する場合、DAOのgetName(id)を実行
 // 職員の名前を取得
 // String nameを返す
 // 一致しない場合、エラーメッセージを出力

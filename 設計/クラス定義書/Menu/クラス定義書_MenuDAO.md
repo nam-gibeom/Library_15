@@ -59,7 +59,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 ### メソッド
 
-#### public String findName(String id) throws DAOException
+#### public String getName(String id) throws DAOException
 
 SQLで'id'引数に当たる会員の名前を取得する
 
@@ -85,7 +85,11 @@ SQLで'id'引数に当たる会員の名前を取得する
 ```
 
 
-#### public String findPass(String id) throws DAOException
+<<<<<<< HEAD
+#### public String getPass(String id) throws DAOException
+=======
+#### public String setPass(String id) throws DAOException
+>>>>>>> f416577bfb1cf7cf69bfff704290666c9d2f1ba8
 
 全てのカテゴリを取得する
 
