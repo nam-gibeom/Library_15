@@ -47,10 +47,10 @@
 ##### 処理の流れ
 
 1. Javaパッケージを用いて当日の日付を変数に保存(current_date)
-2. For文を用いてBook_idを用いて「__getInfoByBookID__」を実行し、出版日だけ獲得する
+2. For文を用いてBook_idを用いて「__getInfoByBookId__」を実行し、出版日だけ獲得する
 3. 出版年月日をもとに貸出可能日数を計算する
 4. Current_dateに貸出可能日数を足してreturn_deadlineを変数として設定
-5. 引数としてもらった2つとreturn_deadlineをDAOの「__rentBook__」メソッドを実行してリストを保存（資料ID、返却期日）
+5. 引数としてもらった2つとreturn_deadlineをDAOの「__addRentlistAndGetInfo__」メソッドを実行してリストを保存（資料ID、返却期日）
 6. 資料IDごとに資料名を獲得するため「__getInfoByBookId__」を実行してgetTitle()メソッドで獲得する（資料名）
 7. 保存されたリストと資料名を戻り値として返す（貸出確認JSPに資料ID、資料名、返却期日三つのパラメータを）
 8. 
@@ -68,7 +68,7 @@
 
 ##### 処理の流れ
 
-1. Daoの「__showRentList__」メソッドを実行
+1. Daoの「__getRentedBookIdTitlebyMember__」メソッドを実行
 2. メソッドの結果を戻り値として表示
 ---
 
@@ -84,7 +84,7 @@
 
 ##### 処理の流れ
 
-1. DAOの「__returnBook__」にmember_id, book_idを入れて実行
+1. DAOの「__updateRentDate__」にmember_id, book_id, current_dateを入れて実行
 ---
 
 
@@ -127,12 +127,12 @@
 1. アプリケーションスコープでFinalEditDate(最終更新日)を呼び出す
    1. もし、FinalEditDateがない場合、新しく作成する。
 2. 当日の日付とFinalEditDateを比較する（一致しない場合、以下の順番を実行する）
-   1. 貸出台帳のうち、返却年月日がNullの資料(貸出中)の中で、返却年月日がが当日の日付を過ぎた行の備考欄に延滞を記入するメソッド「__setDelay__」を実行
-   2. その後、備考欄に延滞って書いてある会員のIDを保存「__findOverdue__.member_id」
+   1. 貸出台帳のうち、返却年月日がNullの資料(貸出中)の中で、返却年月日がが当日の日付を過ぎた行の備考欄に延滞を記入するメソッド「__updateRemarksDelay__」を実行
+   2. その後、備考欄に延滞って書いてある会員のIDを保存「__getRemarksAsOverdue__.member_id」
    3. MemberDAOの「searchMember」でメールアドレスを取得する
    4. メールを送信する
    5. アプリケーションスコープのFinalEditDateに当日の日付を再記入する
-3. DAOの「__findOverdue__」と資料名「getInfoByBookId.getTitle」、延滞日数（Javaで計算）を戻り値として返還する。
+3. DAOの「__getRemarksAsOverdue__」と資料名「getInfoByBookId.getTitle」、延滞日数（Javaで計算）を戻り値として返還する。
 
 
 
@@ -160,7 +160,7 @@
 - BookDAO
 
 ##### 処理の流れ
-1. DAOの「__addStock__」を実行して在庫を増やす
+1. DAOの「__addStockList__」を実行して在庫を増やす
 
 
 <!-- ISBNがない場合 -->
@@ -173,8 +173,8 @@
 
 ##### 処理の流れ
 
-1. DAOの「__addCatalog__」を実行して目録に登録する(引数全部)
-2. DAOの「__addStock__」を実行して在庫を増やす(引数ISBNのみ)
+1. DAOの「__addCatalogList__」を実行して目録に登録する(引数全部)
+2. DAOの「__addStockList__」を実行して在庫を増やす(引数ISBNのみ)
 
 
 
@@ -191,7 +191,7 @@
 
 ##### 処理の流れ
 
-1. DAOの「__findDiscard__」を実行して戻り値にする
+1. DAOの「__getSTockListByBookId__」を実行して戻り値にする
 
 
 
@@ -205,4 +205,4 @@
 
 ##### 処理の流れ
 
-1. DAOの「discardBook」に全ての引数を入れて実行
+1. DAOの「updateStockListDiscard」に全ての引数を入れて実行
