@@ -74,7 +74,7 @@ CREATE TABLE rentlist
   rent_date DATE,
   return_deadline DATE,
   return_date DATE,
-  note TEXT
+  remarks TEXT
 );
 
 DROP TABLE IF EXISTS stocklist;
@@ -84,7 +84,7 @@ CREATE TABLE stocklist
   isbn TEXT,
   arrival_date DATE,
   discard_date DATE,
-  note TEXT
+  remarks TEXT
 );
 
 
