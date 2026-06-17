@@ -6,17 +6,17 @@ CREATE DATABASE library_15 OWNER postgres ENCODING 'UTF8';
 
 DROP TABLE IF EXISTS adminlist;
 CREATE TABLE adminlist (
-    staff_id INTEGER PRIMARY KEY,
+    staff_id TEXT PRIMARY KEY,
     staff_name TEXT, 
     staff_password TEXT
     );
     
 
-INSERT INTO adminlist VALUES(1, 'ジャン', '1111' );
-INSERT INTO adminlist VALUES(2, '平', '2222' );
-INSERT INTO adminlist VALUES(3, '高', '3333' );
-INSERT INTO adminlist VALUES(4, 'ナム', '4444' );
-INSERT INTO adminlist VALUES(5, '若松', '5555' );
+INSERT INTO adminlist VALUES('1', 'ジャン', '1111' );
+INSERT INTO adminlist VALUES('2', '平', '2222' );
+INSERT INTO adminlist VALUES('3', '高', '3333' );
+INSERT INTO adminlist VALUES('4', 'ナム', '4444' );
+INSERT INTO adminlist VALUES('5', '若松', '5555' );
 
 
 
