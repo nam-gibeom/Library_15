@@ -12,8 +12,6 @@ CREATE TABLE adminlist (
     );
     
 
-ALTER TABLE adminlist ALTER COLUMN staff_name SET NOT NULL;
-ALTER TABLE adminlist ALTER COLUMN staff_password SET NOT NULL;
 
 INSERT INTO adminlist VALUES(1, 'ƒWƒƒƒ“', 1111 );
 INSERT INTO adminlist VALUES(2, '•½', 2222 );
