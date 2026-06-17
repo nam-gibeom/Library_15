@@ -85,7 +85,8 @@ SQLで'id'引数に当たる会員の名前を取得する
 ```
 
 
-#### public String setPass(String id) throws DAOException
+
+#### public String getPass(String id) throws DAOException
 
 全てのカテゴリを取得する
 
