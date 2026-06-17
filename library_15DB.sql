@@ -84,6 +84,10 @@ CREATE TABLE rentlist
   remarks TEXT
 );
 
+INSERT INTO rentlist VALUES(1,1, 100, DATE '2004-03-22', DATE '2026-06-17',null,null);
+INSERT INTO rentlist VALUES(2,2, 110, DATE '2004-04-22', DATE '2026-06-27',null,null);
+INSERT INTO rentlist VALUES(3,3, 120, DATE '2004-05-22', DATE '2026-06-14',null,null);
+
 
 DROP TABLE IF EXISTS stocklist;
 CREATE TABLE stocklist
@@ -98,9 +102,7 @@ CREATE TABLE stocklist
 
 
 
-INSERT INTO rentlist VALUES(1, 100, DATE '2004-03-22', DATE '2026-06-17',null,null);
-INSERT INTO rentlist VALUES(2, 110, DATE '2004-04-22', DATE '2026-06-27',null,null);
-INSERT INTO rentlist VALUES(3, 120, DATE '2004-05-22', DATE '2026-06-14',null,null);
+
 
 INSERT INTO stocklist VALUES(1, '732189',DATE '2026-06-17',null,null);
 INSERT INTO stocklist VALUES(2, '479811',DATE '2026-06-17',null,null);
