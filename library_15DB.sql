@@ -110,3 +110,5 @@ INSERT INTO stocklist VALUES(3, '579831',DATE '2026-06-17',null,null);
 
 ALTER TABLE rentlist OWNER TO postgres;
 ALTER TABLE stocklist OWNER TO postgres;
+
+DROP TABLE t1;
