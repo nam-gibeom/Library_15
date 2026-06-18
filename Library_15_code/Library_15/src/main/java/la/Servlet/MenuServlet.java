@@ -46,12 +46,13 @@ public class MenuServlet extends HttpServlet {
                 MenuService service = new MenuService();
                 String name = service.Login(id,pass);
                 
-                if(name.equals(null)) {
-                	request.setAttribute("message", "ログインできませんでした。");
-                	gotoPage(request, response, "/errInternal.jsp");
-                }else {
+                if(!name.equals("")) {
                 	request.setAttribute("names", name);
                 	gotoPage(request, response, "/menu.jsp");
+                	
+                }else {
+                	request.setAttribute("message", "ログインできませんでした。");
+                	gotoPage(request, response, "/errInternal.jsp");
                 	
                 }
                 
