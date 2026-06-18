@@ -59,7 +59,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 
 <!-- 在庫台帳に本を登録 （資料登録のうち、両方の登録ボタン押したら実行されること）O -->
-#### public void addStockList(String isbn, date arrival_date) throws DAOException
+#### public void addStockList(String isbn, String arrival_date) throws DAOException
 資料を在庫台帳に新規登録する
 
 - 戻り値
@@ -74,7 +74,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 
 <!-- 資料目録に新規資料を登録するためのメソッド（登録のうち、したのボタンだけ実行される） O -->
-#### public void addCatalogList(String isbn, String title, int category_code, String author, String publisher, date publish_date) throws DAOException
+#### public void addCatalogList(String isbn, String title, int category_code, String author, String publisher, String publish_date) throws DAOException
 資料を在庫台帳に新規登録する
 
 - 戻り値
