@@ -1,7 +1,7 @@
-package la.service;
+package la.Service;
 
-import la.dao.DAOException;
-import la.dao.MenuDAO;
+import la.Dao.DAOException;
+import la.Dao.MenuDAO;
 
 
 
@@ -27,7 +27,7 @@ public class MenuService {
 			
 		}else {
 			System.out.println("パスワードが一致しません");
-			return null;
+			return "";
 			
 		}
 		

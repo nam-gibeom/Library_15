@@ -36,7 +36,7 @@
 
 ---
 <!-- 貸出（貸出・返却画面で使う：次へボタン） -->
-#### private List\<貸出台帳Bean> rentBooksByID(int member_id, List\<int> book_id) 
+#### public List\<貸出台帳Bean> rentBooksByID(int member_id, List\<int> book_id) 
 サーブレットからもらった二つの引数と共に、現在の日付と返却期日を自動的に計算して貸出台帳に行を追加する。
 
 ##### Service, DTO
@@ -58,7 +58,7 @@
 
 
 <!-- 現在、会員が貸出中の資料リストを表示（貸出・返却画面で使う：検索ボタン）　-->
-#### private List\<貸出台帳Bean> showCurrentRentList(int member_id) 
+#### public List\<貸出台帳Bean> showCurrentRentList(int member_id) 
 サーブレットから会員ＩＤをもらったら貸出台帳を参照してその人が現在、貸出中の資料目録を表示
 
 ##### Service, DTO
@@ -74,7 +74,7 @@
 
 
 <!-- ある会員の特定の資料を返却（貸出・返却画面で使う：返却ボタン）　-->
-#### private void returnBook(int member_id, int book_id) 
+#### public void returnBook(int member_id, int book_id) 
 貸出台帳に特定の会員と資料を見つけて返却年月日を記入後、またその人の貸出状況を表示
 
 ##### Service, DTO
@@ -89,7 +89,7 @@
 
 
 <!-- 検索 -->
-#### private list\<searchBean> searchBooks (String type, String value) 
+#### public list\<searchBean> searchBooks (String type, String value) 
 
 
 ##### Service, DTO
@@ -115,7 +115,7 @@
 
 
 <!-- 延滞：ログイン、延滞ボタンが押された時 -->
-#### private List\<overduebean> searchOverdueBooks () 
+#### public List\<overduebean> searchOverdueBooks () 
 
 
 ##### Service, DTO
@@ -137,7 +137,7 @@
 
 
 <!-- ISBNを用いて存在するかどうかを確認 -->
-#### private Boolean isIsbnExist (String isbn) 
+#### public Boolean isIsbnExist (String isbn) 
 
 
 ##### Service, DTO
@@ -152,7 +152,7 @@
 
 
 <!-- ISBNが存在するする場合 -->
-#### private void addStock (String isbn) 
+#### public void addStock (String isbn) 
 
 
 ##### Service, DTO
@@ -164,7 +164,7 @@
 
 
 <!-- ISBNがない場合 -->
-#### private void addCatalog (String isbn, String title, int category_code, String author, String publisher, String publish_date) 
+#### public void addCatalog (String isbn, String title, int category_code, String author, String publisher, String publish_date) 
 
 
 ##### Service, DTO
@@ -181,7 +181,7 @@
 
 
 <!-- 廃棄する資料検索 -->
-#### private List\<DiscardBean> searchDiscard (int book_id) 
+#### public List\<DiscardBean> searchDiscard (int book_id) 
 
 
 ##### Service, DTO
@@ -196,7 +196,7 @@
 
 
 <!-- 廃棄実施 -->
-#### private void discardBook (int book_id, String discard_date, String remarks) 
+#### public void discardBook (int book_id, String discard_date, String remarks) 
 
 
 ##### Service, DTO

@@ -59,7 +59,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 
 <!-- 在庫台帳に本を登録 （資料登録のうち、両方の登録ボタン押したら実行されること）O -->
-#### public void addStockList(String isbn, date arrival_date) throws DAOException
+#### public void addStockList(String isbn, String arrival_date) throws DAOException
 資料を在庫台帳に新規登録する
 
 - 戻り値
@@ -67,14 +67,14 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 - 引数
     - String isbn
         - ISBN番号
-    - date arrival_date
+    - String arrival_date
         - 入荷年月日
 - 使用するSQL
     - __insert into stocklist(isbn,arrival_date) values(?, ?)__
 
 
 <!-- 資料目録に新規資料を登録するためのメソッド（登録のうち、したのボタンだけ実行される） O -->
-#### public void addCatalogList(String isbn, String title, int category_code, String writer, String publisher, date publish_date) throws DAOException
+#### public void addCatalogList(String isbn, String title, int category_code, String author, String publisher, String publish_date) throws DAOException
 資料を在庫台帳に新規登録する
 
 - 戻り値
@@ -90,10 +90,10 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
         - 著者
     - String publisher
         - 出版社
-    - date publish_date
+    - String publish_date
         - 出版日
 - 使用するSQL
-    - __insert into cataloglist(isbn,title,category_code,writer,publisher,publish_date) values(?,?,?,?,?,?)__
+    - __insert into cataloglist(isbn,title,category_code,author,publisher,publish_date) values(?,?,?,?,?,?)__
 
 
 
@@ -114,7 +114,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 
 
-#### public void updateStockListDiscard(int book_id, date discard_date,String remarks) throws DAOException
+#### public void updateStockListDiscard(int book_id, String discard_date,String remarks) throws DAOException
 紛失した資料を廃棄する日付を廃棄年月日として記録する
 
 - 戻り値
@@ -132,7 +132,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 
 
-#### public void updateRentDate(String member_id, String book_id, String current_date) throws DAOException
+#### public void updateRentDate(String member_id, int book_id, String current_date) throws DAOException
 会員が資料を返却したらテーブルにその日付を登録
 
 - 戻り値
@@ -140,7 +140,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 - 引数
     - String member_id
       - 会員ID
-    - String book_id
+    - int book_id
       - 資料ID
  
 
@@ -155,9 +155,9 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 - 戻り値
     - なし
 - 引数
-    - String member_id
+    - Int member_id
       - 会員ID
-    - String book_id
+    - Int book_id
       - 資料ID
     - String current_date
       - 返却年月日に入れる日付(JAVAで設定)
@@ -184,6 +184,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
     - __select isbn from stocklist where book_id = ?__
 
 
+-----
 
 #### public List\<目録Bean> getCatalogListInfo(String type, String value) throws DAOException
 資料IDからISBNを検索するためのDAO
@@ -242,18 +243,18 @@ test
 
 
 <!-- IDに対して現在貸出中の資料IDと資料名を表示　O -->
-#### public List\<showRentBean> getRentedBookIdTitlebyMember(int member_id) throws DAOException
+#### public List\<RentInfoBean> getRentedBookIdTitlebyMember(int member_id) throws DAOException
 資料IDに対応する資料名を出力するメソッド
 
 - 戻り値
-    - List\<showRentBean>
-      - 資料名
+    - List\<RentInfoBean>
+      - 資料IDと資料名を格納
 - 引数
     - String member_id
         - 会員ID
 
 - 使用するSQL
-    - __select r.book_id, c.title from rentlist r join stocklist s on r.book_id = s.book_id join cataloglist c on s.isbn = c.isbn where r.return_deadline is null and r.member_id = ?__
+    - __select r.book_id, c.title from rentlist r join stocklist s on r.book_id = s.book_id join cataloglist c on s.isbn = c.isbn where r.return_date is null and r.member_id = ?__
 
 
 
@@ -269,7 +270,7 @@ test
         - 資料ID
 
 - 使用するSQL
-    - __update rentlist set remarks = "延滞" where current_date - return_deadline > 0 and return_date is not null__
+    - __update rentlist set remarks = "延滞" where current_date - return_deadline > 0 and return_date is null__
 
 
 
@@ -304,7 +305,7 @@ test
       - 資料ID
 
 - 使用するSQL
-    - __select * from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?__
+    - __select s.book_id, s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?__
 
 
 

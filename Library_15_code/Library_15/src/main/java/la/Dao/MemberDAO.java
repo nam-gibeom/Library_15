@@ -1,4 +1,4 @@
-package la.dao;
+package la.Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import la.bean.MemberBean;
+import la.Bean.MemberBean;
 
 public class MemberDAO {
 	private String url = "jdbc:postgresql:library_15";

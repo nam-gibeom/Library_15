@@ -1,4 +1,4 @@
-package la.bean;
+package la.Bean;
 
 import java.io.Serializable;
 

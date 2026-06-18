@@ -132,6 +132,11 @@ doPost()が呼び出された時にもdoGet()を呼び出す
 
     - action = rentconfirm
         1. 資料の貸出、返却画面(UI202)にフォワード(gotoPage)
+
+    - action = overdue
+        1. パラメータを用いてBookServiceをインスタンス化して処理を行う。(searchOverdueBooks)
+        2. 取得したリストをrequestスコープに格納
+        3. トップ画面(UI003)にフォワード(gotoPage)
     
     - 上記以外のaction
         1. エラーメッセージを"message"としてrequestスコープに格納

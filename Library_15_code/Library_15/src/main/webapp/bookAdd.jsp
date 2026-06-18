@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>siryoutouroku layout</title>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>ISBN番号</td>
+			<td><input type="text"></td>
+			<td><button>検索</button></td>
+		</tr>
+	</table>
+	<br>
+	<br>
+
+	<table border="1">
+		<tr>
+			<th>ISBN番号</th>
+			<th>資料名</th>
+			<th>分類コード</th>
+			<th>作者</th>
+			<th>出版社</th>
+			<th>出版日</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	同じ物を登録しますか？
+	<button>登録</button>
+	<br>
+	<br>
+	<hr>
+	<br> 存在しない資料です。情報を入力してください。
+	<table border="1">
+		<tr>
+			<th>資料名</th>
+			<td><input type="text"></td>
+		</tr>
+		<tr>
+			<th>分類名</th>
+			<td><select size="1">
+					<option>総記</option>
+					<option>哲学</option>
+					<option>歴史</option>
+					<option>社会科学</option>
+					<option>自然科学</option>
+					<option>技術</option>
+					<option>産業</option>
+					<option>芸術</option>
+					<option>言語</option>
+					<option>文学</option>
+			</select></td>
+		</tr>
+		<tr>
+			<th>作者</th>
+			<td><input type="text"></td>
+		</tr>
+		<tr>
+			<th>出版社</th>
+			<td><input type="text"></td>
+		</tr>
+		<tr>
+			<th>出版日</th>
+			<td><input type="text"></td>
+		</tr>
+	</table>
+	<button>登録</button>
+</body>
+</html>

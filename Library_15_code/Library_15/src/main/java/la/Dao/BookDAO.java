@@ -1,0 +1,204 @@
+package la.Dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import la.Bean.OverdueBean;
+import la.Bean.RentInfoBean;
+import la.Bean.catalogListBean;
+
+public class BookDAO {
+	String url = "jdbc:postgresql:library_15";
+	String user = "postgres";
+	String pass = "himitu";
+
+	public BookDAO() throws DAOException {
+		try {
+			Class.forName("org.postgresql.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new DAOException("ドライバ起動に失敗しました。");
+		}
+	}
+
+//	ISBNまたは資料名で資料目録情報を獲得
+	public List<catalogListBean> getCatalogListInfo(String type, String value) throws DAOException {
+		String sql;
+
+		if (type.equals("isbn")) {
+			sql = "select * from cataloglist where isbn = ?";
+		} else {
+			sql = "select * from cataloglist where title like ?";
+		}
+
+		try (Connection con = DriverManager.getConnection(url, user, pass);
+				PreparedStatement st = con.prepareStatement(sql);) {
+			List<catalogListBean> list = new ArrayList<catalogListBean>();
+			if (type.equals("isbn")) {
+				st.setString(1, value);
+			} else {
+				st.setString(1, "%" + value + "%");
+			}
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				String isbn = rs.getString("isbn");
+				String title = rs.getString("title");
+				int category_code = rs.getInt("category_code");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+				String publish_date = rs.getString("publish_date");
+
+				catalogListBean bean = new catalogListBean(isbn, title, category_code, author, publisher, publish_date);
+				list.add(bean);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e);
+			throw new DAOException("レコードの取得に失敗しました");
+		}
+	}
+
+//	本の数をISBNで確認するためのメソッド
+	public List<Integer> getBookIdByIsbn(String isbn) throws DAOException{
+		String sql = "select book_id from stocklist where isbn = ?";
+		
+		try (Connection con = DriverManager.getConnection(url, user, pass);
+				PreparedStatement st = con.prepareStatement(sql);) {
+			List<Integer> list = new ArrayList<Integer>();
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				int book_id = rs.getInt("book_id");
+				list.add(book_id);
+			}
+			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} 
+	
+	}
+	
+	// 本の数を資料名で確認するためのメソッド
+	public List<Integer> getBookIdByTitle(String title) throws DAOException {
+		String sql = "select s.book_id from stocklist s join cataloglist c on s.isbn = c.isbn where c.title = ?";
+		
+		try (Connection con = DriverManager.getConnection(url, user, pass);
+				PreparedStatement st = con.prepareStatement(sql);) {
+			List<Integer> list = new ArrayList<Integer>();
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				int book_id = rs.getInt("book_id");
+				list.add(book_id);
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		}
+		
+	}
+	
+	// 貸出中の資料情報（ID, Title）を獲得
+	public List<RentInfoBean> getRentedBookIdTitlebyMember(int id) throws DAOException {
+		String sql = "select r.book_id, c.title from rentlist r join stocklist s on r.book_id = s.book_id join cataloglist c on s.isbn = c.isbn where r.return_date is null and r.member_id = ?";
+		
+		try (Connection con = DriverManager.getConnection(url, user, pass);
+				PreparedStatement st = con.prepareStatement(sql);) {
+			List<RentInfoBean> list = new ArrayList<RentInfoBean>();
+			
+			st.setInt(1, id);
+			
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				int book_id = rs.getInt("book_id");
+				String title = rs.getString("title");
+				
+				RentInfoBean bean = new RentInfoBean(book_id, title);
+				list.add(bean);
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} 
+	}
+	
+	
+	public void updateRemarksDelay() throws DAOException {
+		String sql = "update rentlist set remarks = '延滞' where current_date - return_deadline > 0 and return_date is not null";
+		try (Connection con = DriverManager.getConnection(url, user, pass);
+				PreparedStatement st = con.prepareStatement(sql);) {
+			st.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} 
+	}
+	
+	public List<OverdueBean> getRemarksAsOverdue() throws DAOException {
+		String sql = "select * from rentlist where remarks = '延滞'";
+		try (Connection con = DriverManager.getConnection(url, user, pass);
+				PreparedStatement st = con.prepareStatement(sql);
+				ResultSet rs = st.executeQuery()) {
+			
+			List<OverdueBean> list =new ArrayList<OverdueBean>();
+			while (rs.next()) {
+				int member_id = rs.getInt("member_id");
+				int book_id = rs.getInt("book_id");
+				String return_deadline = rs.getString("return_deadline");
+				OverdueBean bean = new OverdueBean(member_id, book_id, return_deadline);
+				list.add(bean);
+				
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} 
+	}
+	
+	public List<catalogListBean> getInfoByBookId(int book_id) throws DAOException {
+		String sql = " select s.book_id, s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.isbn = ?'";
+		try (Connection con = DriverManager.getConnection(url, user, pass);
+				PreparedStatement st = con.prepareStatement(sql);
+			) {
+			st.setInt(1, book_id);	
+			ResultSet rs = st.executeQuery();
+			
+			List<catalogListBean> list =new ArrayList<catalogListBean>();
+			
+			while (rs.next()) {
+				int book_id1 = rs.getInt("book_id");
+				String isbn = rs.getString("isbn");
+				String title = rs.getString("title");
+				int category_code = rs.getInt("category_code");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+				String publish_date = rs.getString("publish_date");
+				
+				
+				
+				catalogListBean bean = new catalogListBean(member_id, book_id, return_deadline);
+				list.add(bean);
+				
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} 
+	}
+	
+}
+
