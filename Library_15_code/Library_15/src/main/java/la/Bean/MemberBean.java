@@ -1,4 +1,4 @@
-package la.bean;
+package la.Bean;
 
 public class MemberBean {
 private int member_id;

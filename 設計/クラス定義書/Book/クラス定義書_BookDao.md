@@ -184,6 +184,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
     - __select isbn from stocklist where book_id = ?__
 
 
+-----
 
 #### public List\<目録Bean> getCatalogListInfo(String type, String value) throws DAOException
 資料IDからISBNを検索するためのDAO
@@ -242,18 +243,18 @@ test
 
 
 <!-- IDに対して現在貸出中の資料IDと資料名を表示　O -->
-#### public List\<showRentBean> getRentedBookIdTitlebyMember(int member_id) throws DAOException
+#### public List\<RentInfoBean> getRentedBookIdTitlebyMember(int member_id) throws DAOException
 資料IDに対応する資料名を出力するメソッド
 
 - 戻り値
-    - List\<showRentBean>
-      - 資料名
+    - List\<RentInfoBean>
+      - 資料IDと資料名を格納
 - 引数
     - String member_id
         - 会員ID
 
 - 使用するSQL
-    - __select r.book_id, c.title from rentlist r join stocklist s on r.book_id = s.book_id join cataloglist c on s.isbn = c.isbn where r.return_deadline is null and r.member_id = ?__
+    - __select r.book_id, c.title from rentlist r join stocklist s on r.book_id = s.book_id join cataloglist c on s.isbn = c.isbn where r.return_date is null and r.member_id = ?__
 
 
 
@@ -269,7 +270,7 @@ test
         - 資料ID
 
 - 使用するSQL
-    - __update rentlist set remarks = "延滞" where current_date - return_deadline > 0 and return_date is not null__
+    - __update rentlist set remarks = "延滞" where current_date - return_deadline > 0 and return_date is null__
 
 
 
@@ -304,7 +305,7 @@ test
       - 資料ID
 
 - 使用するSQL
-    - __select * from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?__
+    - __select s.book_id, s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?__
 
 
 
