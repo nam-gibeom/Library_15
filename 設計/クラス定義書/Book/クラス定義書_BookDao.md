@@ -305,7 +305,7 @@ test
       - 資料ID
 
 - 使用するSQL
-    - __select s.book_id, s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?__
+    - __select s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?__
 
 
 

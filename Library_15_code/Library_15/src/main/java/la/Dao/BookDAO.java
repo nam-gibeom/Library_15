@@ -168,7 +168,7 @@ public class BookDAO {
 	}
 	
 	public List<catalogListBean> getInfoByBookId(int book_id) throws DAOException {
-		String sql = " select s.book_id, s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.isbn = ?'";
+		String sql = "select s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?";
 		try (Connection con = DriverManager.getConnection(url, user, pass);
 				PreparedStatement st = con.prepareStatement(sql);
 			) {
@@ -178,7 +178,6 @@ public class BookDAO {
 			List<catalogListBean> list =new ArrayList<catalogListBean>();
 			
 			while (rs.next()) {
-				int book_id1 = rs.getInt("book_id");
 				String isbn = rs.getString("isbn");
 				String title = rs.getString("title");
 				int category_code = rs.getInt("category_code");
@@ -186,11 +185,37 @@ public class BookDAO {
 				String publisher = rs.getString("publisher");
 				String publish_date = rs.getString("publish_date");
 				
-				
-				
-				catalogListBean bean = new catalogListBean(member_id, book_id, return_deadline);
+				catalogListBean bean = new catalogListBean(book_id, isbn, title, category_code, author, publisher, publish_date);
 				list.add(bean);
+			}
+			return list;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		} 
+	}
+	
+	public List<catalogListBean> getInfoByIsbn(String isbn) throws DAOException {
+		String sql = "select s.book_id, s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?";
+		try (Connection con = DriverManager.getConnection(url, user, pass);
+				PreparedStatement st = con.prepareStatement(sql);
+			) {
+			st.setString(1, isbn);	
+			ResultSet rs = st.executeQuery();
+			
+			List<catalogListBean> list =new ArrayList<catalogListBean>();
+			
+			while (rs.next()) {
+				int book_id = rs.getInt("book_id");
+				String title = rs.getString("title");
+				int category_code = rs.getInt("category_code");
+				String author = rs.getString("author");
+				String publisher = rs.getString("publisher");
+				String publish_date = rs.getString("publish_date");
 				
+				catalogListBean bean = new catalogListBean(book_id, isbn, title, category_code, author, publisher, publish_date);
+				list.add(bean);
 			}
 			return list;
 			
