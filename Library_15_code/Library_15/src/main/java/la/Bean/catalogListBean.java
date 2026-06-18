@@ -1,6 +1,7 @@
 package la.Bean;
 
 public class catalogListBean {
+	int book_code;
 	String isbn;
 	String title;
 	int category_code;
@@ -8,6 +9,18 @@ public class catalogListBean {
 	String publisher;
 	String publish_date;
 	
+	public catalogListBean(int book_code, String isbn, String title, int category_code, String author, String publisher,
+			String publish_date) {
+		super();
+		this.book_code = book_code;
+		this.isbn = isbn;
+		this.title = title;
+		this.category_code = category_code;
+		this.author = author;
+		this.publisher = publisher;
+		this.publish_date = publish_date;
+	}
+
 	public catalogListBean(String isbn, String title, int category_code, String author, String publisher,
 			String publish_date) {
 		super();
