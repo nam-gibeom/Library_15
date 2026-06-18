@@ -1,7 +1,5 @@
 package la.Service;
 
-import java.util.List;
-
 import la.Bean.MemberBean;
 import la.Dao.DAOException;
 import la.Dao.MemberDAO;
@@ -58,6 +56,7 @@ public class MemberService {
 			e.printStackTrace();
 	}
 	}
+	
 	public void cancelMemberService(int member_id) {
 		String currentdate ="current_date";
 		try {

@@ -1,6 +1,7 @@
 package la.Dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -141,16 +142,12 @@ String sql = "update memberlist set member_name = ?, member_address = ?, member_
 			 // PreparedStatementオブジェクトの取得
 			 PreparedStatement st = con.prepareStatement(sql);) {
 			// 商品名と値段の指定
-			
 			st.setString(1, member_name);
 			st.setString(2, member_address);
 			st.setString(3, member_tel);
 			st.setString(4, member_mail);
-			st.setString(5, member_birth);
+			st.setDate(5, Date.valueOf(member_birth));
 			st.setInt(6, member_id);
-			
-			
-			// SQLの実行
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
