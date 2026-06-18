@@ -132,7 +132,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
 
 
 
-#### public void updateRentDate(String member_id, int book_id, String current_date) throws DAOException
+#### public void updateReturnDate(String member_id, int book_id, String current_date) throws DAOException
 会員が資料を返却したらテーブルにその日付を登録
 
 - 戻り値
@@ -145,7 +145,7 @@ JDBCの接続に必要なパスワード、"himitu"で初期化
  
 
 - 使用するSQL 
-    - __update rentlist set rent_date = ?, remarks = null where member_id = ? and book_id = ?__
+    - __update rentlist set return_date = ?, remarks = null where member_id = ? and book_id = ?__
 
 
 
