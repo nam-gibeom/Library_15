@@ -1,4 +1,4 @@
-package la.servlet;
+package la.Servlet;
 
 import java.io.IOException;
 
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import la.bean.MemberBean;
-import la.dao.DAOException;
-import la.service.MemberService;
+import la.Bean.MemberBean;
+import la.Dao.DAOException;
+import la.Service.MemberService;
 
 /**
  * Servlet implementation class MemberServlet

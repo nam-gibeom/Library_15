@@ -1,15 +1,17 @@
 package la.Dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.Date;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import la.Bean.DiscardInfoBean;
 import la.Bean.OverdueBean;
+import la.Bean.RentBean;
 import la.Bean.RentInfoBean;
 import la.Bean.catalogListBean;
 
