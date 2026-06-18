@@ -27,8 +27,6 @@ password：<input type="text" name="password"><br>
 </div>
 
 </form>
-
-
 </body>
 </html>
 

@@ -1,4 +1,4 @@
-package la.Servlet;
+package la.servlet;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import la.Service.MenuService;
-import la.Service.ServiceException;
+import la.service.MenuService;
+import la.service.ServiceException;
 
 
 /**
@@ -72,6 +72,10 @@ public class MenuServlet extends HttpServlet {
 			}else if (action.equals("cancel")) {
 				
 				gotoPage(request, response, "/memberCancel.jsp");
+				
+			}else if (action.equals("back")) {
+				
+				gotoPage(request, response, "/login.jsp");
 				
 			}
                 
