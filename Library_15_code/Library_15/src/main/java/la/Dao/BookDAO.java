@@ -224,6 +224,212 @@ public class BookDAO {
 			throw new DAOException("レコードの取得に失敗しました");
 		} 
 	}
+	 //在庫台帳に追加するメソッド
+    public void addStockList(String isbn,String arrival_date) throws DAOException {
+        // SQL文の作成
+        String sql = "INSERT INTO stocklist(isbn,arrival_date) VALUES(?, ?)";
+		
+        try (// データベースへの接続
+             Connection con = DriverManager.getConnection(url, user, pass);
+			 // PreparedStatementオブジェクトの取得
+			 PreparedStatement st = con.prepareStatement(sql);){
+			 // SQLの実行
+        		st.setString(1, isbn);
+    			st.setDate(2, Date.valueOf(arrival_date));
+    			
+    			st.executeUpdate();
+
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました。");
+        } 
+    }
+    
+    //資料目録の追加するメソッド
+    public void addCatalogList(String isbn,String title,int category_code,String author,String publisher,String publish_date) throws DAOException {
+        // SQL文の作成
+        String sql = "INSERT INTO cataloglist(isbn,title,category_code,author,publisher,publish_date) VALUES(?,?,?,?,?,?)";
+		
+        try (// データベースへの接続
+             Connection con = DriverManager.getConnection(url, user, pass);
+			 // PreparedStatementオブジェクトの取得
+			 PreparedStatement st = con.prepareStatement(sql);){
+			 // SQLの実行
+        		st.setString(1, isbn);
+        		st.setString(2, title);
+        		st.setInt(3, category_code);
+        		st.setString(4, author);
+        		st.setString(5, publisher);
+        		st.setDate(6, Date.valueOf(publish_date));
+        		
+        		st.executeUpdate();
+
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました。");
+        } 
+    }
+    
+    //資料IDで在庫台帳を調べるメソッド
+    public DiscardInfoBean getStockListByBookId(int book_id) throws DAOException {
+        // SQL文の作成
+        String sql = "SELECT s.book_id, s.isbn, c.title, s.arrival_date FROM stocklist s JOIN cataloglist c ON s.isbn = c.isbn WHERE s.book_id = ?";
+		
+        try (// データベースへの接続
+             Connection con = DriverManager.getConnection(url, user, pass);
+			 // PreparedStatementオブジェクトの取得
+			 PreparedStatement st = con.prepareStatement(sql);){
+			 // SQLの実行
+        		st.setInt(1, book_id);
+    			
+        		try (// SQLの実行
+       				 ResultSet rs = st.executeQuery();) {
+       				// 結果の取得
+       				DiscardInfoBean bean = null;
+       				while (rs.next()) {
+       					int book_id1 = rs.getInt("book_id");
+       					String isbn = rs.getString("isbn");
+       					String title = rs.getString("title");
+       					String arrival_date = rs.getString("arrival_date");
+       					bean = new DiscardInfoBean(book_id1, isbn, title, arrival_date);
+       				}
+       				// 商品一覧をListとして返す
+       				return bean;
+       			} catch (SQLException e) {
+       				e.printStackTrace();
+       				throw new DAOException("レコードの操作に失敗しました。");
+       			}	
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました。");
+        } 
+    }
+    
+    
+    //在庫台帳で廃棄年月日を記入するメソッド
+    public void updateStockListDiscard(int book_id,String discard_date,String remarks) throws DAOException {
+        // SQL文の作成
+        String sql = "update stocklist set discard_date = ?, remarks = ? where book_id = ?";
+		
+        try (// データベースへの接続
+             Connection con = DriverManager.getConnection(url, user, pass);
+			 // PreparedStatementオブジェクトの取得
+			 PreparedStatement st = con.prepareStatement(sql);){
+			 // SQLの実行
+        		st.setString(1, discard_date);
+        		st.setString(2, remarks);
+        		st.setInt(3, book_id);
+        		
+        		st.executeUpdate();
+
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました。");
+        } 
+    }
+    
+    
+    //貸出台帳に返却年月日を記入するメソッド
+    public void updateReturnDate(int member_id, int book_id) throws DAOException {
+        // SQL文の作成
+        String sql = "update rentlist set return_date = current_date, remarks = null where member_id = ? and book_id = ?";
+		
+        try (// データベースへの接続
+             Connection con = DriverManager.getConnection(url, user, pass);
+			 // PreparedStatementオブジェクトの取得
+			 PreparedStatement st = con.prepareStatement(sql);){
+			 // SQLの実行
+        		st.setInt(1, member_id);
+        		st.setInt(2, book_id);
+        		
+        		st.executeUpdate();
+
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました。");
+        } 
+    }
+    
+
+    //貸出履歴に記録を追加し、情報を取るメソッド
+    public RentBean addRentListAndGetInfo(int member_id,int book_id,String return_deadline)throws DAOException {
+        // SQL文の作成
+        String sql1 = "insert into rentlist(member_id, book_id, rent_date, return_deadline) values(?, ?, current_date, ?)";
+        String sql2 = "select * from rentlist where member_id = ? and book_id = ? and rent_date = current_date";
+
+		
+        try (// データベースへの接続
+             Connection con = DriverManager.getConnection(url, user, pass);
+			 // PreparedStatementオブジェクトの取得
+			 PreparedStatement st = con.prepareStatement(sql1);) {
+			// カテゴリの設定
+			st.setInt(1, member_id);
+			st.setInt(2, book_id);
+			st.setDate(3, Date.valueOf(return_deadline));
+			
+			st.executeQuery();
+        } catch (SQLException e) {
+		    e.printStackTrace();
+		    throw new DAOException("レコードの取得に失敗しました。");
+        }
+        try (// データベースへの接続
+                Connection con1 = DriverManager.getConnection(url, user, pass);
+   			 // PreparedStatementオブジェクトの取得
+   			 PreparedStatement st1 = con1.prepareStatement(sql2);){
+   			 // SQLの実行
+           		st1.setInt(1, member_id);
+           		st1.setInt(2, book_id);
+       			
+           		try (// SQLの実行
+          				 ResultSet rs = st1.executeQuery();) {
+          				// 結果の取得
+          				RentBean bean = null;
+          				while (rs.next()) {
+          					int rent_id = rs.getInt("rent_id");
+          					int member_id1 = rs.getInt("member_id");
+          					int book_id1 = rs.getInt("book_id");
+          					String rent_date = rs.getString("rent_date");
+          					String return_deadline1 = rs.getString("return_deadline");
+          					String return_date = rs.getString("return_date");
+          					bean = new RentBean(rent_id, member_id1, book_id1, rent_date, return_deadline1, return_date);
+          				
+          				}
+          				// 商品一覧をListとして返す
+          				return bean;
+          			} catch (SQLException e) {
+          				e.printStackTrace();
+          				throw new DAOException("レコードの操作に失敗しました。");
+          			}
+        } catch (SQLException e1) {
+			e1.printStackTrace();
+			throw new DAOException("レコードの操作に失敗しました。");
+		} 
+    }
+
+    
+    //資料IDでISBN番号を取るメソッド
+    public String getIsbnByBook(int book_id) throws DAOException {
+        // SQL文の作成
+        String sql = "select isbn from stocklist where book_id = ?";
+		
+        try (// データベースへの接続
+             Connection con = DriverManager.getConnection(url, user, pass);
+			 // PreparedStatementオブジェクトの取得
+			 PreparedStatement st = con.prepareStatement(sql);){
+			 // SQLの実行
+        		st.setInt(1, book_id);
+        		String isbn = null;
+        		ResultSet rs = st.executeQuery();
+        		while (rs.next()) {
+					isbn = rs.getString("isbn");
+				}
+        		return isbn;
+        		
+        } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました。");
+        } 
+    }
 	
 }
 
