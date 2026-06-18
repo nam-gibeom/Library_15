@@ -1,6 +1,6 @@
 package la.Bean;
 
-public class MemberBean {
+public class MemberBean implements Serializable {
 private int member_id;
 private String member_name;
 private String member_address;
