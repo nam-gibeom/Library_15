@@ -49,7 +49,7 @@ public class MemberDAO {
 			}
         }
 
-    public List<MemberBean> findAll() throws DAOException {
+    public List<MemberBean> findAll(int member_id) throws DAOException {
         // SQL文の作成
         String sql = "Select * from memberlist where member_id = ?";
 		
@@ -126,8 +126,35 @@ public class MemberDAO {
 		} 
 	
 	}
+    public void updateAll(int member_id, String member_name, String member_address, 
+    		String member_tel, String member_mail, String member_birth) throws DAOException{
+String sql = "update memberlist set member_name = ?, member_address = ?, member_tel = ?, member_mail = ?, member_birth = ? where member_id = ?";
+		
+		try (// データベースへの接続
+			 Connection con = DriverManager.getConnection(url, user, pass);
+			 // PreparedStatementオブジェクトの取得
+			 PreparedStatement st = con.prepareStatement(sql);) {
+			// 商品名と値段の指定
+			
+			st.setString(1, member_name);
+			st.setString(2, member_address);
+			st.setString(3, member_tel);
+			st.setString(4, member_mail);
+			st.setString(5, member_birth);
+			st.setInt(6, member_id);
+			
+			
+			// SQLの実行
+			st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの操作に失敗しました。");
+		} 
+    	
+    	
+    }
+    
     
 }
 
     
-

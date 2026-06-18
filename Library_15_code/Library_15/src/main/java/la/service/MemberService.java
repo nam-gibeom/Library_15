@@ -10,11 +10,11 @@ import la.dao.MemberDAO;
 public class MemberService {
 	
 	public class SearchMove {
-	    public  MemberBean bean;
+	    public List<MemberBean> list;
 	    public String URL;
 
-	    public SearchMove(MemberBean bean, String url) {
-	        this.bean = bean;
+	    public SearchMove(List<MemberBean> list, String url) {
+	        this.list = list;
 	        this.URL = url;
 	    }
 	}
@@ -41,32 +41,32 @@ public class MemberService {
 	
 
 	}
-	public List<MemberBean> SearchAndMove(int member_id, String action){
-		
-		
+	public SearchMove SearchAndMove(int member_id, String action){
 		if(action.equals("cancel")) {
 		try {
 			MemberDAO dao = new MemberDAO();
 			
 			List<MemberBean> list = dao.findAll(member_id);
-			SearchMove sm = new SearchMove((MemberBean) list,"cancel.jsp");
+			SearchMove sm = new SearchMove(list,"/cancel.jsp");
+			
+			return sm;
 			
 			
-			
-		
-		
 		} catch (DAOException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
 		return null;
 		}
-		}else if(action.equals("update")) {
+		
+		}
+		else if(action.equals("update")) {
 			try {
 				MemberDAO dao = new MemberDAO();
+				
 				List<MemberBean> list = dao.findAll(member_id);
+				SearchMove sm = new SearchMove(list,"/update.jsp");
 				
-				
-			
+				return sm;
 			
 			} catch (DAOException e) {
 				// TODO 自動生成された catch ブロック
@@ -75,14 +75,36 @@ public class MemberService {
 		}
 		
 	}
+		return null;
 	
 	}
 	
-	
-	
+	public void updateMemberService(int member_id, String member_name, String member_address, String member_tel,
+			String member_mail, String member_birth) {
+		try {
+			MemberDAO dao = new MemberDAO();
+			dao.updateAll(member_id, member_name, member_address, member_tel, member_mail, member_birth);
+			
+		
+		} catch (DAOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+	}
+	}
+	public void cancelMemberService(int member_id) {
+		String currentdate ="current_date";
+		try {
+			MemberDAO dao = new MemberDAO();
+			dao.updateCancelDate(member_id, currentdate);
+			
+		
+		} catch (DAOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+	}
+	}
 
 	}
 
 
-	
 
