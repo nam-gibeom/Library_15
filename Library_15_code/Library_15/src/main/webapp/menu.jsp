@@ -18,20 +18,20 @@
 	<br><br>
 	<dl>
 	<form action="/library_15/MenuServlet" method="post">
-		<dt>　会員</dt>
+		<dt>会員</dt>
 		<dd>・<a href="/library_15/MenuServlet?action=regist">登録</a></dd>
-		<dd>・<a><button action = "update">変更</button></a></dd>
-		<dd>・<a><button action = "cancel">退会</button></a></dd>
+		<dd>・<a href="/library_15/MenuServlet?action=update">変更</a></dd>
+		<dd>・<a href="/library_15/MenuServlet?action=cancel">退会</a></dd>
 	</form>
 	</dl>
 	<dl>
-<dt>　資料</dt>
-		<dd>・<a><button action = "search">検索</button></a></dd>
-		<dd>・<a><button action = "rent">貸出・返却</button></a></dd>
-		<dd>・<a><button action = "login">延滞状況</button></a></dd>
-		<dd>・<a><button action = "add">登録</button></a></dd>
-		<dd>・<a><button action = "discard">紛失・廃棄</button></a></dd>		
-	</dl>
+<dt>資料</dt>
+		<dd>・<a href="/library_15/MenuServlet?action=search">検索</a></dd>
+		<dd>・<a href="/library_15/MenuServlet?action=rent">貸出・返却</a></dd>
+		<dd>・<a href="/library_15/MenuServlet?action=login">延滞状況</a></dd>
+		<dd>・<a href="/library_15/MenuServlet?action=add">登録</a></dd>
+		<dd>・<a href="/library_15/MenuServlet?action=discard">紛失・廃棄</a></dd>
+</dl>
 	
 	
 	
