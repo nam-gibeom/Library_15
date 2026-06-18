@@ -18,6 +18,6 @@ __会員情報テーブル__
 | 3 | member_address | text |  |  | 会員の住所 |
 | 4 | member_tel | text |  |  | 会員の電話番号 |
 | 5 | member_mail | text |  |  | 会員のメールアドレス |
-| 6 | member_birth | date |  |  | 会員の生年月日 |
-| 7 | member_registdate | date |  |  | 会員の入会年月日 |
-| 8 | member_canceldate | date |  |  | 会員の退会年月日 |
+| 6 | member_birth | text |  |  | 会員の生年月日 |
+| 7 | member_registdate | text |  |  | 会員の入会年月日 |
+| 8 | member_canceldate | text |  |  | 会員の退会年月日 |
