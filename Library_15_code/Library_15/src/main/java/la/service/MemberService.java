@@ -1,7 +1,5 @@
 package la.service;
 
-import java.util.List;
-
 import la.bean.MemberBean;
 import la.dao.DAOException;
 import la.dao.MemberDAO;
@@ -9,18 +7,8 @@ import la.dao.MemberDAO;
 
 public class MemberService {
 	
-	public class SearchMove {
-	    public List<MemberBean> list;
-	    public String URL;
-
-	    public SearchMove(List<MemberBean> list, String url) {
-	        this.list = list;
-	        this.URL = url;
-	    }
-	}
-
-
-	public List<MemberBean> addMemberService(String member_name, String member_address, 
+	
+	public MemberBean addMemberService(String member_name, String member_address, 
 			String member_tel, String member_mail, String member_birth){
 		
 		String currentdate = "current_date";
@@ -28,9 +16,9 @@ public class MemberService {
 		try {
 			MemberDAO dao = new MemberDAO();
 			dao.addMember(member_name, member_address, member_tel, member_mail, member_birth, currentdate);
-			List<MemberBean> list = dao.getIdName();
+			MemberBean bean = dao.getIdName();
 			
-			return list;
+			return bean;
 		
 		} catch (DAOException e) {
 			// TODO 自動生成された catch ブロック
@@ -41,41 +29,18 @@ public class MemberService {
 	
 
 	}
-	public SearchMove SearchAndMove(int member_id, String action){
-		if(action.equals("cancel")) {
+	public MemberBean SearchAndMove(int member_id) throws DAOException{
 		try {
 			MemberDAO dao = new MemberDAO();
 			
-			List<MemberBean> list = dao.findAll(member_id);
-			SearchMove sm = new SearchMove(list,"/cancel.jsp");
+			MemberBean bean = dao.findAll(member_id);
 			
-			return sm;
-			
+			return bean;
 			
 		} catch (DAOException e) {
-			// TODO 自動生成された catch ブロック
 			e.printStackTrace();
-		return null;
+			throw new DAOException("error");
 		}
-		
-		}
-		else if(action.equals("update")) {
-			try {
-				MemberDAO dao = new MemberDAO();
-				
-				List<MemberBean> list = dao.findAll(member_id);
-				SearchMove sm = new SearchMove(list,"/update.jsp");
-				
-				return sm;
-			
-			} catch (DAOException e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			return null;
-		}
-		
-	}
-		return null;
 	
 	}
 	
@@ -107,4 +72,5 @@ public class MemberService {
 	}
 
 
+	
 
