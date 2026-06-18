@@ -1,4 +1,4 @@
-package la.servlet;
+package la.Servlet;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import la.service.MenuService;
-import la.service.ServiceException;
+import la.Service.MenuService;
+import la.Service.ServiceException;
 
 
 /**

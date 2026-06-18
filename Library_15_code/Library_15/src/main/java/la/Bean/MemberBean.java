@@ -1,5 +1,7 @@
 package la.Bean;
 
+import java.io.Serializable;
+
 public class MemberBean implements Serializable {
 private int member_id;
 private String member_name;

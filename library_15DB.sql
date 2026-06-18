@@ -23,7 +23,7 @@ INSERT INTO adminlist VALUES('0627', 'é·èº', '0627' );
 
 DROP TABLE IF EXISTS memberlist;
 CREATE TABLE memberlist(
-  member_id SERIAL PRIMARY KEY,
+  member_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   member_name TEXT,
   member_address TEXT,
   member_tel TEXT,
@@ -34,16 +34,16 @@ CREATE TABLE memberlist(
 );
 
 
-INSERT INTO memberlist VALUES(1,'éRìc ëæòY','Åß111-1111ìåãû','000-000-000','a@example.com',DATE '19990102',DATE '20101101',DATE '20131121');
-INSERT INTO memberlist VALUES(2,'ìcíÜ àÍòY','Åß111-1112ìåãû','000-000-111','b@example.com',DATE '20000104',DATE '20120101',DATE '20131202');
-INSERT INTO memberlist VALUES(3,'éRñ{ éüòY','Åß111-1113ìåãû','000-000-222','c@example.com',DATE '20010202',DATE '20141101',DATE '20190911');
-INSERT INTO memberlist VALUES(4,'âHê∂ èÕóm','Åß111-1114ìåãû','000-080-222','d@example.com',DATE '20010902',DATE '20240101',DATE '20100911');
-INSERT INTO memberlist VALUES(5,'äòñ{ äÏî¸éq','Åß111-1113ìåãû','000-001-222','c@example.com',DATE '20010202',DATE '20141101',DATE '20190911');
-INSERT INTO memberlist VALUES(6,'à¿ïî çOç]','Åß111-1113ëÂç„','000-060-222','c@example.com',DATE '20010202',DATE '20140301',DATE '20190911');
-INSERT INTO memberlist VALUES(7,'èºë∫ èGòa','Åß111-1113ê_åÀ','000-240-222','c@example.com',DATE '20010202',DATE '20140401',DATE '20190911');
-INSERT INTO memberlist VALUES(8,'îãå¥ åbóùéq','Åß111-1113â°ïl','240-000-222','c@example.com',DATE '20010202',DATE '20141101',DATE '20190911');
-INSERT INTO memberlist VALUES(9,'èºìc ê≥ãC','Åß111-1113ì»ñÿ','000-040-222','c@example.com',DATE '20010202',DATE '20141121',DATE '20190911');
-INSERT INTO memberlist VALUES(10,'å≥ãC ëæòY','Åß111-1113ñkäCìπ','000-050-222','c@example.com',DATE '20010202',DATE '20141111',DATE '20190911');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('éRìc ëæòY','Åß111-1111ìåãû','000-000-000','a@example.com',DATE '19990102',DATE '20101101',DATE '20131121');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('ìcíÜ àÍòY','Åß111-1112ìåãû','000-000-111','b@example.com',DATE '20000104',DATE '20120101',DATE '20131202');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('éRñ{ éüòY','Åß111-1113ìåãû','000-000-222','c@example.com',DATE '20010202',DATE '20141101',DATE '20190911');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('âHê∂ èÕóm','Åß111-1114ìåãû','000-080-222','d@example.com',DATE '20010902',DATE '20240101',DATE '20100911');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('äòñ{ äÏî¸éq','Åß111-1113ìåãû','000-001-222','c@example.com',DATE '20010202',DATE '20141101',DATE '20190911');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('à¿ïî çOç]','Åß111-1113ëÂç„','000-060-222','c@example.com',DATE '20010202',DATE '20140301',DATE '20190911');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('èºë∫ èGòa','Åß111-1113ê_åÀ','000-240-222','c@example.com',DATE '20010202',DATE '20140401',DATE '20190911');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('îãå¥ åbóùéq','Åß111-1113â°ïl','240-000-222','c@example.com',DATE '20010202',DATE '20141101',DATE '20190911');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('èºìc ê≥ãC','Åß111-1113ì»ñÿ','000-040-222','c@example.com',DATE '20010202',DATE '20141121',DATE '20190911');
+INSERT INTO memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate, member_canceldate) VALUES('å≥ãC ëæòY','Åß111-1113ñkäCìπ','000-050-222','c@example.com',DATE '20010202',DATE '20141111',DATE '20190911');
 
 
 
@@ -51,7 +51,7 @@ INSERT INTO memberlist VALUES(10,'å≥ãC ëæòY','Åß111-1113ñkäCìπ','000-050-222','c
 
 DROP TABLE IF EXISTS categorylist;
 CREATE TABLE categorylist(
-  category_code SERIAL PRIMARY KEY,
+  category_code INTEGER PRIMARY KEY,
   category_name TEXT
 );
 
@@ -103,7 +103,7 @@ INSERT INTO cataloglist VALUES('9784416718025', 'ï∂äwóùò_çuã` êVÇµÇ¢ÉXÉ^ÉìÉ_Å[Éh
 DROP TABLE IF EXISTS stocklist;
 CREATE TABLE stocklist
 (
-  book_id SERIAL PRIMARY KEY,
+  book_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   isbn TEXT,
   arrival_date DATE,
   discard_date DATE,
@@ -111,102 +111,102 @@ CREATE TABLE stocklist
 );
 
 
-INSERT INTO stocklist VALUES(1, '9784163918273',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(2, '9784163918273',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(3, '9784163918273',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(4, '9784163918273',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(5, '9784163918273',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(6, '9784480081377',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(7, '9784480081377',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(8, '9784480081377',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(9, '9784480081377',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(10, '9784480081377',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(11, '9784480081384',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(12, '9784480081384',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(13, '9784480081384',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(14, '9784480081384',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(15, '9784480081384',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(16, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(17, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(18, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(19, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(20, '9784101373713',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(21, '9784101373713',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(22, '9784101373713',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(23, '9784101373713',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(24, '9784101373713',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(25, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(26, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(27, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(28, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(29, '9784532176204',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(30, '9784106038280',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(31, '9784106038280',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(32, '9784106038280',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(33, '9784106038280',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(34, '9784106038280',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(35, '9784106038280',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(36, '9784844607656',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(37, '9784844607656',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(38, '9784844607656',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(39, '9784844607656',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(40, '9784844607656',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(41, '9784000613156',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(42, '9784000613156',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(43, '9784000613156',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(44, '9784000613156',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(45, '9784766425659',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(46, '9784766425659',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(47, '9784766425659',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(48, '9784766425659',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(49, '9784766425659',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(50, '9784595315848',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(51, '9784595315848',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(52, '9784595315848',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(53, '9784595315848',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(54, '9784595315848',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(55, '9784130420679',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(56, '9784130420679',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(57, '9784130420679',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(58, '9784130420679',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(59, '9784130420679',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(60, '9784860645274',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(61, '9784860645274',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(62, '9784860645274',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(63, '9784860645274',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(64, '9784822255923',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(65, '9784822255923',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(66, '9784822255923',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(67, '9784822255923',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(68, '9784774142043',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(69, '9784774142043',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(70, '9784774142043',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(71, '9784774142043',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(72, '9784806530008',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(73, '9784806530008',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(74, '9784806530008',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(75, '9784806530008',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(76, '9784532321116',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(77, '9784532321116',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(78, '9784532321116',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(79, '9784532321116',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(80, '9784295402008',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(81, '9784295402008',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(82, '9784295402008',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(83, '9784295402008',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(84, '9784772695336',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(85, '9784772695336',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(86, '9784772695336',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(87, '9784772695336',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(88, '9784409100400',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(89, '9784409100400',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(90, '9784409100400',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(91, '9784409100400',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(92, '9784416718025',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(93, '9784416718025',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(94, '9784416718025',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(95, '9784416718025',DATE '20260617',null,null);
-INSERT INTO stocklist VALUES(96, '9784416718025',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784163918273',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784163918273',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784163918273',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784163918273',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784163918273',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081377',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081377',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081377',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081377',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081377',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081384',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081384',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081384',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081384',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784480081384',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784101373713',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784101373713',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784101373713',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784101373713',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784101373713',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532176204',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784106038280',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784106038280',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784106038280',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784106038280',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784106038280',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784106038280',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784844607656',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784844607656',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784844607656',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784844607656',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784844607656',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784000613156',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784000613156',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784000613156',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784000613156',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784766425659',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784766425659',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784766425659',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784766425659',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784766425659',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784595315848',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784595315848',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784595315848',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784595315848',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784595315848',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784130420679',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784130420679',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784130420679',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784130420679',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784130420679',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784860645274',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784860645274',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784860645274',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784860645274',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784822255923',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784822255923',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784822255923',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784822255923',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784774142043',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784774142043',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784774142043',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784774142043',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784806530008',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784806530008',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784806530008',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784806530008',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532321116',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532321116',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532321116',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784532321116',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784295402008',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784295402008',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784295402008',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784295402008',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784772695336',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784772695336',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784772695336',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784772695336',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784409100400',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784409100400',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784409100400',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784409100400',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
 
 
 
@@ -214,7 +214,7 @@ INSERT INTO stocklist VALUES(96, '9784416718025',DATE '20260617',null,null);
 DROP TABLE IF EXISTS rentlist;
 CREATE TABLE rentlist
 (
-  rent_id SERIAL PRIMARY KEY,
+  rent_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   member_id INTEGER,
   book_id INTEGER,
   rent_date DATE,
@@ -223,11 +223,11 @@ CREATE TABLE rentlist
   remarks TEXT
 );
 
-INSERT INTO rentlist VALUES(1,1, 24, DATE '20260531', DATE '20260614',null,null);
-INSERT INTO rentlist VALUES(2,2, 12, DATE '20260601', DATE '20260615',null,null);
-INSERT INTO rentlist VALUES(3,3, 36, DATE '20260611', DATE '20260626',null,null);
-INSERT INTO rentlist VALUES(4,3, 66, DATE '20260613', DATE '20260628',null,null);
-INSERT INTO rentlist VALUES(5,1, 93, DATE '20260613', DATE '20260628',null,null);
+INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(1, 24, DATE '20260531', DATE '20260614',null,null);
+INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(2, 12, DATE '20260601', DATE '20260615',null,null);
+INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(3, 36, DATE '20260611', DATE '20260626',null,null);
+INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(3, 66, DATE '20260613', DATE '20260628',null,null);
+INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(1, 93, DATE '20260613', DATE '20260628',null,null);
 
 
 ALTER TABLE categorylist OWNER TO postgres;

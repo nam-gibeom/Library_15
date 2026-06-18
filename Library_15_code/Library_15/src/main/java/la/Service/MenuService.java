@@ -1,7 +1,7 @@
-package la.service;
+package la.Service;
 
-import la.dao.DAOException;
-import la.dao.MenuDAO;
+import la.Dao.DAOException;
+import la.Dao.MenuDAO;
 
 
 
