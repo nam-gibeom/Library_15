@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
   
   
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <title>Member Regist</title>
 </head>
 <body>
-<form action ="/library15/MemberServlet" method="post">
+<form action ="/Library_15/MemberServlet" method="post">
 <table border="1">
             <tr><th colspan="2">会員登録申請</th></tr>
 <!--<tr><td>申請日</td><td><input type="text" size="4" >年<input type="text" size="1">月<input type="text" size="1">日</td></tr>-->
@@ -23,5 +23,5 @@
  <input type="hidden" name="action" value="regist">
 	<button>登録</button>
 </body>
-</body>
+
 </html>

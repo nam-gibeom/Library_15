@@ -61,11 +61,11 @@ public class MemberServlet extends HttpServlet {
 			String birthm = request.getParameter("birthm");
 			String birthd = request.getParameter("birthd");
 			
-			String birth = birthy + birthm + birthd;
+			String birth = birthy +"-"+ birthm +"-"+ birthd;
 			
 			MemberService service = new MemberService();
-			service.addMemberService(name, address, tel, mail, birth);
-			request.setAttribute("info", service);
+			MemberBean bean = service.addMemberService(name, address, tel, mail, birth);
+			request.setAttribute("info", bean);
 			gotoPage(request, response, "/registResult.jsp");
 			
 		}else if(action.equals("update")) {
@@ -117,7 +117,7 @@ public class MemberServlet extends HttpServlet {
 		}catch (ServletException | DAOException e) {
             e.printStackTrace();
             request.setAttribute("message", "内部エラーが発生しました。");
-            gotoPage(request, response, "/error.jsp");
+            gotoPage(request, response, "/memberError.jsp");
         }
 	}
 
