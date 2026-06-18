@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>kaiintourokukakuninn layout</title>
+</head>
+<body>
+
+	<h1>会員登録完了しました。</h1>
+	会員ID
+	<input type="text" placeholder="123">
+	<br> 会員名
+	<input type="text" placeholder="ジャン・ジウ">
+	<br>
+	<button>OK</button>
+</body>
+</html>
