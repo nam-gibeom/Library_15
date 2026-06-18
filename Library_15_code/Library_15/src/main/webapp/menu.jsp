@@ -19,7 +19,7 @@
 	<dl>
 	<form action="/library_15/MenuServlet" method="post">
 		<dt>　会員</dt>
-		<dd>・<button action = "regist">登録</button></a></dd>
+		<dd>・<a href="/library_15/MenuServlet?action=regist">登録</a></dd>
 		<dd>・<a><button action = "update">変更</button></a></dd>
 		<dd>・<a><button action = "cancel">退会</button></a></dd>
 	</form>
