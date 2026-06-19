@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<form action="/library_15/MenuServlet" method="post">
+<form action="/Library_15/MenuServlet" method="post">
     <div style="text-align: center;">
 <h1>新宿図書館管理システム</h1>
 <h2>今日も頑張って！</h2><br>
