@@ -47,9 +47,9 @@ public class MemberServlet extends HttpServlet {
 			
 			
 			MemberService service = new MemberService();
-			service.SearchAndMove((int)member_id);
-			request.setAttribute("info", service);
-			gotoPage(request, response,"/cancle.jsp" );
+			MemberBean bean = service.SearchAndMove(member_id);
+			request.setAttribute("info", bean);
+			gotoPage(request, response,"/memberCancel.jsp" );
 			
 		}else if(action.equals("regist")) {
 			String name = request.getParameter("name");
@@ -82,35 +82,20 @@ public class MemberServlet extends HttpServlet {
 			String birth = birthy +"-"+ birthm +"-"+ birthd;
 			
 			
-	
-			
 			MemberService service = new MemberService();
 			service.updateMemberService(id, name, address, tel, mail, birth);
 			gotoPage(request, response, "/memberUpdate.jsp");
 			
 		}else if(action.equals("cancel")) {
 			int id =Integer.parseInt(request.getParameter("id"));
-			String name = request.getParameter("name");
-			String address = request.getParameter("address");
-			String tel = request.getParameter("tel");
-			String mail = request.getParameter("mail");
-			
-			String birthy = request.getParameter("birthy");
-			String birthm = request.getParameter("birthm");
-			String birthd = request.getParameter("birthd");
-			
-			String birth = birthy + birthm + birthd;
-			
-			
-			
-			
 			MemberService service = new MemberService();
-			service.updateMemberService(id, name, address, tel, mail, birth);
-			gotoPage(request, response, "cancel.jsp");
+			service.cancelMemberService(id);
+			
+			gotoPage(request, response, "/memberCancel.jsp");
 			
 		}else if(action.equals("confirm")) {
 	
-			gotoPage(request, response, "memberRegist.jsp");
+			gotoPage(request, response, "/memberRegist.jsp");
 		}
 		
 		
