@@ -74,6 +74,7 @@ public class BookDAO {
 		try (Connection con = DriverManager.getConnection(url, user, pass);
 				PreparedStatement st = con.prepareStatement(sql);) {
 			List<Integer> list = new ArrayList<Integer>();
+			st.setString(1, isbn);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				int book_id = rs.getInt("book_id");
@@ -89,11 +90,12 @@ public class BookDAO {
 	
 	// 本の数を資料名で確認するためのメソッド
 	public List<Integer> getBookIdByTitle(String title) throws DAOException {
-		String sql = "select s.book_id from stocklist s join cataloglist c on s.isbn = c.isbn where c.title = ?";
+		String sql = "select s.book_id from stocklist s join cataloglist c on s.isbn = c.isbn where c.title like ?";
 		
 		try (Connection con = DriverManager.getConnection(url, user, pass);
 				PreparedStatement st = con.prepareStatement(sql);) {
 			List<Integer> list = new ArrayList<Integer>();
+			st.setString(1, "%" + title + "%");
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				int book_id = rs.getInt("book_id");
@@ -136,7 +138,7 @@ public class BookDAO {
 	
 	
 	public void updateRemarksDelay() throws DAOException {
-		String sql = "update rentlist set remarks = '延滞' where current_date - return_deadline > 0 and return_date is not null";
+		String sql = "update rentlist set remarks = '延滞' where current_date - return_deadline > 0 and return_date is null";
 		try (Connection con = DriverManager.getConnection(url, user, pass);
 				PreparedStatement st = con.prepareStatement(sql);) {
 			st.executeUpdate();
@@ -432,6 +434,55 @@ public class BookDAO {
 			throw new DAOException("レコードの取得に失敗しました。");
         } 
     }
+    
+    
+    // クラス定義書に追加
+    public String getCategoryName(int category_code) throws DAOException {
+    	String sql = "select category_name from categorylist where category_code = ?";
+    	
+    	try (// データベースへの接続
+                Connection con = DriverManager.getConnection(url, user, pass);
+   			 // PreparedStatementオブジェクトの取得
+   			 PreparedStatement st = con.prepareStatement(sql);){
+   			 // SQLの実行
+           		st.setInt(1, category_code);
+           		String category_name = null;
+           		ResultSet rs = st.executeQuery();
+           		while (rs.next()) {
+           			category_name = rs.getString("category_name");
+   				}
+           		return category_name;
+           		
+           } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		}
+    	
+    }
 	
+    
+    public int getRentedBookCountByIsbn(String isbn) throws DAOException {
+    	String sql = "select count(*) from rentlist r join stocklist s on r.book_id = s.book_id where isbn = ? and return_date is null";
+    	
+    	try (// データベースへの接続
+                Connection con = DriverManager.getConnection(url, user, pass);
+   			 // PreparedStatementオブジェクトの取得
+   			 PreparedStatement st = con.prepareStatement(sql);){
+   			 // SQLの実行
+           		st.setString(1, isbn);
+           		int count = 0;
+           		ResultSet rs = st.executeQuery();
+           		while (rs.next()) {
+           			count = rs.getInt("count");
+   				}
+           		return count;
+           		
+           } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		}
+    	
+    }
+    
 }
 
