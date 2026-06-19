@@ -113,17 +113,16 @@ public class MemberDAO {
 	
 	}
     
-    public void updateCancelDate(int member_id, String current_date) throws DAOException {
+    public void updateCancelDate(int member_id) throws DAOException {
 		// SQL文の作成
-		String sql = "update memberlist set member_canceldate = ? where member_id = ?";
+		String sql = "update memberlist set member_canceldate = current_date where member_id = ?";
 		
 		try (// データベースへの接続
 			 Connection con = DriverManager.getConnection(url, user, pass);
 			 // PreparedStatementオブジェクトの取得
 			 PreparedStatement st = con.prepareStatement(sql);) {
 			// 商品名と値段の指定
-			st.setString(1, current_date);
-			st.setInt(2, member_id);
+			st.setInt(1, member_id);
 			// SQLの実行
 			st.executeUpdate();
 		} catch (SQLException e) {

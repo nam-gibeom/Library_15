@@ -56,10 +56,9 @@ public class MemberService {
 	}
 	
 	public void cancelMemberService(int member_id) {
-		String currentdate ="current_date";
 		try {
 			MemberDAO dao = new MemberDAO();
-			dao.updateCancelDate(member_id, currentdate);
+			dao.updateCancelDate(member_id);
 			
 		
 		} catch (DAOException e) {

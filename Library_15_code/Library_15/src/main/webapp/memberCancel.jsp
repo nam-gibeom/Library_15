@@ -7,9 +7,9 @@
 <title>Member Cancel</title>
 </head>
 <body>
- <form action ="/library15/MemberServlet" method="post">
+ <form action ="/Library_15/MemberServlet" method="post">
 <table border="1">
-        <tr><td>会員ID</td><td><input type="text"></td><td>
+        <tr><td>会員ID</td><td><input type="text" name ="memberid"></td><td>
         <input type="hidden" name="action" value="searchcancel">
         <button>検索</button></td></tr>
          </table>
@@ -17,10 +17,11 @@
 <br><br>
 
 
- <form action ="/library15/MemberServlet" method="post">
+ <form action ="/Library_15/MemberServlet" method="post">
 <table border="1">
-<tr><td>会員ID</td><td><input type="text" size="2" value=></td><td><input type="text" value=${info.member_name }>さん</td>
-<td><input type="hidden" name="action" value="cancel">
+<tr><td>会員ID</td><td><input type="text" size="2" name = "id" value=${info.member_id }></td><td><input type="text"name="name" value=${info.member_name }>さん</td>
+<td>
+<input type="hidden" name="action" value="cancel">
 <button>退会</button></td></tr>
  </table>
 </form>
