@@ -170,15 +170,15 @@ public class BookDAO {
 		} 
 	}
 	
-	public List<catalogListBean> getInfoByBookId(int book_id) throws DAOException {
-		String sql = "select s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?";
+	public catalogListBean getInfoByBookId(int book_id) throws DAOException {
+		String sql = "select s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.book_id = ?";
 		try (Connection con = DriverManager.getConnection(url, user, pass);
 				PreparedStatement st = con.prepareStatement(sql);
 			) {
 			st.setInt(1, book_id);	
 			ResultSet rs = st.executeQuery();
 			
-			List<catalogListBean> list =new ArrayList<catalogListBean>();
+			catalogListBean bean = new catalogListBean();
 			
 			while (rs.next()) {
 				String isbn = rs.getString("isbn");
@@ -188,10 +188,9 @@ public class BookDAO {
 				String publisher = rs.getString("publisher");
 				String publish_date = rs.getString("publish_date");
 				
-				catalogListBean bean = new catalogListBean(book_id, isbn, title, category_code, author, publisher, publish_date);
-				list.add(bean);
+				bean = new catalogListBean(book_id, isbn, title, category_code, author, publisher, publish_date);
 			}
-			return list;
+			return bean;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -355,7 +354,7 @@ public class BookDAO {
     
 
     //貸出履歴に記録を追加し、情報を取るメソッド
-    public RentBean addRentListAndGetInfo(int member_id,int book_id,String return_deadline)throws DAOException {
+    public RentBean addRentListAndGetInfo(int member_id,int book_id, String return_deadline)throws DAOException {
         // SQL文の作成
         String sql1 = "insert into rentlist(member_id, book_id, rent_date, return_deadline) values(?, ?, current_date, ?)";
         String sql2 = "select * from rentlist where member_id = ? and book_id = ? and rent_date = current_date";
@@ -370,7 +369,7 @@ public class BookDAO {
 			st.setInt(2, book_id);
 			st.setDate(3, Date.valueOf(return_deadline));
 			
-			st.executeQuery();
+			st.executeUpdate();
         } catch (SQLException e) {
 		    e.printStackTrace();
 		    throw new DAOException("レコードの取得に失敗しました。");
