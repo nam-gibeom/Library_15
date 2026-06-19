@@ -9,7 +9,7 @@
 <title>Member Update</title>
 </head>
 <body>
- <form action ="/library15/MemberServlet" method="post">
+ <form action ="/Library_15/MemberServlet" method="post">
 <table border="1">
         <tr><td>会員ID</td><td><input type="text" name="memberid" ></td><td>
          <input type="hidden" name="action" value="searchupdate">
@@ -19,15 +19,15 @@
          <br><br>
          
         
-<form action ="/library15/MemberServlet" method="post">
+<form action ="/Library_15/MemberServlet" method="post">
 <table border="1">
 	<tr><th colspan="2">会員情報</th></tr>
 	<tr><td>氏名</td><td><input type="text"name="name"value=${info.member_name }></td></tr>
 	<tr><td>住所</td><td><input type="text"name="address" value=${info.member_address } ></td></tr>
 	<tr><td>電話番号</td><td><input type="text" name="tel" value=${info.member_tel }></td></tr>
 	<tr><td>E-mail</td><td><input type="text"name="mail" value=${info.member_mail }></td></tr>
-	<tr><td>生年月日</td><td><input type="text" size="4" value=${info.member_birth_year }>年<input type="text" size="1" value=${info.member_birth_month }>月
-	     					  <input type="text" size="1" value=${info.member_birth_day }>日</td></tr>
+	<tr><td>生年月日</td><td><input type="text" size="4" name="birthy" value=${info.member_birth_year }>年<input type="text" size="1" name="birthm" value=${info.member_birth_month }>月
+	     					  <input type="text" size="1" name="birthd"value=${info.member_birth_day }>日</td></tr>
  </table>
   <input type="hidden" name="memberid" value=${info.member_id }>
   <input type="hidden" name="action" value="update">

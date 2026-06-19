@@ -1,6 +1,7 @@
 package la.Dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,8 +36,8 @@ public class MemberDAO {
             // 結果の取得および表示
         	MemberBean bean = null;;
 			while (rs.next()) {
-			    int id = rs.getInt("id");
-			    String name = rs.getString("name");
+			    int id = rs.getInt("member_id");
+			    String name = rs.getString("member_name");
 			    bean = new MemberBean(id, name);
 			   
 			    }
@@ -88,10 +89,10 @@ public class MemberDAO {
 			}
     }
 
-    public void addMember(String member_name, String member_address, String member_tel, String member_mail, String member_birth, String current_date) 
+    public void addMember(String member_name, String member_address, String member_tel, String member_mail, String member_birth) 
     		throws DAOException {
 		// SQL文の作成
-		String sql = "insert into memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate) values(?, ?, ?, ?, ?, ?)";
+		String sql = "insert into memberlist(member_name, member_address, member_tel, member_mail, member_birth, member_registdate) values(?, ?, ?, ?, ?, current_date)";
 		
 		try (// データベースへの接続
 			 Connection con = DriverManager.getConnection(url, user, pass);
@@ -102,8 +103,7 @@ public class MemberDAO {
 			st.setString(2, member_address);
 			st.setString(3, member_tel);
 			st.setString(4, member_mail);
-			st.setString(5, member_birth);
-			st.setString(6, current_date);
+			st.setDate(5, Date.valueOf(member_birth));
 			// SQLの実行
 			st.executeUpdate();
 		} catch (SQLException e) {
@@ -141,16 +141,12 @@ String sql = "update memberlist set member_name = ?, member_address = ?, member_
 			 // PreparedStatementオブジェクトの取得
 			 PreparedStatement st = con.prepareStatement(sql);) {
 			// 商品名と値段の指定
-			
 			st.setString(1, member_name);
 			st.setString(2, member_address);
 			st.setString(3, member_tel);
 			st.setString(4, member_mail);
-			st.setString(5, member_birth);
+			st.setDate(5, Date.valueOf(member_birth));
 			st.setInt(6, member_id);
-			
-			
-			// SQLの実行
 			st.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

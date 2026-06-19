@@ -1,7 +1,5 @@
 package la.Service;
 
-import java.util.List;
-
 import la.Bean.MemberBean;
 import la.Dao.DAOException;
 import la.Dao.MemberDAO;
@@ -12,12 +10,10 @@ public class MemberService {
 	
 	public MemberBean addMemberService(String member_name, String member_address, 
 			String member_tel, String member_mail, String member_birth){
-		
-		String currentdate = "current_date";
-		
+	
 		try {
 			MemberDAO dao = new MemberDAO();
-			dao.addMember(member_name, member_address, member_tel, member_mail, member_birth, currentdate);
+			dao.addMember(member_name, member_address, member_tel, member_mail, member_birth);
 			MemberBean bean = dao.getIdName();
 			
 			return bean;
@@ -58,6 +54,7 @@ public class MemberService {
 			e.printStackTrace();
 	}
 	}
+	
 	public void cancelMemberService(int member_id) {
 		String currentdate ="current_date";
 		try {
