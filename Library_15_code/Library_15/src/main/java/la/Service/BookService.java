@@ -14,6 +14,7 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import la.Bean.DiscardInfoBean;
 import la.Bean.OverdueBean;
 import la.Bean.RentBean;
 import la.Bean.RentInfoBean;
@@ -42,14 +43,8 @@ public class BookService {
 			catalogListBean bean =  dao.getInfoByBookId(book_id); // 資料IDを用いて目録の情報を取得
 			String publish_date = bean.getPublish_date(); // そのうち、出版日をyyyy-mm-ddとして取得
 			
-			int period =  CalculatePeriod(publish_date, current_date); // 出版日から当日の日付まで何か月経ったのかを取得
 		
-			int canRentDay;
-			if (period <= 3) {
-				canRentDay = 10;
-			} else {
-				canRentDay = 15;
-			}
+			int canRentDay = CalculatePeriod(publish_date, current_date);
 			String return_deadline = CalculateReturnDeadline(current_date, canRentDay); // "yyyy-mm-dd"
 			
 			RentBean rent_info = dao.addRentListAndGetInfo(member_id, book_id, return_deadline); // 貸出台帳に登録後、その全ての行の情報を取得する
@@ -126,6 +121,7 @@ public class BookService {
 			} else {
 				canRentDay = 15;
 			}
+			canRentDay = CalculatePeriod(bean.getPublish_date(), current_date);
 			
 			String title = bean.getTitle();
 			String category_name = dao.getCategoryName(bean.getCategory_code());
@@ -141,38 +137,115 @@ public class BookService {
 		return Result_List;
 	}
 	
+	public List<RentInfoBean> showCurrentrentList(int member_id) {
+		try {
+			
+			List<RentInfoBean> list = dao.getRentedBookIdTitlebyMember(member_id);
+			return list;
+		
+		} catch (DAOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
+	//返却処理をする
+	public void returnBook(int member_id, int book_id) {
+		try {
+		
+			dao.updateReturnDate(member_id, book_id);
+			
+		} catch (DAOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+	    }
+	}
+	
+	//在庫台帳に追加する
+	public void addStock(String isbn,String arrival_date) {
+		try {
+			
+			dao.addStockList(isbn,arrival_date);
+			
+		} catch (DAOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+	    }
+	}
+	
+	//資料目録に追加する
+	public void addCatalog (String isbn, String title, int category_code, String author, String publisher, String publish_date) {
+ 
+		try {
+			
+			dao.addCatalogList(isbn,title,category_code,author,publisher,publish_date);
+			
+		} catch (DAOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+	    }
+	}
+	
+	//資料IDで廃棄する資料の情報を検索する
+	public DiscardInfoBean searchDiscard (int book_id){
+         try {
+			DiscardInfoBean bean = dao.getStockListByBookId(book_id);
+			return bean;
+		
+		} catch (DAOException e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	//資料の廃棄処理をする
+	public void discardBook (int book_id, String discard_date, String remarks) {
+		 try {
+				
+			 dao.updateStockListDiscard(book_id,discard_date,remarks);
+				
+			} catch (DAOException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
+		    }
+	}
 	
 	
 	// 現在の日付を'YYYY-MM-DD'として取得するメソッド
-	public String getCurrentDate() {
-		LocalDateTime nowDate = LocalDateTime.now();
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		String formatedDate = format.format(nowDate);
-		return formatedDate;
-	}
-	
-	// 出版日から当日の日付まで何か月経ったのかを取得
-	public int CalculatePeriod(String publish_date, String current_date) {
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate Publish = LocalDate.parse(publish_date, format);
-		LocalDate Current = LocalDate.parse(current_date, format);
-		int period = Period.between(Publish, Current).getMonths();
-		return period;
-	}
-	
-	// 当日の日付に貸出可能な日数を計算して文字列で返還（"2026-06-19", 15） -> ("2026-07-04") 
-	public String CalculateReturnDeadline(String current_date, int canRentDay) {
-		Calendar cal = Calendar.getInstance();
+		public String getCurrentDate() {
+			LocalDateTime nowDate = LocalDateTime.now();
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			String formatedDate = format.format(nowDate);
+			return formatedDate;
+		}
 		
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate Current = LocalDate.parse(current_date, format);
-		java.util.Date a = Date.from(Current.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		cal.setTime(a);
-		cal.add(Calendar.DAY_OF_MONTH, 15);
-		java.util.Date bb =  cal.getTime();
-		String return_deadline = format.format(bb.toInstant().atZone(ZoneId.systemDefault()));
-		return return_deadline;
-	}
-	
+		// 出版日から当日の日付まで何か月経ったのかを取得
+		public int CalculatePeriod(String publish_date, String current_date) {
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			LocalDate Publish = LocalDate.parse(publish_date, format);
+			LocalDate Current = LocalDate.parse(current_date, format);
+			
+			if ((Period.between(Publish, Current).getYears() >= 1) || (Period.between(Publish, Current).getYears() == 0) && Period.between(Publish, Current).getMonths() >= 3) {
+				return 15;
+			} else {
+				return 10;
+			}
+
+		}
+		
+		// 当日の日付に貸出可能な日数を計算して文字列で返還（"2026-06-19", 15） -> ("2026-07-04") 
+		public String CalculateReturnDeadline(String current_date, int canRentDay) {
+			Calendar cal = Calendar.getInstance();
+			
+			DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+			LocalDate Current = LocalDate.parse(current_date, format);
+			java.util.Date a = Date.from(Current.atStartOfDay(ZoneId.systemDefault()).toInstant());
+			cal.setTime(a);
+			cal.add(Calendar.DAY_OF_MONTH, 15);
+			java.util.Date bb =  cal.getTime();
+			String return_deadline = format.format(bb.toInstant().atZone(ZoneId.systemDefault()));
+			return return_deadline;
+		}
 }
