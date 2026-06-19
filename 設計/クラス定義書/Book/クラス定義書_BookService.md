@@ -36,7 +36,7 @@
 
 ---
 <!-- 貸出（貸出・返却画面で使う：次へボタン） -->
-#### public List\<貸出台帳Bean> rentBooksByID(int member_id, List\<int> book_id) 
+#### public List\<貸出台帳Bean> rentBooksById(int member_id, List\<int> book_id) 
 サーブレットからもらった二つの引数と共に、現在の日付と返却期日を自動的に計算して貸出台帳に行を追加する。
 
 ##### Service, DTO
@@ -138,8 +138,6 @@
 
 <!-- ISBNを用いて存在するかどうかを確認 -->
 #### public Boolean isIsbnExist (String isbn) 
-
-
 ##### Service, DTO
 
 - BookDAO
@@ -152,7 +150,7 @@
 
 
 <!-- ISBNが存在するする場合 -->
-#### public void addStock (String isbn) 
+#### public void addStock (String isbn, String arrival_date) 
 
 
 ##### Service, DTO
@@ -181,7 +179,7 @@
 
 
 <!-- 廃棄する資料検索 -->
-#### public List\<DiscardBean> searchDiscard (int book_id) 
+#### public DiscardInfoBean searchDiscard (int book_id) 
 
 
 ##### Service, DTO
