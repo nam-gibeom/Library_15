@@ -11,7 +11,7 @@
 
 <h1>${message}</h1>
 
-<a href="/library_15/MenuServlet?action=back">戻る</a>
+<a href="/Library_15/MenuServlet?action=back">戻る</a>
 
 </body>
 </html>
