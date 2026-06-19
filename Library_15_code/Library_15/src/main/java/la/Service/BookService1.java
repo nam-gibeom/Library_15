@@ -54,7 +54,8 @@ public class BookService1 {
 	
 	//資料目録に追加する
 	public void addCatalog (String isbn, String title, int category_code, String author, String publisher, String publish_date) {
-         try {
+ 
+		try {
 			
 			dao.addCatalogList(isbn,title,category_code,author,publisher,publish_date);
 			
