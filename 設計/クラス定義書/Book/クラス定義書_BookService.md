@@ -129,7 +129,7 @@
 2. 当日の日付とFinalEditDateを比較する（一致しない場合、以下の順番を実行する）
    1. 貸出台帳のうち、返却年月日がNullの資料(貸出中)の中で、返却年月日がが当日の日付を過ぎた行の備考欄に延滞を記入するメソッド「__updateRemarksDelay__」を実行
    2. その後、備考欄に延滞って書いてある会員のIDを保存「__getRemarksAsOverdue__.member_id」
-   3. MemberDAOの「searchMember」でメールアドレスを取得する
+   3. MemberDAOの「findAll」でメールアドレスを取得する
    4. メールを送信する
    5. アプリケーションスコープのFinalEditDateに当日の日付を再記入する
 3. DAOの「__getRemarksAsOverdue__」と資料名「getInfoByBookId.getTitle」、延滞日数（Javaで計算）を戻り値として返還する。
