@@ -138,8 +138,6 @@
 
 <!-- ISBNを用いて存在するかどうかを確認 -->
 #### public Boolean isIsbnExist (String isbn) 
-
-
 ##### Service, DTO
 
 - BookDAO
@@ -152,7 +150,7 @@
 
 
 <!-- ISBNが存在するする場合 -->
-#### public void addStock (String isbn) 
+#### public void addStock (String isbn, String arrival_date) 
 
 
 ##### Service, DTO
@@ -181,7 +179,7 @@
 
 
 <!-- 廃棄する資料検索 -->
-#### public List\<DiscardBean> searchDiscard (int book_id) 
+#### public DiscardInfoBean searchDiscard (int book_id) 
 
 
 ##### Service, DTO
