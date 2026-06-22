@@ -34,8 +34,6 @@
             let result = confirm("このデータで登録してもよろしいですか？");
             
             if (result) {
-                alert("登録が完了しました");
-
                 document.getElementById("actionname").value = "regist";
                 document.getElementById("form").submit();
             } else {
