@@ -49,7 +49,5 @@
   <div class="left-side"><jsp:include page="menu.jsp" /></div>
   <div class="right-side"><jsp:include page="bookAdd1.jsp" /></div>
 </div>
-
->>>>>>> 7e7fe65ac5859c84702e38125af24ae11d53f725
 </body>
 </html>
