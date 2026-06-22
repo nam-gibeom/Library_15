@@ -6,11 +6,11 @@
 <meta charset="UTF-8">
 <title>Member Cancel</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/CSS/registcss.css">
+	href="${pageContext.request.contextPath}/CSS/cancelCSS.css">
 </head>
 <body>
  <form action ="/Library_15/MemberServlet" method="post">
-<table border="1">
+<table border="1"class="search">
         <tr><td id=lable>会員ID</td><td><input type="text" id="max" name ="memberid"></td><td>
         <input type="hidden" name="action" value="searchcancel">
         <button>検索</button></td></tr>

@@ -1,0 +1,118 @@
+#lable {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+
+
+}
+
+.result {
+	font-size: 120%;
+	border-collapse: collapse;
+	border: solid 1px black;
+	width: 600px;
+	height: 400px;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	
+
+
+}
+
+.resulttd{
+	border: solid 2px olivedrab;
+
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+
+.search {
+	font-size: 120%;
+	border-collapse: collapse;
+	border: solid 1px black;
+	width: 600px;
+	height: 20px;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	 box-sizing: border-box;
+	
+
+
+}
+
+
+.searchtd {
+	border: solid 2px olivedrab;
+
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+
+#max {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+
+	border: none;
+	outline: none;
+	background-color: #FFFFEE;
+	font-size: 125%;
+}
+
+#ymd {
+	border: none;
+	outline: none;
+	background-color: #FFFFEE;
+	text-align: center;
+	font-size: 125%;
+
+}
+
+.btn {
+	display: inline-block;
+	color: darkolivegreen;
+	text-decoration: none;
+	background-color: rgb(215, 235, 171);
+	border-radius: 0.4em;
+	padding: 0.5em 1em;
+	transition: 0.5s;
+}
+
+.btn-hover-20 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100px;
+	margin: 0 auto 32px;
+	padding: .9em 2em;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	z-index: 1;
+	border-radius: 5px;
+	
+	
+}
+
+.btn-hover-20 span {
+	position: relative;
+	z-index: 2;
+}
+
+.btn-hover-20 {
+	border: 1px solid olivedrab;
+	background-color: white;
+	color: olivedrab;
+	
+	
+}
+
+/*.btn-hover-20:hover {*/
+/*	background-color: #fff;*/
+/*	color: darkolivegreen;*/
+/*}*/

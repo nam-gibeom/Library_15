@@ -8,11 +8,11 @@
 <meta charset="UTF-8">
 <title>Member Update</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/CSS/registcss.css">
+	href="${pageContext.request.contextPath}/CSS/updateCSS.css">
 </head>
 <body>
  <form action ="/Library_15/MemberServlet" method="post">
-<table border="1">
+<table border="1" class="search">
         <tr><td id=lable>会員ID</td><td><input type="text" id="max" name="memberid"></td><td>
          <input type="hidden" name="action" value="searchupdate">
         <button class="btn-hover-20">検索</button></td></tr>
@@ -22,7 +22,7 @@
          
         
 <form id="form" action ="/Library_15/MemberServlet" method="post">
-<table border="1">
+<table border="1"class="result">
 	<tr><th id=lable colspan="2">会員情報</th></tr>
 	<tr><td id=lable>氏名</td><td><input type="text" id="ymd" name="name"value=${info.member_name }></td></tr>
 	<tr><td id=lable>住所</td><td><input type="text" id="ymd" name="address" value=${info.member_address }></td></tr>
@@ -33,7 +33,8 @@
  </table>
   <input type="hidden" name="memberid" value=${info.member_id}>
   <input type="hidden" id="actionname" name="action" value="">
-	<button type="button" class=btn-hover-20 onclick="popapp()">変更</button>
+  <br>
+	<button type="button" class=button-hover-20 onclick="popapp()">変更</button>
 	</form>
 
 	<script>
