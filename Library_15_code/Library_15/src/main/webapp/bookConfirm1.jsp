@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
 .login {
 	max-width: 400px;
@@ -90,16 +91,17 @@
 
 	<div class="login">
 		<h1>貸出確認</h1>
-		<form">
 			<div class="form-group">
-				資料ID<input type="text" class="form-control" readonly value=${info.book_id}> 
-				資料名<input type="text" class="form-control" readonly value=${info.title}>
-				返却期日<input type="text" class="form-control" readonly value=${info.return_deadline}>
+			<table border="1">
+				<tr><th>資料ID</th><th>資料名</th><th>返却期日</th></tr>
+
+			<c:forEach items="${rent_result}" var="info">
+				<tr><td>${info.book_id }</td><td>${info.title }</td><td>${info.return_deadline }</td></tr>
+			</c:forEach>
+			</table>
 			</div>
-		</form>
-		<form action="/Library_15/MemberServlet" method="post">
-			<input type="hidden" name="action" value="rent">
-			<button>完了</button>
+		<form action="/Library_15/BookServlet" method="post">
+			<button name="action" value="rentconfirm"> 完了</button>
 		</form>
 	</div>
 

@@ -49,7 +49,6 @@ public class BookService {
 			
 			RentBean rent_info = dao.addRentListAndGetInfo(member_id, book_id, return_deadline); // 貸出台帳に登録後、その全ての行の情報を取得する
 			String title = bean.getTitle(); // 資料目録から資料名を取得
-			
 			RentInfoBean result_bean = new RentInfoBean(rent_info.getBook_id(), title, rent_info.getReturn_deadline()); // 資料ID、資料名、返却期日をBeanにいれる
 			list.add(result_bean);
 			
