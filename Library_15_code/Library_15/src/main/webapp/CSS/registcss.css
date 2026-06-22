@@ -14,6 +14,7 @@ table {
 	height: 400px;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
+	margin: -8em 1em 0em 1.5em;
 
 
 }
@@ -37,6 +38,7 @@ table td {
 	border: none;
 	outline: none;
 	background-color: #FFFFEE;
+	font-size: 125%;
 }
 
 #ymd {
@@ -44,6 +46,7 @@ table td {
 	outline: none;
 	background-color: #FFFFEE;
 	text-align: center;
+	font-size: 125%;
 
 }
 
@@ -79,8 +82,10 @@ table td {
 
 .btn-hover-20 {
 	border: 1px solid olivedrab;
-	background-color: lightgray;
+	background-color: white;
 	color: olivedrab;
+	
+	
 }
 
 /*.btn-hover-20:hover {*/
