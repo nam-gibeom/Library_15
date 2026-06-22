@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import la.Bean.OverdueBean;
 import la.Dao.DAOException;
@@ -52,7 +53,8 @@ public class MenuServlet extends HttpServlet {
                 String name = service.Login(id,pass);
                 
                 if(!name.equals("")) {
-                	request.setAttribute("names", name);
+                	HttpSession session = request.getSession();
+                	session.setAttribute("names", name);
                 	List<OverdueBean> result_list = service1.searchOverdueBooks(request);
     	        	request.setAttribute("overdues", result_list);
                 	gotoPage(request, response, "/top.jsp");
@@ -65,7 +67,10 @@ public class MenuServlet extends HttpServlet {
                 
                 
 			}else if (action.equals("logout")) {
-				
+				HttpSession session = request.getSession(false);
+				if (session != null) {
+					session.invalidate();
+				}
 				gotoPage(request, response, "/login.jsp");
 				
 			}else if (action.equals("regist")) {
