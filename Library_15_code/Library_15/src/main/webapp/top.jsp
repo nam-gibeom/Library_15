@@ -1,67 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>enntaishaitirann layout</title>
-
-<style type="text/css">
-table {
-  width: 80%;
-  height: 80%;         
-  table-layout: fixed;   
-  border-collapse: collapse; 
-}
-
-th, 
-td {
-  width: 16%;
-  vertical-align: middle;           
-  word-break: break-all; 
-  padding: 0;
-}
-td input {
-  width: 100%;
+    <title>メイン画面</title>
+    <style>
+    
+ body {
   height: 100%;
-  box-sizing: border-box;
- 
-  border: none;       
-  outline: none;
+  margin: 0; 
 }
-#lable{
-	background-color:olivedrab;
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
 }
 
-</style>
+
+.left-side {
+  width: 15%;
+  background-color: #E6FFE9;
+  
+  display: flex; /*flexbox*/
+  flex-direction: column;         
+  justify-content: space-around;  
+  align-items: center;
+}
+
+
+.right-side {
+  width: 85%;
+  background-color: #FFFFEE;
+  
+  display: flex;
+  flex-direction: column;         
+  justify-content: space-around;  
+  align-items: center;
+}
+        
+    </style>
 </head>
 <body>
-	<table border="1">
-		<tr>
-			<th id = lable colspan="5">延滞者一覧</th>
-		</tr>
-		<tr>
-			<th>会員ID</th>
-			<th>資料ID</th>
-			<th>資料名</th>
-			<th>返却日</th>
-			<th>延滞日数</th>
-		</tr>
-		<tr>
-			<td><input type="text" size="5" placeholder="会員ID"></td>
-			<td><input type="text" size="5" placeholder="資料ID"></td>
-			<td><input type="text" size="5" placeholder="資料名"></td>
-			<td><input type="text" size="5" placeholder="返却日"></td>
-			<td><input type="text" size="30" placeholder="延滞日数(赤い文字、古い順で)"></td>
-		</tr>
 
-		<tr>
-			<td><input type="text" size="5"></td>
-			<td><input type="text" size="5"></td>
-			<td><input type="text" size="5"></td>
-			<td><input type="text" size="5"></td>
-			<td><input type="text" size="30"></td>
-		</tr>
-	</table>
+<div class="container">
+  <div class="left-side"><jsp:include page="menu.jsp" /></div>
+  <div class="right-side"><jsp:include page="top1.jsp" /></div>
+</div>
+
 </body>
 </html>
