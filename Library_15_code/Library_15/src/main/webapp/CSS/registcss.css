@@ -52,6 +52,7 @@ table td {
 	color: darkolivegreen;
 	text-decoration: none;
 	background-color: rgb(215, 235, 171);
+/*	background-color: darkolivegreen;*/
 	border-radius: 0.4em;
 	padding: 0.5em 1em;
 	transition: 0.5s;
@@ -84,6 +85,7 @@ table td {
 }
 
 .btn-hover-20:hover {
-	background-color: rgb(215, 235, 171);
-	color: darkolivegreen;
+/*	background-color: darkolivegreen;*/
+	background-color: olivedrab;
+	color: #FFFFEE;
 }
