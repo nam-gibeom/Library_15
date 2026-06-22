@@ -12,7 +12,7 @@
 	href="${pageContext.request.contextPath}/CSS/registcss.css">
 </head>
 <body>
-<form action ="/Library_15/MemberServlet" method="post">
+<form id="form" action ="/Library_15/MemberServlet" method="post">
 <table border="1" >
             <tr><th id = lable colspan="2">会員登録申請</th></tr>
           
@@ -23,9 +23,26 @@
 <tr><td id = lable>生年月日</td><td text-align=center><input type="text" size="4"name="birthy" id="ymd">年<input type="text" size="1" name="birthm" id="ymd">月<input type="text" size="1" name="birthd" id="ymd">日</td></tr>
  </table>
 
- <input type="hidden" name="action" value="regist">
-	<button class=btn-hover-20>登録</button>
+ <input type="hidden" id="actionname" name="action" value="">
+<button type="button" class=btn-hover-20 onclick="popapp()">登録</button>
+
 	</form>
+
+	<script>
+        function popapp() {
+            // confirm()trueかfalse
+            let result = confirm("このデータで登録してもよろしいですか？");
+            
+            if (result) {
+                alert("登録が完了しました");
+
+                document.getElementById("actionname").value = "regist";
+                document.getElementById("form").submit();
+            } else {
+                //alert("戻る");
+            }
+        }
+    </script>
 </body>
 
 </html>
