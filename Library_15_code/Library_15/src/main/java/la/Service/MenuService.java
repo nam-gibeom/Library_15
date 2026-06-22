@@ -26,7 +26,6 @@ public class MenuService {
 			
 			
 		}else {
-			System.out.println("パスワードが一致しません");
 			return "";
 			
 		}

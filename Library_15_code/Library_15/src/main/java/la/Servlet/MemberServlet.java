@@ -40,6 +40,7 @@ public class MemberServlet extends HttpServlet {
 		MemberService service = new MemberService();
 		MemberBean bean = service.SearchAndMove(member_id);
 		request.setAttribute("info", bean);
+		request.setAttribute("show", true);
 		gotoPage(request, response,"/memberUpdate.jsp" );
 			
 		}else if(action.equals("searchcancel")) {
