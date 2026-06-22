@@ -17,13 +17,18 @@
 
 </head>
 <body>
-	<table border="1">
+	<form action="/Library_15/BookServlet" method="post">
+		<table border="1">
 		<tr>
 			<td>会員ID</td>
-			<td><input type="text"></td>
-			<td><button>検索</button></td>
+			<td><input type="text" name="member_id"></td>
+			<td><button name="action" value="rentsearch">検索</button>
+			</td>
 		</tr>
 	</table>
+	
+	</form>
+
 	<br>
 	<br>
 
