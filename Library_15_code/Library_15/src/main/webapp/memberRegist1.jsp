@@ -13,7 +13,7 @@
 </head>
 <body>
 <form action ="/Library_15/MemberServlet" method="post">
-<table border="1">
+<table border="1" >
             <tr><th id = lable colspan="2">会員登録申請</th></tr>
           
 <tr><td id = lable>氏名</td><td ><input type="text" name="name" id="max" ></td></tr>
@@ -21,7 +21,7 @@
 <tr><td id = lable>電話番号</td><td ><input type="text" name="tel" id="max"></td></tr>
 <tr><td id = lable>E-mail</td><td ><input type="text" name="mail" id="max"></td></tr>
  <div class="wrap"> 
-<tr><td id = lable>生年月日</td><td><input type="text" size="4"name="birthy"><span>年</span><input type="text" size="1" name="birthm"><span>月</span><input type="text" size="1" name="birthd"><span>日</span></td></tr>
+<tr><td id = lable>生年月日</td><td><input type="text" size="4"name="birthy" id="ymd"><span>年</span><input type="text" size="1" name="birthm" id="ymd"><span>月</span><input type="text" size="1" name="birthd" id="ymd"><span>日</span></td></tr>
  </table>
 
  <input type="hidden" name="action" value="regist">
