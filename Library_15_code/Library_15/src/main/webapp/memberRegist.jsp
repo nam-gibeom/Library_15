@@ -1,27 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-  
-  
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Member Regist</title>
+    <title>メイン画面</title>
+    <style>
+    
+ body {
+  height: 100%;
+  margin: 0; 
+}
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+.left-side {
+  width: 15%;
+  background-color: #E6FFE9;
+  
+  display: flex; /*flexbox*/
+  flex-direction: column;         
+  justify-content: space-around;  
+  align-items: center;
+}
+
+
+.right-side {
+  width: 85%;
+  background-color: #FFFFEE;
+  
+  display: flex;
+  flex-direction: column;         
+  justify-content: space-around;  
+  align-items: center;
+}
+        
+    </style>
 </head>
 <body>
-<form action ="/Library_15/MemberServlet" method="post">
-<table border="1">
-            <tr><th colspan="2">会員登録申請</th></tr>
-<!--<tr><td>申請日</td><td><input type="text" size="4" >年<input type="text" size="1">月<input type="text" size="1">日</td></tr>-->
-<tr><td>氏名</td><td><input type="text" name="name"></td></tr>
-<tr><td>住所</td><td><input type="text" name="address"></td></tr>
-<tr><td>電話番号</td><td><input type="text" name="tel"></td></tr>
-<tr><td>E-mail</td><td><input type="text" name="mail"></td></tr>
-<tr><td>生年月日</td><td><input type="text" size="4"name="birthy">年<input type="text" size="1" name="birthm">月<input type="text" size="1" name="birthd">日</td></tr>
- </table>
- <input type="hidden" name="action" value="regist">
-	<button>登録</button>
-</body>
 
+<div class="container">
+  <div class="left-side"><jsp:include page="menu.jsp" /></div>
+  <div class="right-side"><jsp:include page="memberRegist1.jsp" /></div>
+</div>
+
+</body>
 </html>

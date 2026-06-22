@@ -48,7 +48,7 @@ public class MenuServlet extends HttpServlet {
                 
                 if(!name.equals("")) {
                 	request.setAttribute("names", name);
-                	gotoPage(request, response, "/menu.jsp");
+                	gotoPage(request, response, "/top.jsp");
                 	
                 }else {
                 	request.setAttribute("message", "ログインできませんでした。");

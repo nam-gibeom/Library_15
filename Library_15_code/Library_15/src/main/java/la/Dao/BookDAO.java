@@ -318,13 +318,12 @@ public class BookDAO {
     public void updateStockListDiscard(int book_id,String discard_date,String remarks) throws DAOException {
         // SQL文の作成
         String sql = "update stocklist set discard_date = ?, remarks = ? where book_id = ?";
-		
         try (// データベースへの接続
              Connection con = DriverManager.getConnection(url, user, pass);
 			 // PreparedStatementオブジェクトの取得
 			 PreparedStatement st = con.prepareStatement(sql);){
 			 // SQLの実行
-        		st.setString(1, discard_date);
+        		st.setDate(1, Date.valueOf(discard_date));
         		st.setString(2, remarks);
         		st.setInt(3, book_id);
         		
