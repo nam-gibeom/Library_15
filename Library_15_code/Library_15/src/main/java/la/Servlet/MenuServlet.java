@@ -1,6 +1,7 @@
 package la.Servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.Bean.OverdueBean;
+import la.Dao.DAOException;
+import la.Service.BookService;
 import la.Service.MenuService;
 import la.Service.ServiceException;
 
@@ -44,10 +48,13 @@ public class MenuServlet extends HttpServlet {
 				String pass = request.getParameter("password");
             
                 MenuService service = new MenuService();
+                BookService service1 = new BookService();
                 String name = service.Login(id,pass);
                 
                 if(!name.equals("")) {
                 	request.setAttribute("names", name);
+                	List<OverdueBean> result_list = service1.searchOverdueBooks(request);
+    	        	request.setAttribute("overdues", result_list);
                 	gotoPage(request, response, "/top.jsp");
                 	
                 }else {
@@ -86,7 +93,9 @@ public class MenuServlet extends HttpServlet {
 				gotoPage(request, response, "/bookRr.jsp");
 			
 			}else if (action.equals("delay")) {
-				
+				BookService service1 = new BookService();
+				List<OverdueBean> result_list = service1.searchOverdueBooks(request);
+	        	request.setAttribute("overdues", result_list);
 				gotoPage(request, response, "/top.jsp");
 			
 			}else if (action.equals("addSearch")) {
@@ -100,7 +109,7 @@ public class MenuServlet extends HttpServlet {
 			}
                 
                 
-        } catch (ServiceException e) {
+        } catch (ServiceException | DAOException e) {
             e.printStackTrace();
             request.setAttribute("message", "内部エラーが発生しました。");
         }
