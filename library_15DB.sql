@@ -207,8 +207,12 @@ INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784409
 INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
 INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
 INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
-INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
-INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784416718025',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784150503321',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784150503321',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784150503321',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784150503338',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784150503338',DATE '20260617',null,null);
+INSERT INTO stocklist(isbn,arrival_date, discard_date, remarks) VALUES( '9784150503338',DATE '20260617',null,null);
 
 
 
