@@ -6,14 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/CSS/menuCSS.css">
+	href="${pageContext.request.contextPath}/CSS/titleCSS.css">
 </head>
 <body>
 	<div class="top">
 		<div class="logo">
-			<img class=left src="logo.jpeg" alt="やろうロゴ">
+			<img   src="logo.jpeg" alt="やろうロゴ">
 		</div>
-		<h2 class=right>新宿図書館</h2>
-		
+		<h2 >新宿図書館</h2>
+		</div>
 </body>
 </html>
