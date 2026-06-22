@@ -2,6 +2,11 @@
 	background-color: rgb(215, 235, 171);
 	color: darkolivegreen;
 	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
 
 
 }
@@ -37,6 +42,7 @@
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	 box-sizing: border-box;
+/*	 margin: -5em 0em 0em 0em;*/
 	
 
 
@@ -92,7 +98,7 @@
 	    text-decoration: none;
 	    transition: all 0.3s ease;
 	    z-index: 1;
-	    border-radius: 5px;
+	  
 	    border: none; /* 칸 테두리와 겹치지 않게 */
 	    background-color: #fff; /* 칸 배경색과 맞추기 */
 	    color: #6b8e23; /* 텍스트 색상 */
