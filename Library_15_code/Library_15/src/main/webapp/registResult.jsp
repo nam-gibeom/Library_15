@@ -1,21 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Regist Result</title>
+    <title>メイン画面</title>
+    <style>
+    
+ body {
+  height: 100%;
+  margin: 0; 
+}
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+.left-side {
+  width: 15%;
+  background-color: #E6FFE9;
+  
+  display: flex; /*flexbox*/
+  flex-direction: column;         
+  justify-content: space-around;  
+  align-items: center;
+}
+
+
+.right-side {
+  width: 85%;
+  background-color: #FFFFEE;
+  
+  display: flex;
+  flex-direction: column;         
+  justify-content: space-around;  
+  align-items: center;
+}
+        
+    </style>
 </head>
 <body>
-<h1>会員登録完了しました。</h1>
 
- 会員ID<input type="text" value= ${info.member_id }><br>
- 会員名<input type="text" value= ${info.member_name }><br>
- <form action ="/Library_15/MemberServlet" method="post">
- <input type="hidden" name="action" value="confirm">
-<button>OK</button>
-</form>
+<div class="container">
+  <div class="left-side"><jsp:include page="menu.jsp" /></div>
+  <div class="right-side"><jsp:include page="registResult1.jsp" /></div>
+</div>
+
 </body>
 </html>
