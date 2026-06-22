@@ -25,7 +25,7 @@
  </table>
 
  <input type="hidden" name="action" value="regist">
-	<button>登録</button>
+	<button class=btn-hover-20>登録</button>
 	</form>
 </body>
 
