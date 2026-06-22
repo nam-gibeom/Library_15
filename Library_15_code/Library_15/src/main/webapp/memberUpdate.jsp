@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Member Update</title>
+
 </head>
 <body>
  <form action ="/Library_15/MemberServlet" method="post">
@@ -16,12 +17,12 @@
         <button>検索</button></td></tr>
          </table>
 </form>
-         <br><br>
+         
          
         
 <form action ="/Library_15/MemberServlet" method="post">
 <table border="1">
-	<tr><th colspan="2">会員情報</th></tr>
+	<tr><th id = lable colspan="2">会員情報</th></tr>
 	<tr><td>氏名</td><td><input type="text"name="name"value=${info.member_name }></td></tr>
 	<tr><td>住所</td><td><input type="text"name="address" value=${info.member_address } ></td></tr>
 	<tr><td>電話番号</td><td><input type="text" name="tel" value=${info.member_tel }></td></tr>
