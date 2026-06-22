@@ -41,7 +41,7 @@ display: flex;
     </style>
 </head>
 <body>
-
+<jsp:include page="title.jsp"/>
 <div class="container">
   <div class="left-side"><jsp:include page="menu.jsp" /></div>
   <div class="right-side"><jsp:include page="memberCancel1.jsp" /></div>

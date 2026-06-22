@@ -79,11 +79,11 @@ table td {
 
 .btn-hover-20 {
 	border: 1px solid olivedrab;
-	background-color: #fff;
+	background-color: lightgray;
 	color: olivedrab;
 }
 
-.btn-hover-20:hover {
-	background-color: rgb(215, 235, 171);
-	color: darkolivegreen;
-}
+/*.btn-hover-20:hover {*/
+/*	background-color: #fff;*/
+/*	color: darkolivegreen;*/
+/*}*/

@@ -10,7 +10,7 @@
 	href="${pageContext.request.contextPath}/CSS/menuCSS.css">
 
 </head>
-<body>
+<body height=100vh>
 
 <!--	<div class="top">-->
 <!--		<div class="logo">-->
@@ -60,7 +60,7 @@
 
 	<form action="/Library_15/MenuServlet" method="post">
 		<input type="hidden" name="action" value="logout">
-		<button>ログアウト</button>
+		<button id=logout>ログアウト</button>
 	</form>
 </div>
 
