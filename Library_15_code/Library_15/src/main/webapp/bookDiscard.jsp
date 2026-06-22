@@ -39,7 +39,7 @@
 	<input type="radio" name="reason">その他
 	<input type="text">
 	<br> 廃棄年月日：
-	<input type="text" placeholder="default=今日の日付">
+	<input type="text" value = "${current_date}">
 	<br>
 	<button>廃棄</button>
 </body>
