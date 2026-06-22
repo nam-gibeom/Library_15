@@ -19,7 +19,7 @@
 	height: 400px;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
-	
+	margin: 3em 0em 0em 0em;
 
 
 }
@@ -42,7 +42,7 @@
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	 box-sizing: border-box;
-/*	 margin: -5em 0em 0em 0em;*/
+	 margin: 3em 0em 0em 0em;
 	
 
 
