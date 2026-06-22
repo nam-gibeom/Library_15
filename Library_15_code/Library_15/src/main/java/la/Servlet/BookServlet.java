@@ -36,7 +36,7 @@ public class BookServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		try {
 	        BookService service = new BookService();
-	        if (action==null || action.equals("") || action.equals("overdue")){
+	        if (action==null || action.equals("")){
 	        	List<OverdueBean> result_list = service.searchOverdueBooks(request);
 	        	request.setAttribute("overdues", result_list);
 				gotoPage(request, response, "/top.jsp");

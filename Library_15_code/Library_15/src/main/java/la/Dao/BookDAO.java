@@ -151,7 +151,7 @@ public class BookDAO {
 	}
 	
 	public List<OverdueBean> getRemarksAsOverdue() throws DAOException {
-		String sql = "select * from rentlist where remarks = '延滞'";
+		String sql = "select r.member_id, r.book_id, r.return_deadline, c.title, (current_date - return_deadline) as 延滞日数 from rentlist r join stocklist s on r.book_id = s.book_id join cataloglist c on s.isbn = c.isbn where r.remarks = '延滞' order by 延滞日数 desc";
 		try (Connection con = DriverManager.getConnection(url, user, pass);
 				PreparedStatement st = con.prepareStatement(sql);
 				ResultSet rs = st.executeQuery()) {
@@ -161,7 +161,9 @@ public class BookDAO {
 				int member_id = rs.getInt("member_id");
 				int book_id = rs.getInt("book_id");
 				String return_deadline = rs.getString("return_deadline");
-				OverdueBean bean = new OverdueBean(member_id, book_id, return_deadline);
+				String title = rs.getString("title");
+				String overdue_date = rs.getString("延滞日数");
+				OverdueBean bean = new OverdueBean(member_id, book_id, title, return_deadline, overdue_date);
 				list.add(bean);
 				
 			}

@@ -83,17 +83,21 @@ public class BookService {
 			 dao.updateRemarksDelay();
 			 List<OverdueBean> overdue_list = dao.getRemarksAsOverdue();
 			 
-			 List<String> email_list = new ArrayList<String>();
 			 
+			 
+			 request.setAttribute("finalEditDate", current_date);
+			 // メール
+			 List<String> email_list = new ArrayList<String>();
 			 for (OverdueBean bean : overdue_list) { // 延滞になった人の
 				 int member_id = bean.getMember_id();
 				 MemberDAO memberdao = new MemberDAO();
 				 String mail_address = memberdao.findAll(member_id).getMember_mail();
 				 email_list.add(mail_address);
 			 }
-			 
 			 Set<String> unique_mail_list = new HashSet<String>(email_list); // 重複削除
 			 email_list = new ArrayList<String>(unique_mail_list); // またリストに戻す
+			 
+			 
 			 return overdue_list;
 		 } else {
 			 throw new DAOException("失敗");	 

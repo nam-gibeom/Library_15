@@ -24,16 +24,18 @@
 			<th>返却日</th>
 			<th>延滞日数</th>
 		</tr>
-		<tr>
+
 		<c:forEach items="${overdues }" var="overdue">
+			<tr>
 			<td>${overdue.member_id }</td>
 			<td>${overdue.book_id }</td>
 			<td>${overdue.title }</td>
 			<td>${overdue.return_deadline }</td>
 			<td>${overdue.overdue_date }</td>
+			</tr>
 		</c:forEach>
 			
-		</tr>
+
 	</table>
 </body>
 </html>
