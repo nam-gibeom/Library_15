@@ -72,7 +72,7 @@ public class BookService {
 		return bean;
 	}
 	
-	public void searchOverdueBooks(HttpServletRequest request) throws DAOException {
+	public List<OverdueBean> searchOverdueBooks(HttpServletRequest request) throws DAOException {
 		 if (request.getAttribute("finalEditDate") == null) { // 最終更新日がない場合、登録
 				request.setAttribute("finalEditDate", "2026-06-19");
 		 }
@@ -94,8 +94,10 @@ public class BookService {
 			 
 			 Set<String> unique_mail_list = new HashSet<String>(email_list); // 重複削除
 			 email_list = new ArrayList<String>(unique_mail_list); // またリストに戻す
-			
-		 } 	 
+			 return overdue_list;
+		 } else {
+			 throw new DAOException("失敗");	 
+		 }
 	}
 	
 	

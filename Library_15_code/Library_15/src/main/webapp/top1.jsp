@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,19 +25,14 @@
 			<th>延滞日数</th>
 		</tr>
 		<tr>
-			<td><input type="text" size="5" placeholder="会員ID"></td>
-			<td><input type="text" size="5" placeholder="資料ID"></td>
-			<td><input type="text" size="5" placeholder="資料名"></td>
-			<td><input type="text" size="5" placeholder="返却日"></td>
-			<td><input type="text" size="30" placeholder="延滞日数(赤い文字、古い順で)"></td>
-		</tr>
-
-		<tr>
-			<td><input type="text" size="5"></td>
-			<td><input type="text" size="5"></td>
-			<td><input type="text" size="5"></td>
-			<td><input type="text" size="5"></td>
-			<td><input type="text" size="30"></td>
+		<c:forEach items="${overdues }" var="overdue">
+			<td>${overdue.member_id }</td>
+			<td>${overdue.book_id }</td>
+			<td>${overdue.title }</td>
+			<td>${overdue.return_deadline }</td>
+			<td>${overdue.overdue_date }</td>
+		</c:forEach>
+			
 		</tr>
 	</table>
 </body>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +12,21 @@
 	<h1>貸出確認</h1>
 	<table border="1">
 		<tr>
-			<td><input type="text" size="5" placeholder="資料ID"></td>
-			<td><input type="text" size="5" placeholder="タイトル"></td>
-			<td><input type="text" size="5" placeholder="返却期日"></td>
+			<td>資料ID</td>
+			<td>資料名</td>
+			<td>返却期日</td>
 		</tr>
+		<c:forEach items="${rent_result }" var="result">
+		<tr>
+			<td>${result.book_id }</td>
+			<td>${result.title }</td>
+			<td>${result.return_deadline }</td>
+		</tr>
+		</c:forEach>
+		
 	</table>
-	<button>貸出確定</button>
+	<form action="/Library_15/BookServlet" method="post">
+		<button name="action" value="rentconfirm">貸出確定</button>
+	</form>
 </body>
 </html>

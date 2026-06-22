@@ -1,6 +1,7 @@
 package la.Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.Bean.OverdueBean;
+import la.Bean.RentInfoBean;
 import la.Bean.SearchBean;
 import la.Bean.catalogListBean;
 import la.Dao.DAOException;
@@ -33,7 +36,12 @@ public class BookServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		try {
 	        BookService service = new BookService();
-			if (action.equals("booksearch")) {
+	        if (action==null || action.equals("") || action.equals("overdue")){
+	        	List<OverdueBean> result_list = service.searchOverdueBooks(request);
+	        	request.setAttribute("overdues", result_list);
+				gotoPage(request, response, "/top.jsp");
+				
+	        } else if (action.equals("booksearch")) {
 				
 				String type = request.getParameter("type");
 				String value = request.getParameter("value");
@@ -71,7 +79,50 @@ public class BookServlet extends HttpServlet {
 				service.addCatalog(isbn, title, category_name, author, publisher, publish_date);
 				service.addStock(isbn);
 				gotoPage(request, response, "/bookAdd.jsp");
+			
+			} else if (action.equals("rentsearch")) {
+				int member_id = Integer.parseInt(request.getParameter("member_id"));
+				List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
+				request.setAttribute("member_id", member_id);
+				request.setAttribute("rent_list", Result_list);
+				request.setAttribute("show", true);
+				gotoPage(request, response, "/bookRr.jsp");
+				
+			} else if (action.equals("return")) {
+				int book_id = Integer.parseInt(request.getParameter("book_id"));
+				int member_id = Integer.parseInt(request.getParameter("member_id"));
+				service.returnBook(member_id, book_id);
+				
+				List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
+				request.setAttribute("member_id", member_id);
+				request.setAttribute("rent_list", Result_list);
+				request.setAttribute("show", true);
+				gotoPage(request, response, "/bookRr.jsp");
+				
+			} else if (action.equals("rent")) {
+				List<Integer> book_id_list = new ArrayList<Integer>();
+				
+				int member_id = Integer.parseInt(request.getParameter("member_id"));
+				for (int i = 1; i < 6; i++) {
+					try {
+						book_id_list.add(Integer.parseInt(request.getParameter("book_id" + i)));
+					} catch (Exception e) {
+						break;
+					}	
+				}
+				
+				List<RentInfoBean> result_list =  service.rentBooksById(member_id, book_id_list);
+				request.setAttribute("rent_result", result_list);
+				gotoPage(request, response, "/bookConfirm.jsp");
+				
+					
+			} else if (action.equals("rentconfirm")) {
+				gotoPage(request, response, "/bookRr.jsp");
+				
 			}
+				
+				
+			
 			
 
 		} catch (DAOException e) {

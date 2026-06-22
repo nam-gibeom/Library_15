@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,134 +24,49 @@
 		<table border="1">
 		<tr>
 			<td>会員ID</td>
-			<td><input type="text" name="member_id"></td>
+			<td><input type="text" name="member_id" value="${member_id }"></td>
 			<td><button name="action" value="rentsearch">検索</button>
 			</td>
 		</tr>
 	</table>
-	
 	</form>
-
-	<br>
-	<br>
-
-
+	
+	<c:if test="${show }">
 	<h2>返却</h2>
 	<table border="1">
-		<tr>
-			<td><input type="text" placeholder="資料ID"></td>
-			<td><input type="text" placeholder="タイトル"></td>
-			<td><button onclick="showRow('row6')">返却</button></td>
+	<tr><th>資料ID</th><th>資料名</th><th>返却</th></tr>
+
+	<c:forEach items="${rent_list }" var="rent">
+		<tr><td>${rent.book_id }</td>
+		<td>${rent.title }</td>
+		<td>
+		<form action="/Library_15/BookServlet">
+		<input type="hidden" name="book_id" value="${rent.book_id }">
+		<input type="hidden" name="member_id" value="${member_id }">
+		<button name="action" value="return">返却</button>
+		</form>
 		</tr>
+	</c:forEach>
+	</tr>
 	</table>
-
-
-	<div id="row2" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-				<td><input type="text" placeholder="タイトル"></td>
-				<td><button onclick="showRow('row7')">返却</button></td>
-			</tr>
-		</table>
-
-	</div>
-
-	<div id="row3" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-				<td><input type="text" placeholder="タイトル"></td>
-				<td><button onclick="showRow('row8')">返却</button></td>
-			</tr>
-		</table>
-	</div>
-
-	<div id="row4" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-				<td><input type="text" placeholder="タイトル"></td>
-				<td><button onclick="showRow('row9')">返却</button></td>
-			</tr>
-		</table>
-	</div>
-
-	<div id="row5" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-				<td><input type="text" placeholder="タイトル"></td>
-				<td><button onclick="showRow('row10')">返却</button></td>
-			</tr>
-		</table>
-	</div>
-	<br>
-
-	<hr>
+	
 
 	<h2>貸出</h2>
-	<div id="row6" class="hidden" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-			</tr>
-		</table>
-	</div>
-
-	<div id="row7" class="hidden" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-			</tr>
-		</table>
-	</div>
-
-	<div id="row8" class="hidden" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-			</tr>
-		</table>
-	</div>
-
-	<div id="row9" class="hidden" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-			</tr>
-		</table>
-	</div>
-
-	<div id="row10" class="hidden" class="input-row">
-		<table border="1">
-			<tr>
-				<td><input type="text" placeholder="資料ID"></td>
-			</tr>
-		</table>
-	</div>
-	<br>
-	<button>次へ</button>
+	<form action="/Library_15/BookServlet" method="post">
+	<table >
+	<tr><th>資料ID</th></tr>
+	<c:forEach begin="1" end="${5 - fn:length(rent_list)}" var="i">
+		<tr><th><input type="text" name="book_id${i }"></th></tr>
+	</c:forEach>
+	</table>
+	<input type="hidden" name="member_id" value="${member_id }">
+	<button name="action" value="rent">貸出</button>
+	</form>
+	</c:if>
+	
+	
 
 
-
-
-
-	<script>
-		// 指定行を非表示
-		function hideRow(id) {
-			const row = document.getElementById(id);
-			if (row)
-				row.classList.add('hidden');
-		}
-
-		// 指定行を表示
-		function showRow(id) {
-			const row = document.getElementById(id);
-			if (row)
-				row.classList.remove('hidden');
-		}
-	</script>
 
 </body>
 </html>
