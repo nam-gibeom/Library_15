@@ -42,19 +42,19 @@
 			<h3 class = book>資料</h3>
 		</dt>
 		<dd>
-			<a href="/Library_15/MenuServlet?action=search">検索</a>
+			<a href="/Library_15/MenuServlet?action=bookSearch">検索</a>
 		</dd>
 		<dd>
-			<a href="/Library_15/MenuServlet?action=rent">貸出・返却</a>
+			<a href="/Library_15/MenuServlet?action=rentSearch">貸出・返却</a>
 		</dd>
 		<dd>
-			<a href="/Library_15/MenuServlet?action=login">延滞状況</a>
+			<a href="/Library_15/MenuServlet?action=delay">延滞状況</a>
 		</dd>
 		<dd>
-			<a href="/Library_15/MenuServlet?action=add">登録</a>
+			<a href="/Library_15/MenuServlet?action=addSearch">登録</a>
 		</dd>
 		<dd>
-			<a href="/Library_15/MenuServlet?action=discard">紛失・廃棄</a>
+			<a href="/Library_15/MenuServlet?action=discardSearch">紛失・廃棄</a>
 		</dd>
 	</dl>
 

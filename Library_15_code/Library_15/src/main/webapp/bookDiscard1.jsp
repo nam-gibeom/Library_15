@@ -24,6 +24,8 @@
 			<th>ISBN番号</th>
 			<th>資料名</th>
 			<th>入荷年月日</th>
+			<th>廃棄年月日</th>
+			<th>備考</th>
 		</tr>
      
 		<tr>
@@ -31,6 +33,8 @@
 		    <td>${result.isbn}</td>
 		    <td>${result.title}</td>
 		    <td>${result.arrival_date}</td>
+		    <td>${result.discard_date}</td>
+		    <td>${result.remarks}</td>
 		</tr>
 
 	</table>
@@ -40,7 +44,7 @@
 	<input type="hidden" name="book_id1" value="${result.book_id}">
 	<input type="radio" name="remarks" value="紛失">紛失
 	<input type="radio" name="remarks" value="老化">老化
-	<input type="radio" name="remarks" value="other">その他
+	<input type="radio" name="remarks" value="others">その他
 	<input type="text" name="other" >
 	<br> 廃棄年月日：
 	<input type="text" name="discard_date" value = "${current_date}">
