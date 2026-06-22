@@ -5,35 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>enntaishaitirann layout</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/CSS/topCSS.css">
 
-<style type="text/css">
-table {
-  width: 80%;
-  height: 80%;         
-  table-layout: fixed;   
-  border-collapse: collapse; 
-}
 
-th, 
-td {
-  width: 16%;
-  vertical-align: middle;           
-  word-break: break-all; 
-  padding: 0;
-}
-td input {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
- 
-  border: none;       
-  outline: none;
-}
-#lable{
-	background-color:olivedrab;
-}
-
-</style>
 </head>
 <body>
 	<table border="1">
