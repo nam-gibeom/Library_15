@@ -14,25 +14,12 @@ table th, table td {
    padding: 0; 
   /*実線 1px 黒*/
   }
-  max {
-	width: 100%;              /* td の幅に合わせる */
-	   box-sizing: border-box;   /* padding や border を含めて100%にする */          /* td の枠と二重線にならないように */
-	   padding: 4px;             /* 好みで調整 */
-	   height: 100%;      
-	   }
-	   
-	   .wrap {
-	     display: flex;
-	     width: 100%;
-	     align-items: center;
-	   }
-	   .wrap input[type="text"] {
-	     flex: 1;
-	     box-sizing: border-box;
-	     border: none;
-	     padding: 4px;
-	   }
-	   .wrap span {
-	     padding: 0 4px;
-	     white-space: nowrap;
-	   }
+  
+  td input{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+   
+    border: none;       
+    outline: none;
+  }
