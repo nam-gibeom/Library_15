@@ -31,7 +31,9 @@
 	</table>
 	</form>
 	
-	<c:if test="${show }">
+	
+	<c:if test="${show}">
+	<c:if test="${fn:length(rent_list) > 1 }">
 	<h2>返却</h2>
 	<table border="1">
 	<tr><th>資料ID</th><th>資料名</th><th>返却</th></tr>
@@ -49,6 +51,7 @@
 	</c:forEach>
 	</tr>
 	</table>
+	</c:if>
 	
 
 	<h2>貸出</h2>
