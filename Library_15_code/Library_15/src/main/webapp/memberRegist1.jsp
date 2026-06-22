@@ -23,9 +23,9 @@
  <div class="wrap"> 
 <tr><td id = lable>生年月日</td><td><input type="text" size="4"name="birthy"><span>年</span><input type="text" size="1" name="birthm"><span>月</span><input type="text" size="1" name="birthd"><span>日</span></td></tr>
  </table>
- </div>
+
  <input type="hidden" name="action" value="regist">
-	<button>登録</button>
+	<button class=btn-hover-20>登録</button>
 	</form>
 </body>
 

@@ -60,7 +60,7 @@
 
 	<form action="/Library_15/MenuServlet" method="post">
 		<input type="hidden" name="action" value="logout">
-		<button>ログアウト</button>
+		<button id=logout>ログアウト</button>
 	</form>
 </div>
 

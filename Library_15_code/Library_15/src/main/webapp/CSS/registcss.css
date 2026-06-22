@@ -23,3 +23,42 @@ table th, table td {
     border: none;       
     outline: none;
   }
+  .btn {
+    display: inline-block;
+    color: darkolivegreen;
+    text-decoration: none;
+    background-color: rgb(215, 235, 171);
+    border-radius: 0.4em;
+    padding: 0.5em 1em;
+    transition: 0.5s;
+  }
+  .btn-hover-20 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100px;
+    margin: 0 auto 32px;
+    padding: .9em 2em;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 1;
+    border-radius: 5px;
+  }
+
+  .btn-hover-20 span {
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn-hover-20 {
+    border: 1px solid olivedrab;
+    background-color: #fff;
+    color: #0b5dae63;
+  }
+
+  .btn-hover-20:hover {
+    background-color: olivedrab;
+    color: #fff;
+  }
