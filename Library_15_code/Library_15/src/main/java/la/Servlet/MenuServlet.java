@@ -51,7 +51,7 @@ public class MenuServlet extends HttpServlet {
                 	gotoPage(request, response, "/top.jsp");
                 	
                 }else {
-                	request.setAttribute("message", "ログインできませんでした。");
+                	
                 	gotoPage(request, response, "/errInternal.jsp");
                 	
                 }
@@ -77,6 +77,26 @@ public class MenuServlet extends HttpServlet {
 				
 				gotoPage(request, response, "/login.jsp");
 				
+			}else if (action.equals("bookSearch")) {
+				
+				gotoPage(request, response, "/bookSearch.jsp");
+			
+			}else if (action.equals("rentSearch")) {
+				
+				gotoPage(request, response, "/bookRr.jsp");
+			
+			}else if (action.equals("delay")) {
+				
+				gotoPage(request, response, "/top.jsp");
+			
+			}else if (action.equals("addSearch")) {
+				
+				gotoPage(request, response, "/bookAdd.jsp");
+			
+			}else if (action.equals("discardSearch")) {
+				
+				gotoPage(request, response, "/bookDiscard.jsp");
+			
 			}
                 
                 
