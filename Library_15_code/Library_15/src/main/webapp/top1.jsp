@@ -21,7 +21,7 @@
 			<th>会員ID</th>
 			<th>資料ID</th>
 			<th>資料名</th>
-			<th>返却日</th>
+			<th>返却期日</th>
 			<th>延滞日数</th>
 		</tr>
 
