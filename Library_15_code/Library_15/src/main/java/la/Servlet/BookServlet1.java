@@ -38,12 +38,14 @@ public class BookServlet1 extends HttpServlet {
 		String action = request.getParameter("action");
 		try {
 	        BookService service = new BookService();
-			if (action.equals("discardsearch")) {
+			if (action.equals("searchDiscard")) {
 				
 				int book_id = Integer.parseInt(request.getParameter("book_id"));
 				
 				DiscardInfoBean result = service.searchDiscard(book_id);
 				request.setAttribute("result", result);
+				String current_date = service.getCurrentDate(); // 20260622
+				request.setAttribute("current_date", current_date);
 				gotoPage(request, response, "/bookDiscard.jsp");
 			}else if(action.equals("discard")) {
 				
@@ -53,7 +55,6 @@ public class BookServlet1 extends HttpServlet {
 				
 				service.discardBook(book_id,discard_date,remarks);
 				gotoPage(request, response, "/bookDiscard.jsp");
-				
 			}
 			
 
