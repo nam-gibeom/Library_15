@@ -32,10 +32,11 @@ public class BookServlet1 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		String action = request.getParameter("action");
+		
 		try {
 	        BookService service = new BookService();
 			if (action.equals("searchDiscard")) {
@@ -49,10 +50,10 @@ public class BookServlet1 extends HttpServlet {
 				gotoPage(request, response, "/bookDiscard.jsp");
 			}else if(action.equals("discard")) {
 				
-				int book_id = Integer.parseInt(request.getParameter("book_id"));
+				int book_id = Integer.parseInt(request.getParameter("book_id1"));
 				String discard_date = request.getParameter("discard_date");
 				String remarks = request.getParameter("remarks");
-				
+				System.out.println();
 				service.discardBook(book_id,discard_date,remarks);
 				gotoPage(request, response, "/bookDiscard.jsp");
 			}
