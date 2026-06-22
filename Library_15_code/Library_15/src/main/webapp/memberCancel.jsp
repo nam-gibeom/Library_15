@@ -32,7 +32,7 @@
   width: 85%;
   background-color: #FFFFEE;
   
-  display: flex;
+display: flex;
   flex-direction: column;         
   justify-content: space-around;  
   align-items: center;

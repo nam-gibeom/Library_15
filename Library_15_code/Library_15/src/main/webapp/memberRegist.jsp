@@ -6,10 +6,6 @@
     <title>メイン画面</title>
     <style>
     
- body {
-  height: 100%;
-  margin: 0; 
-}
 .container {
   display: flex;
   width: 100%;
@@ -41,6 +37,8 @@
     </style>
 </head>
 <body>
+
+<jsp:include page="title.jsp"/>
 
 <div class="container">
   <div class="left-side"><jsp:include page="menu.jsp" /></div>

@@ -16,12 +16,11 @@
 <table border="1" >
             <tr><th id = lable colspan="2">会員登録申請</th></tr>
           
-<tr><td id = lable>氏名</td><td ><input type="text" name="name" id="max" ></td></tr>
-<tr><td id = lable>住所</td><td ><input type="text" name="address" id="max"></td></tr>
-<tr><td id = lable>電話番号</td><td ><input type="text" name="tel" id="max"></td></tr>
-<tr><td id = lable>E-mail</td><td ><input type="text" name="mail" id="max"></td></tr>
- <div class="wrap"> 
-<tr><td id = lable>生年月日</td><td><input type="text" size="4"name="birthy" id="ymd"><span>年</span><input type="text" size="1" name="birthm" id="ymd"><span>月</span><input type="text" size="1" name="birthd" id="ymd"><span>日</span></td></tr>
+<tr><td id = lable >氏名</td><td ><input type="text" name="name" id="max" ></td></tr>
+<tr><td id = lable width="30%">住所</td><td ><input type="text" name="address" id="max"></td></tr>
+<tr><td id = lable width="30%">電話番号</td><td ><input type="text" name="tel" id="max"></td></tr>
+<tr><td id = lable width="30%">E-mail</td><td ><input type="text" name="mail" id="max"></td></tr>
+<tr><td id = lable>生年月日</td><td text-align=center><input type="text" size="4"name="birthy" id="ymd">年<input type="text" size="1" name="birthm" id="ymd">月<input type="text" size="1" name="birthd" id="ymd">日</td></tr>
  </table>
 
  <input type="hidden" name="action" value="regist">

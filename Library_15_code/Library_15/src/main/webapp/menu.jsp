@@ -12,13 +12,13 @@
 </head>
 <body>
 
-	<div class="top">
-		<div class="logo">
-			<img class=left src="logo.jpeg" alt="やろうロゴ">
-		</div>
-		<h2 class=right>新宿図書館</h2>
+<!--	<div class="top">-->
+<!--		<div class="logo">-->
+<!--			<img class=left src="logo.jpeg" alt="やろうロゴ">-->
+<!--		</div>-->
+<!--		<h2 class=right>新宿図書館</h2>-->
 
-	</div>
+<!--	</div>-->
 <div class = name>職員：${names}さんようこそ</div>
 	
 
