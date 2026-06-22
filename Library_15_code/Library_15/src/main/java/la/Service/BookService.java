@@ -59,12 +59,17 @@ public class BookService {
 	}
 	
 	public boolean isIsbnExist(String isbn) throws DAOException {
-		catalogListBean bean =  dao.getInfoByIsbn(isbn);
-		if (bean.getIsbn().equals("")) {
+		catalogListBean bean =  dao.getInfoByIsbn(isbn); // 目録内のISBNを検索
+		if (bean.getIsbn() == null) { // 存在しない場合、false
 			return false;
-		} else {
+		} else { // 存在する場合、True
 			return true;
 		}
+	}
+	
+	public catalogListBean getStockInfoByIsbn(String isbn) throws DAOException {
+		catalogListBean bean =  dao.getInfoByIsbn(isbn); // 目録内のISBNを検索
+		return bean;
 	}
 	
 	public void searchOverdueBooks(HttpServletRequest request) throws DAOException {
@@ -124,7 +129,7 @@ public class BookService {
 			canRentDay = CalculatePeriod(bean.getPublish_date(), current_date);
 			
 			String title = bean.getTitle();
-			String category_name = dao.getCategoryName(bean.getCategory_code());
+			String category_name = bean.getCategory_name();
 			String publish_date = bean.getPublish_date();
 			int count_book = dao.getBookIdByIsbn(bean.getIsbn()).size();
 			int count_rented_book = dao.getRentedBookCountByIsbn(bean.getIsbn());
@@ -163,10 +168,10 @@ public class BookService {
 	}
 	
 	//在庫台帳に追加する
-	public void addStock(String isbn,String arrival_date) {
+	public void addStock(String isbn) {
 		try {
-			
-			dao.addStockList(isbn,arrival_date);
+			String arrival_date = getCurrentDate();
+			dao.addStockList(isbn, arrival_date);
 			
 		} catch (DAOException e) {
 			// TODO 自動生成された catch ブロック
@@ -175,11 +180,12 @@ public class BookService {
 	}
 	
 	//資料目録に追加する
-	public void addCatalog (String isbn, String title, int category_code, String author, String publisher, String publish_date) {
+	public void addCatalog (String isbn, String title, String category_name, String author, String publisher, String publish_date) {
  
 		try {
-			
-			dao.addCatalogList(isbn,title,category_code,author,publisher,publish_date);
+			// 20260304
+			String publish_date1 = publish_date.substring(0, 4) + "-" + publish_date.substring(4, 6) + "-" +publish_date.substring(6, 8);
+			dao.addCatalogList(isbn,title,category_name,author,publisher,publish_date1);
 			
 		} catch (DAOException e) {
 			// TODO 自動生成された catch ブロック

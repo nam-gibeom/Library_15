@@ -52,11 +52,12 @@ public class BookDAO {
 				String isbn = rs.getString("isbn");
 				String title = rs.getString("title");
 				int category_code = rs.getInt("category_code");
+				String category_name = getCategoryName(category_code);
 				String author = rs.getString("author");
 				String publisher = rs.getString("publisher");
 				String publish_date = rs.getString("publish_date");
 
-				catalogListBean bean = new catalogListBean(isbn, title, category_code, author, publisher, publish_date);
+				catalogListBean bean = new catalogListBean(isbn, title, category_name, author, publisher, publish_date);
 				list.add(bean);
 			}
 			return list;
@@ -186,11 +187,12 @@ public class BookDAO {
 				String isbn = rs.getString("isbn");
 				String title = rs.getString("title");
 				int category_code = rs.getInt("category_code");
+				String category_name = getCategoryName(category_code);
 				String author = rs.getString("author");
 				String publisher = rs.getString("publisher");
 				String publish_date = rs.getString("publish_date");
 				
-				bean = new catalogListBean(book_id, isbn, title, category_code, author, publisher, publish_date);
+				bean = new catalogListBean(book_id, isbn, title, category_name, author, publisher, publish_date);
 			}
 			return bean;
 			
@@ -201,24 +203,25 @@ public class BookDAO {
 	}
 	
 	public catalogListBean getInfoByIsbn(String isbn) throws DAOException {
-		String sql = "select s.book_id, s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.id = ?";
+		String sql = "select s.book_id, s.isbn, c.title, c.category_code, c.author, c.publisher, c.publish_date from stocklist s join cataloglist c on s.isbn = c.isbn where s.isbn = ? limit 1";
 		try (Connection con = DriverManager.getConnection(url, user, pass);
 				PreparedStatement st = con.prepareStatement(sql);
 			) {
 			st.setString(1, isbn);	
 			ResultSet rs = st.executeQuery();
 			
-			catalogListBean bean =new catalogListBean();
+			catalogListBean bean = new catalogListBean();
 			
 			while (rs.next()) {
 				int book_id = rs.getInt("book_id");
 				String title = rs.getString("title");
 				int category_code = rs.getInt("category_code");
+				String category_name = getCategoryName(category_code);
 				String author = rs.getString("author");
 				String publisher = rs.getString("publisher");
 				String publish_date = rs.getString("publish_date");
 				
-				bean = new catalogListBean(book_id, isbn, title, category_code, author, publisher, publish_date);
+				bean = new catalogListBean(book_id, isbn, title, category_name, author, publisher, publish_date);
 				
 			}
 			return bean;
@@ -229,7 +232,7 @@ public class BookDAO {
 		} 
 	}
 	 //在庫台帳に追加するメソッド
-    public void addStockList(String isbn,String arrival_date) throws DAOException {
+    public void addStockList(String isbn, String arrival_date) throws DAOException {
         // SQL文の作成
         String sql = "INSERT INTO stocklist(isbn,arrival_date) VALUES(?, ?)";
 		
@@ -250,8 +253,9 @@ public class BookDAO {
     }
     
     //資料目録の追加するメソッド
-    public void addCatalogList(String isbn,String title,int category_code,String author,String publisher,String publish_date) throws DAOException {
+    public void addCatalogList(String isbn,String title, String category_name,String author,String publisher,String publish_date) throws DAOException {
         // SQL文の作成
+    	int category_code = getCategoryID(category_name); 
         String sql = "INSERT INTO cataloglist(isbn,title,category_code,author,publisher,publish_date) VALUES(?,?,?,?,?,?)";
 		
         try (// データベースへの接続
@@ -452,6 +456,29 @@ public class BookDAO {
            			category_name = rs.getString("category_name");
    				}
            		return category_name;
+           		
+           } catch (SQLException e) {
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		}
+    	
+    }
+    // クラス定義書に追加
+    public int getCategoryID(String category_name) throws DAOException {
+    	String sql = "select category_code from categorylist where category_name = ?";
+    	
+    	try (// データベースへの接続
+                Connection con = DriverManager.getConnection(url, user, pass);
+   			 // PreparedStatementオブジェクトの取得
+   			 PreparedStatement st = con.prepareStatement(sql);){
+   			 // SQLの実行
+           		st.setString(1, category_name);
+           		int category_code = 0;
+           		ResultSet rs = st.executeQuery();
+           		while (rs.next()) {
+           			category_code = rs.getInt("category_code");
+   				}
+           		return category_code;
            		
            } catch (SQLException e) {
 			e.printStackTrace();

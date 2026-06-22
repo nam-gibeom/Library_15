@@ -4,29 +4,29 @@ public class catalogListBean {
 	int book_code;
 	String isbn;
 	String title;
-	int category_code;
+	String category_name;
 	String author;
 	String publisher;
 	String publish_date;
 	
-	public catalogListBean(int book_code, String isbn, String title, int category_code, String author, String publisher,
+	public catalogListBean(int book_code, String isbn, String title, String category_name, String author, String publisher,
 			String publish_date) {
 		super();
 		this.book_code = book_code;
 		this.isbn = isbn;
 		this.title = title;
-		this.category_code = category_code;
+		this.category_name = category_name;
 		this.author = author;
 		this.publisher = publisher;
 		this.publish_date = publish_date;
 	}
 
-	public catalogListBean(String isbn, String title, int category_code, String author, String publisher,
+	public catalogListBean(String isbn, String title, String category_name, String author, String publisher,
 			String publish_date) {
 		super();
 		this.isbn = isbn;
 		this.title = title;
-		this.category_code = category_code;
+		this.category_name = category_name;
 		this.author = author;
 		this.publisher = publisher;
 		this.publish_date = publish_date;
@@ -52,12 +52,12 @@ public class catalogListBean {
 		this.title = title;
 	}
 
-	public int getCategory_code() {
-		return category_code;
+	public String getCategory_name() {
+		return category_name;
 	}
 
-	public void setCategory_code(int category_code) {
-		this.category_code = category_code;
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
 	}
 
 	public String getAuthor() {
