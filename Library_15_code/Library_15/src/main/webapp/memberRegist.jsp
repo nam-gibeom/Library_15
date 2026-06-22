@@ -44,7 +44,7 @@
 
 <div class="container">
   <div class="left-side"><jsp:include page="menu.jsp" /></div>
-  <div class="right-side"><jsp:include page="memberUpdate1.jsp" /></div>
+  <div class="right-side"><jsp:include page="memberRegist1.jsp" /></div>
 </div>
 
 </body>
