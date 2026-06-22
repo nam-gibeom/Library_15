@@ -1,39 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Member Cancel</title>
+    <title>メイン画面</title>
+    <style>
+    
+ body {
+  height: 100%;
+  margin: 0; 
+}
+.container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+.left-side {
+  width: 15%;
+  background-color: #E6FFE9;
+  
+  display: flex; /*flexbox*/
+  flex-direction: column;         
+  justify-content: space-around;  
+  align-items: center;
+}
+
+
+.right-side {
+  width: 85%;
+  background-color: #FFFFEE;
+  
+  display: flex;
+  flex-direction: column;         
+  justify-content: space-around;  
+  align-items: center;
+}
+        
+    </style>
 </head>
 <body>
- <form action ="/Library_15/MemberServlet" method="post">
-<table border="1">
-        <tr><td>会員ID</td><td><input type="text" name ="memberid"></td><td>
-        <input type="hidden" name="action" value="searchcancel">
-        <button>検索</button></td></tr>
-         </table>
-</form>         
-<br><br>
 
-
- <form action ="/Library_15/MemberServlet" method="post">
-<table border="1">
-<tr><td>会員ID</td><td><input type="text" size="2" name = "id" value=${info.member_id }></td><td><input type="text"name="name" value=${info.member_name }>さん</td>
-<td>
-<input type="hidden" name="action" value="cancel">
-<button>退会</button></td></tr>
- </table>
-</form>
-<br>
-<br>
-
-<table border="1">
-        <tr><td><input type="text" size="1" value="(ID)"></td><td><input type="text" size="5" value="(資料ID)"></td><td><input type="text" size="5" value="資料名"></td>
-        <td><input type="text" size="5" value="貸出日"></td><td><button>返却</button></td></tr>
-</table><br>
-
-貸出が2点あるため退会できません　
+<div class="container">
+  <div class="left-side"><jsp:include page="menu.jsp" /></div>
+  <div class="right-side"><jsp:include page="memberCancel1.jsp" /></div>
+</div>
 
 </body>
 </html>
