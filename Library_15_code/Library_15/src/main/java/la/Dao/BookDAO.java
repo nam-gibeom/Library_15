@@ -281,7 +281,7 @@ public class BookDAO {
     //資料IDで在庫台帳を調べるメソッド
     public DiscardInfoBean getStockListByBookId(int book_id) throws DAOException {
         // SQL文の作成
-        String sql = "SELECT s.book_id, s.isbn, c.title, s.arrival_date FROM stocklist s JOIN cataloglist c ON s.isbn = c.isbn WHERE s.book_id = ?";
+        String sql = "SELECT s.book_id, s.isbn, c.title, s.arrival_date, s.discard_date, s.remarks FROM stocklist s JOIN cataloglist c ON s.isbn = c.isbn WHERE s.book_id = ?";
 		
         try (// データベースへの接続
              Connection con = DriverManager.getConnection(url, user, pass);
@@ -299,7 +299,9 @@ public class BookDAO {
        					String isbn = rs.getString("isbn");
        					String title = rs.getString("title");
        					String arrival_date = rs.getString("arrival_date");
-       					bean = new DiscardInfoBean(book_id1, isbn, title, arrival_date);
+       					String discard_date = rs.getString("discard_date");
+       					String remarks = rs.getString("remarks");
+       					bean = new DiscardInfoBean(book_id1, isbn, title, arrival_date,discard_date,remarks);
        				}
        				// 商品一覧をListとして返す
        				return bean;

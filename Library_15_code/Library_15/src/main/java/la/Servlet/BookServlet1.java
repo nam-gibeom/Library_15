@@ -53,8 +53,12 @@ public class BookServlet1 extends HttpServlet {
 				int book_id = Integer.parseInt(request.getParameter("book_id1"));
 				String discard_date = request.getParameter("discard_date");
 				String remarks = request.getParameter("remarks");
-				System.out.println();
-				service.discardBook(book_id,discard_date,remarks);
+				String other = request.getParameter("other");
+				if(remarks.equals("others")) {
+					service.discardBook(book_id,discard_date,other);
+				}else {
+					service.discardBook(book_id,discard_date,remarks);
+				}
 				gotoPage(request, response, "/bookDiscard.jsp");
 			}
 			
