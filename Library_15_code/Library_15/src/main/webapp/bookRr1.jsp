@@ -34,9 +34,9 @@
 		</tr>
 	</table>
 	</form>
-	<div>${error }</div>
+
 	</div>
-	
+	<div class=center>${error }</div>
 
 	<c:if test="${show}">
 	<c:if test="${fn:length(rent_list) > 0 }">

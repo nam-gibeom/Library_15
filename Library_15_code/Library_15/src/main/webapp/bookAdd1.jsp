@@ -30,12 +30,12 @@
 		<form action="/Library_15/BookServlet" method="post">
 			<table border="1" class=result2>
 				<tr>
-					<th id = lable>ISBN番号</th>
-					<th id = lable>資料名</th>
-					<th id = lable>分類名</th>
-					<th id = lable>作者</th>
-					<th id = lable>出版社</th>
-					<th id = lable>出版日</th>
+					<th id = lable1>ISBN番号</th>
+					<th id = lable1>資料名</th>
+					<th id = lable1>分類名</th>
+					<th id = lable1>作者</th>
+					<th id = lable1>出版社</th>
+					<th id = lable1>出版日</th>
 				</tr>
 				<tr>
 					<td class=resulttd>${exist.isbn}</td>
@@ -46,8 +46,8 @@
 					<td class=resulttd>${exist.publish_date}</td>
 				</tr>
 			</table>
-			同じ物を登録しますか？ <input type="hidden" name="isbn" value="${exist.isbn }">
-			<button name="action" value="add1" class=btn-hover-20>登録</button>
+			<div class=center>同じ資料を追加しますか？</div> <input type="hidden" name="isbn" value="${exist.isbn }">
+			<button name="action" value="add1" class=button-hover-20>登録</button>
 		</form>
 	</c:if>
 

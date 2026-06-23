@@ -41,8 +41,17 @@
 		vertical-align: middle;
 		word-break: break-all;
 		padding: 0;
-	
+}
+#lable1 {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
 
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+		height: 30%;
 }
 
 .result{
@@ -53,10 +62,13 @@
 	height: 200px;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
-	margin: 0em 1em 0em 1.5em;
+	margin: 1em 1em 0em 1.5em;
 	
 }
-
+.center{
+	text-align: center;
+	margin-top: 1em;
+}
 .resulttd1 {
 	text-align: center;
 	font-size: 100%;
@@ -71,14 +83,15 @@
 	vertical-align: middle;
 	word-break: break-all;
 	padding: 0;
+	text-align: center;
 	/*実線 1px 黒*/
 }
 .result2{
 	font-size: 120%;
 	border-collapse: collapse;
 	border: solid 1px black;
-	width: 800px;
-	height: 200px;
+	width: 900px;
+	height: 100px;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	margin: 0em 1em 0em 1.5em;
@@ -92,6 +105,7 @@
 	vertical-align: middle;
 	word-break: break-all;
 	padding: 0;
+	
 	/*実線 1px 黒*/
 }
 .resulttd3 {
