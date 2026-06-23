@@ -61,40 +61,43 @@
 	  
 
 	
-	.left{
-		width: 30%;
+/*	.left{*/
+/*		width: 30%;*/
 		
-		margin-left: 20px;
-	}
-	.right{
-		width: 70%;
-		margin: 0;          
-		  padding: 15px;
-		  white-space: nowrap;
+/*		margin-left: 20px;*/
+/*	}*/
+/*	.right{*/
+/*		width: 70%;*/
+/*		margin: 0;          */
+/*		  padding: 15px;*/
+/*		  white-space: nowrap;*/
 		
-	}
+/*	}*/
 	
 
 	
 	
 	.menu {
-		height: 100%;
+		
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	overflow-y: auto;/*スクロールバー*/
-	text-align: center;          
+	gap:20px;
+	
+/*	text-align: center;*/
 	}
-	  .menu dt h3 {
+	  .menu dt{
     margin: 0;
+	flex:1;
+	margin:0;
 	text-align: center;
   }
 
   .menu dd {
 	font-weight: bold;
-    margin-left: 15px;   
-    margin-top: 2px;     
-    margin-bottom: 2px;
+    margin-left: auto;   
+    margin-top: auto;     
+    margin-bottom: auto;
     padding: 0;
 	text-align: center;
 	flex: 1;

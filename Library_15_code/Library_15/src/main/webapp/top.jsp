@@ -33,8 +33,7 @@
   background-color: #FFFFEE;
   
   display: flex;
-  flex-direction: column;         
-  justify-content: space-around;  
+  flex-direction: column;          
   align-items: center;
 }
         
