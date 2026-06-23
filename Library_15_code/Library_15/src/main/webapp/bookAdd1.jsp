@@ -15,11 +15,12 @@
 		<table border="1"class= search>
 			<tr>
 				<td id = lable>ISBN番号</td>
-				<td class=searchtd><input type="text" name="isbn" id="max"></td>
+				<td class=searchtd><input type="text" name="isbn" id="max" value=${isbn }></td>
 				<td class=searchtd><button name="action" value="addsearch" class="btn-hover-20">検索</button></td>
 			</tr>
 		</table>
 	</form>
+	<p>${error }</p>
 
 	<br>
 	<br>
@@ -57,7 +58,7 @@
 
 
 	<c:if test="${exist_false }">
-	 存在しない資料です。情報を入力してください。
+	 存在しない資料です。情報を入力してください。<br>
 	<form action="/Library_15/BookServlet" method="post">
 			<table border="1" class=result>
 				<tr>
