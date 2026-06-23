@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import la.Bean.DiscardInfoBean;
 import la.Bean.OverdueBean;
 import la.Bean.RentInfoBean;
 import la.Bean.SearchBean;
@@ -47,6 +48,7 @@ public class BookServlet extends HttpServlet {
 				String value = request.getParameter("value");
 				List<SearchBean> result = service.searchBooks(type, value);
 				request.setAttribute("result", result);
+				request.setAttribute("show", true);
 				gotoPage(request, response, "/bookSearch.jsp");
 				
 			} else if (action.equals("addsearch")) {
@@ -119,6 +121,29 @@ public class BookServlet extends HttpServlet {
 			} else if (action.equals("rentconfirm")) {
 				gotoPage(request, response, "/bookRr.jsp");
 				
+			} else if (action.equals("searchDiscard")) {
+				
+				int book_id = Integer.parseInt(request.getParameter("book_id"));
+				
+				DiscardInfoBean result = service.searchDiscard(book_id);
+				request.setAttribute("result", result);
+				String current_date = service.getCurrentDate(); // 20260622
+				request.setAttribute("current_date", current_date);
+				request.setAttribute("show", true);
+				gotoPage(request, response, "/bookDiscard.jsp");
+				
+			} else if(action.equals("discard")) {
+				
+				int book_id = Integer.parseInt(request.getParameter("book_id1"));
+				String discard_date = request.getParameter("discard_date");
+				String remarks = request.getParameter("remarks");
+				String other = request.getParameter("other");
+				if(remarks.equals("others")) {
+					service.discardBook(book_id,discard_date,other);
+				}else {
+					service.discardBook(book_id,discard_date,remarks);
+				}
+				gotoPage(request, response, "/bookDiscard.jsp");
 			}
 				
 				
