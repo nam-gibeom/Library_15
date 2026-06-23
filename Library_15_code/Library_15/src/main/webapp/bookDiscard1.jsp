@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -12,16 +13,13 @@
 </head>
 <body>
 
-	<div class=titletop>資料＞貸出・返却</div>
-	<form action="/Library_15/BookServlet1" method="GET">
-
-
+	<div class=titletop>資料＞紛失・廃棄</div>
 
 		
 		<form action="/Library_15/BookServlet" method="post">
 			<table border="1" class=search>
 				<tr>
-					<td id=lable>会員ID</td>
+					<td id=lable>資料ID</td>
 					<td class=searchtd><input type="text" id=max name="book_id"></td>
 					<td class=searchtd><button name="action" class=btn-hover-20
 						value="searchDiscard">検索</button></td>
@@ -31,7 +29,7 @@
 		<br><br><br><br><br>
 
 
-
+		<c:if test="${show }">
 		<table border="1" class=result>
 			<tr>
 				<th id=lable>資料ID</th>
@@ -52,14 +50,14 @@
 			</tr>
 
 
-			<form action="/Library_15/BookServlet" method="POST">
+			
 
 				<tr>
 					<input type="hidden" name="book_id1" value="${result.book_id}">
 					<td class=resulttd><name="remarks">廃棄理由</td>
-					<td class=resulttd><input type="radio" name="remarks" value="紛失">紛失</td>
-					<td class=resulttd><input type="radio" name="remarks" value="老化">老化</td>
-					<td colspan="4" class=resulttd><input type="radio" name="remarks"
+					<td class=resulttd colspan="5"><input type="radio" name="remarks" value="紛失">紛失
+					<input type="radio" name="remarks" value="老化">老化
+					<input type="radio" name="remarks"
 						value="others">その他 :<input type="text" id= max1 name="other"</td>
 
 				</tr>
@@ -71,15 +69,13 @@
 
 				</tr>
 
-			</form>
-			</c:if>
-
 		</table>
+		<form action="/Library_15/BookServlet" method="POST">
+		<input type="hidden" name = "book_id" value="${result.book_id }">
 		<button name="action" value="discard" class="button-hover-20">廃棄</button>
-
-	</form>
-
-	</form>
+		</form>
+		</c:if>
+		
 
 </body>
 </html>

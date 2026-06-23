@@ -14,8 +14,6 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.catalina.mbeans.ServiceMBean;
-
 import la.Bean.DiscardInfoBean;
 import la.Bean.OverdueBean;
 import la.Bean.RentBean;
@@ -57,6 +55,19 @@ public class BookService {
 		}
 		return list;
 		
+	}
+	
+	public List<RentInfoBean> checkRentedBook(List<Integer> book_id_list) throws DAOException {
+		List<RentInfoBean> rented_bean = dao.getCurrentRentInfo();
+		List<RentInfoBean> already_rented = new ArrayList<RentInfoBean>();
+		for (int book_id : book_id_list) {
+			for (RentInfoBean rented_id : rented_bean) {
+				if (rented_id.getBook_id() == book_id) {
+					already_rented.add(rented_id);
+				}
+			}
+		}
+		return already_rented;
 	}
 	
 	public boolean isIsbnExist(String isbn) throws DAOException {

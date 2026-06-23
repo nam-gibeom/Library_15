@@ -60,9 +60,6 @@
 	</tr>
 	</table>
 	</c:if>
-
-
-
 	<form action="/Library_15/BookServlet" method="post">
 	<table border=1 class=result1>
 	<tr><th id=lable1>貸出</th></tr>
@@ -74,6 +71,7 @@
 	<button class=button-hover-20 name="action" value="rent">貸出</button>
 	</form>
 	<p>${error1 }</p>
+	<p><c:forEach items="${rented_list }" var="rent">Warning：資料ID「${rent.book_id }」はすでに会員ID「${rent.member_id }」が借りています</c:forEach><br></p>
 	</c:if>
 	</div>
 	

@@ -514,5 +514,28 @@ public class BookDAO {
     	
     }
     
+    public List<RentInfoBean> getCurrentRentInfo() throws DAOException{
+    	String sql = "select member_id, book_id from rentlist where return_date is null";
+    	
+    	try (Connection con = DriverManager.getConnection(url, user, pass);
+      			 // PreparedStatementオブジェクトの取得
+    		PreparedStatement st = con.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();) {
+    		
+    		List<RentInfoBean> list = new ArrayList<RentInfoBean>();
+    		
+    		while (rs.next()) {
+    			int book_id = rs.getInt("book_id");
+    			int member_id = rs.getInt("member_id");
+    			RentInfoBean bean = new RentInfoBean(book_id, member_id);
+    			list.add(bean);
+    		}
+    		return list;
+    		
+    	} catch (SQLException e) {
+			throw new DAOException("レコードの取得に失敗しました");
+		}
+    }
+    
 }
 
