@@ -132,7 +132,7 @@ public class BookServlet extends HttpServlet {
 						request.setAttribute("member_id", member_id);
 						request.setAttribute("rent_list", Result_list);
 						request.setAttribute("show", true);
-						request.setAttribute("error1", "error");
+						request.setAttribute("error1", "資料IDは数字で入力してください");
 						gotoPage(request, response, "/bookRr.jsp");
 					}
 
