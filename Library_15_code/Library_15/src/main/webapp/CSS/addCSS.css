@@ -7,80 +7,6 @@
 	  padding: 0;
 }
 
-#lable {
-	background-color: rgb(215, 235, 171);
-	color: darkolivegreen;
-	text-align: center;
-	border: solid 2px olivedrab;
-
-		vertical-align: middle;
-		word-break: break-all;
-		padding: 0;
-		
-
-}
-#lable1 {
-	background-color: rgb(215, 235, 171);
-	color: darkolivegreen;
-	text-align: center;
-	border: solid 2px olivedrab;
-
-		vertical-align: middle;
-		word-break: break-all;
-		padding: 0;
-		width: 5em;
-
-}
-#lable2 {
-	background-color: rgb(215, 235, 171);
-	color: darkolivegreen;
-	text-align: center;
-	border: solid 2px olivedrab;
-
-		vertical-align: middle;
-		word-break: break-all;
-		padding: 0;
-	width: 4em;
-
-}
-
-.result {
-	font-size: 120%;
-	border-collapse: collapse;
-	border: solid 1px black;
-	width: 600px;
-	height: 50px;
-	/* ここを自由に調整 */
-	border-collapse: collapse;
-	margin: 4em 0em 0em 0em;
-	text-align: center;
-
-
-}
-
-.resulttd{
-	border: solid 2px olivedrab;
-
-	vertical-align: middle;
-	word-break: break-all;
-	padding: 0;
-	/*実線 1px 黒*/
-	
-
-}
-.resulttd1{
-	border: solid 2px olivedrab;
-
-	vertical-align: middle;
-	word-break: break-all;
-	padding: 0;
-	/*実線 1px 黒*/
-width: 3em;
-text-align: center;
-}
-
-
-
 .search {
 	font-size: 120%;
 	border-collapse: collapse;
@@ -90,8 +16,9 @@ text-align: center;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	 box-sizing: border-box;
+	 margin: 4em 0em 0em 0em;
 	 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-margin: 4em 0em 0em 0em;
+
 
 }
 
@@ -105,26 +32,99 @@ margin: 4em 0em 0em 0em;
 	/*実線 1px 黒*/
 }
 
+#lable {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+	
+
+}
+
+.result{
+	font-size: 120%;
+	border-collapse: collapse;
+	border: solid 1px black;
+	width: 800px;
+	height: 200px;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	margin: 0em 1em 0em 1.5em;
+	
+}
+
+.resulttd1 {
+	text-align: center;
+	font-size: 100%;
+	border: solid 2px olivedrab;
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+.resulttd {
+	border: solid 2px olivedrab;
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+.result2{
+	font-size: 120%;
+	border-collapse: collapse;
+	border: solid 1px black;
+	width: 800px;
+	height: 200px;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	margin: 0em 1em 0em 1.5em;
+	
+}
+
+.resulttd2 {
+	text-align: center;
+	font-size: 100%;
+	border: solid 2px olivedrab;
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+.resulttd3 {
+	border: solid 2px olivedrab;
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+
+
+
+.container {
+	display: flex; /* フレックスボックスを有効化 */
+}
+
 #max {
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
-
 	border: none;
 	outline: none;
 	background-color: #FFFFEE;
 	font-size: 125%;
 }
-#max2 {
+#max1 {
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
-
 	border: none;
 	outline: none;
 	background-color: #FFFFEE;
-	font-size: 125%;
-	text-align: center;
+	font-size: 90%;
 }
 
 #ymd {
@@ -133,7 +133,6 @@ margin: 4em 0em 0em 0em;
 	background-color: #FFFFEE;
 	text-align: center;
 	font-size: 125%;
-
 }
 
 .btn {
@@ -141,17 +140,11 @@ margin: 4em 0em 0em 0em;
 	color: darkolivegreen;
 	text-decoration: none;
 	background-color: rgb(215, 235, 171);
+	/*	background-color: darkolivegreen;*/
 	border-radius: 0.4em;
 	padding: 0.5em 1em;
 	transition: 0.5s;
 }
-.btn-wrapper {
-    width: 100%;
-    height: 100%;
-    display: block; /* flex だとボタンが縮むことがある */
-    padding: 0;     /* 余白があるとボタンがはみ出す */
-}
-
 
 .btn-hover-20 {
 	display: flex;
@@ -163,14 +156,11 @@ margin: 4em 0em 0em 0em;
 	    text-decoration: none;
 	    transition: all 0.3s ease;
 	    z-index: 1;
-	box-sizing: border-box;
+	  
 	    border: none; /* 칸 테두리와 겹치지 않게 */
 	    background-color: #fff; /* 칸 배경색과 맞추기 */
 	    color: #6b8e23; /* 텍스트 색상 */
 	    cursor: pointer;
-		margin:0;
-		padding:0;
-		
 }
 
 .btn-hover-20 span {
@@ -178,7 +168,13 @@ margin: 4em 0em 0em 0em;
 	z-index: 2;
 }
 
-
+.btn-hover-20 {
+	border: 1px solid olivedrab;
+	background-color: white;
+	color: olivedrab;
+	
+	
+}
 
 .btn-hover-20:hover {
 /*	background-color: darkolivegreen;*/
@@ -191,8 +187,9 @@ margin: 4em 0em 0em 0em;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	width: 100px;
-	margin: 0 auto 32px;
+	width: 40;
+	height: 30px;
+	margin: 2em auto 32px;
 	padding: .9em 2em;
 	font-weight: 600;
 	text-decoration: none;
@@ -218,5 +215,9 @@ margin: 4em 0em 0em 0em;
 /*	background-color: darkolivegreen;*/
 	background-color: olivedrab;
 	color: #FFFFEE;
+}
+#max::placeholder {
+  font-size: 75%;
+  color: #999; /* 必要なら色も変更可能 */
 }
 

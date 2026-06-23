@@ -36,6 +36,7 @@
       width: 15%;
       background-color: #E6FFE9;
       overflow-y: auto;
+      overflow-x: hidden;
       display: flex; /*flexbox*/
       flex-direction: column;         
       justify-content: space-around;  
