@@ -23,6 +23,7 @@
 </head>
 <body>
 	<div class = titletop>資料＞貸出・返却</div>
+	<div>
 	<form action="/Library_15/BookServlet" method="post">
 		<table border="1"class=search>
 		<tr>
@@ -33,14 +34,14 @@
 		</tr>
 	</table>
 	</form>
-	<p>${error }</p>
+	<div>${error }</div>
+	</div>
 	
-	
+
 	<c:if test="${show}">
 	<c:if test="${fn:length(rent_list) > 0 }">
-	
 	<div class=tables-wrapper>
-	
+
 	<table border="0" class=result>
 	<tr><th id=lable1 colspan=3>返却</th></tr>
 	<tr><th id=lable>資料ID</th><th id=lable>資料名</th><th id=lable>返却</th></tr>
