@@ -59,6 +59,12 @@ public class BookServlet extends HttpServlet {
 				
 			} else if (action.equals("addsearch")) { // 資料登録
 				String isbn = request.getParameter("isbn");
+				if (isbn.equals("")) {
+					request.setAttribute("error", "ISBN番号を入力してください");
+					gotoPage(request, response, "/bookAdd.jsp");
+				}
+				
+				
 				if (service.isIsbnExist(isbn)) {
 					catalogListBean result_bean = service.getStockInfoByIsbn(isbn);
 					request.setAttribute("exist", result_bean);

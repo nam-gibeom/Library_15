@@ -15,11 +15,12 @@
 		<table border="1"class= search>
 			<tr>
 				<td id = lable>ISBN番号</td>
-				<td class=searchtd><input type="text" name="isbn" id="max"></td>
+				<td class=searchtd><input type="text" name="isbn" id="max" value=${isbn }></td>
 				<td class=searchtd><button name="action" value="addsearch" class="btn-hover-20">検索</button></td>
 			</tr>
 		</table>
 	</form>
+	<p>${error }</p>
 
 	<br>
 	<br>
