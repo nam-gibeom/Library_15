@@ -13,6 +13,7 @@
 </head>
 <body>
     <div class = titletop>資料＞資料検索</div>
+    
 <form action="/Library_15/BookServlet" method="post">
 	<table border="1" class= "search">
      <tr><td id= lable>
@@ -24,7 +25,7 @@
      </td><td class="resulttd"><input type="text" name="value" id=max></td><td class="resulttd"><button name="action" value="booksearch" class=btn-hover-20>検索</button></td></tr>
       </table>
 </form>
-
+<p>${error }</p>
 
 <c:if test="${show }">
 <table border="1" class=result>

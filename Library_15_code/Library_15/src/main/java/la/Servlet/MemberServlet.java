@@ -43,9 +43,15 @@ public class MemberServlet extends HttpServlet {
 				int member_id = Integer.parseInt(request.getParameter("memberid"));
 				MemberService service = new MemberService();
 				MemberBean bean = service.SearchAndMove(member_id);
-				request.setAttribute("info", bean);
-				request.setAttribute("show", true);
-				gotoPage(request, response,"/memberUpdate.jsp" );
+				if (bean != null) {
+					request.setAttribute("info", bean);
+					request.setAttribute("show", true);
+					gotoPage(request, response,"/memberUpdate.jsp" );
+				} else {
+					request.setAttribute("error", "存在しない会員IDです。もう一度確認してください");
+					gotoPage(request, response,"/memberUpdate.jsp" );
+				}
+				
 			} catch (NumberFormatException e) {
 				request.setAttribute("error", "会員IDは数字で入力してください。");
 				gotoPage(request, response,"/memberUpdate.jsp" );
@@ -61,11 +67,16 @@ public class MemberServlet extends HttpServlet {
 			
 				List<RentInfoBean> book_bean = service_book.showCurrentrentList(member_id);
 				MemberBean bean = service.SearchAndMove(member_id);
-				
-				request.setAttribute("rent_list", book_bean);
-				request.setAttribute("show", true);
-				request.setAttribute("info", bean);
-				gotoPage(request, response,"/memberCancel.jsp" );
+				if (bean != null) {
+					request.setAttribute("rent_list", book_bean);
+					request.setAttribute("show", true);
+					request.setAttribute("info", bean);
+					gotoPage(request, response,"/memberCancel.jsp" );
+				} else {
+					request.setAttribute("error", "存在しない会員IDです。もう一度確認してください");
+					gotoPage(request, response,"/memberCancel.jsp" );
+				}
+
 			} catch (NumberFormatException e) {
 				request.setAttribute("error", "会員IDは数字で入力してください。");
 				gotoPage(request, response,"/memberCancel.jsp" );

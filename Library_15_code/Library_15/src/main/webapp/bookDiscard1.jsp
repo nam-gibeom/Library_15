@@ -60,7 +60,7 @@
 					<td class=resulttd><input type="radio" name="remarks" value="紛失">紛失</td>
 					<td class=resulttd><input type="radio" name="remarks" value="老化">老化</td>
 					<td colspan="4" class=resulttd><input type="radio" name="remarks"
-						value="others">その他 |<input type="text" id= max1 name="other"</td>
+						value="others">その他 :<input type="text" id= max1 name="other"</td>
 
 				</tr>
 

@@ -7,67 +7,6 @@
 	  padding: 0;
 }
 
-#lable {
-	background-color: rgb(215, 235, 171);
-	color: darkolivegreen;
-	text-align: center;
-	border: solid 2px olivedrab;
-
-		vertical-align: middle;
-		word-break: break-all;
-		padding: 0;
-	
-
-}
-#lable1 {
-	background-color: rgb(215, 235, 171);
-	color: darkolivegreen;
-	text-align: center;
-	border: solid 2px olivedrab;
-
-		vertical-align: middle;
-		word-break: break-all;
-		padding: 0;
-		font-size: 130%;
-
-}
-
-.result {
-	font-size: 120%;
-	border-collapse: collapse;
-	
-	width: 500px;
-	height: auto;
-	/* ここを自由に調整 */
-	border-collapse: collapse;
-	margin: 4em 0em 0em 0em;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-
-}
-.result1 {
-	font-size: 120%;
-	border-collapse: collapse;
-	
-	width: 200px;
-	height: auto;
-	/* ここを自由に調整 */
-	border-collapse: collapse;
-	margin: 4em 0em 0em 0em;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-
-}
-
-.resulttd{
-	border: solid 2px olivedrab;
-
-	vertical-align: middle;
-	word-break: break-all;
-	padding: 0;
-	text-align: center;
-	
-	/*実線 1px 黒*/
-}
-
 .search {
 	font-size: 120%;
 	border-collapse: collapse;
@@ -93,30 +32,100 @@
 	/*実線 1px 黒*/
 }
 
+#lable {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+	
+
+}
+
+.result{
+	font-size: 120%;
+	border-collapse: collapse;
+	border: solid 1px black;
+	width: 800px;
+	height: 200px;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	margin: 0em 1em 0em 1.5em;
+	
+}
+
+.resulttd1 {
+	text-align: center;
+	font-size: 100%;
+	border: solid 2px olivedrab;
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+.resulttd {
+	border: solid 2px olivedrab;
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+.result2{
+	font-size: 120%;
+	border-collapse: collapse;
+	border: solid 1px black;
+	width: 800px;
+	height: 200px;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	margin: 0em 1em 0em 1.5em;
+	
+}
+
+.resulttd2 {
+	text-align: center;
+	font-size: 100%;
+	border: solid 2px olivedrab;
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+.resulttd3 {
+	border: solid 2px olivedrab;
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+
+
+
+.container {
+	display: flex; /* フレックスボックスを有効化 */
+}
+
 #max {
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
-
 	border: none;
 	outline: none;
 	background-color: #FFFFEE;
 	font-size: 125%;
 }
-#max2 {
+#max1 {
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
-
 	border: none;
 	outline: none;
-	
-	font-size: 110%;
-	background-color: rgb(215, 235, 171);
-		color: darkolivegreen;
-		text-align: center;
+	background-color: #FFFFEE;
+	font-size: 90%;
 }
-
 
 #ymd {
 	border: none;
@@ -124,7 +133,6 @@
 	background-color: #FFFFEE;
 	text-align: center;
 	font-size: 125%;
-
 }
 
 .btn {
@@ -132,6 +140,7 @@
 	color: darkolivegreen;
 	text-decoration: none;
 	background-color: rgb(215, 235, 171);
+	/*	background-color: darkolivegreen;*/
 	border-radius: 0.4em;
 	padding: 0.5em 1em;
 	transition: 0.5s;
@@ -207,13 +216,8 @@
 	background-color: olivedrab;
 	color: #FFFFEE;
 }
-.tables-wrapper {
-    display: flex;        /* 横並びの基本 */
-    gap: 10em;            /* テーブル間の隙間 */
-    align-items: flex-start;
-	margin: 0em 0em 0em 5em
-  }
-  #max::placeholder {
-    font-size: 60%;
-    color: #999; /* 必要なら色も変更可能 */
-  }
+#max::placeholder {
+  font-size: 75%;
+  color: #999; /* 必要なら色も変更可能 */
+}
+

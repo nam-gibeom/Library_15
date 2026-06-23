@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 
 public class DiscardInfoBean implements Serializable {
-    private int book_id;
-    private String isbn;
-    private String title;
-    private String arrival_date;
-    private String discard_date;
-    private String remarks;
+     int book_id;
+    String isbn;
+    String title;
+    String arrival_date;
+    String discard_date;
+    String remarks;
 	
     public DiscardInfoBean(int book_id, String isbn, String title, String arrival_date, String discard_date,
 			String remarks) {
