@@ -33,24 +33,27 @@
 		</tr>
 	</table>
 	</form>
+	<p>${error }</p>
 	
 	
 	<c:if test="${show}">
-	<c:if test="${fn:length(rent_list) > 1 }">
-	<h2>返却　　　　　　　貸出</h2>
+	<c:if test="${fn:length(rent_list) > 0 }">
+	
 	<div class=tables-wrapper>
-	<table border="1" class=test>
-	<tr><th>資料ID</th><th>資料名</th><th>返却</th></tr>
+	
+	<table border="0" class=result>
+	<tr><th id=lable1 colspan=3>返却</th></tr>
+	<tr><th id=lable>資料ID</th><th id=lable>資料名</th><th id=lable>返却</th></tr>
 
 	<c:forEach items="${rent_list }" var="rent">
 		<tr><td id=lable>${rent.book_id }</td>
-		<td>${rent.title }</td>
-		<td id=lable>
-		<form action="/Library_15/BookServlet">
+		<td class=resulttd>${rent.title }</td>
+		<td class=resulttd>
+		<form action="/Library_15/BookServlet" method="post">
 		<input type="hidden" name="book_id" value="${rent.book_id }">
 		<input type="hidden" name="member_id" value="${member_id }">
-		<button name="action" value="return">返却</button>
-		</form>
+		<button name="action" class=btn-hover-20 value="return">返却</button>
+		</form></td>
 		</tr>
 	</c:forEach>
 	</tr>
@@ -60,15 +63,16 @@
 
 
 	<form action="/Library_15/BookServlet" method="post">
-	<table class=test>
-	<tr><th>資料ID</th></tr>
+	<table border=1 class=result1>
+	<tr><th id=lable1>貸出</th></tr>
 	<c:forEach begin="1" end="${5 - fn:length(rent_list)}" var="i">
-		<tr><th ><input type="text" name="book_id${i }"></th></tr>
+		<tr><th class=resulttd><input type="text" id=max name="book_id${i }" placeholder="資料ID"></th></tr>
 	</c:forEach>
 	</table>
 	<input type="hidden" name="member_id" value="${member_id }">
-	<button name="action" value="rent">貸出</button>
+	<button class=button-hover-20 name="action" value="rent">貸出</button>
 	</form>
+	<p>${error1 }</p>
 	</c:if>
 	</div>
 	

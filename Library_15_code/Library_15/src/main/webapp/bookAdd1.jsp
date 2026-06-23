@@ -50,7 +50,9 @@
 
 	
 	<c:if test="${exist_false }">
-	 存在しない資料です。情報を入力してください。
+	 <p>存在しない資料です。情報を入力してください。</p>
+	 <br>
+	 <p>ISBN : ${isbn }</p>
 	<form action="/Library_15/BookServlet" method="post">
 		<table border="1">
 		<tr>

@@ -18,24 +18,27 @@
         <input type="hidden" name="action" value="searchcancel">
         <button class=btn-hover-20>検索</button></td></tr>
          </table>
-</form>         
+</form>
+<p>${error }</p>         
 
-<c:if test="${show }">
-	<table border="1">
-	<tr><td id=lable>会員ID</td><td>${info.member_id }</td><td>${info.member_name }さん</td></tr>
+<c:if test="${show }" >
+	<table border="1" class=search>
+	<tr><td id=lable>会員ID</td><td class=resulttd1>${info.member_id }</td>
+	<td class=resulttd><input type="text" id="max"value="${info.member_name }　さん"></td></tr>
 	 </table>
 
 </c:if>
 	
 <c:if test="${show && fn:length(rent_list) > 0 }">
-	<table border="1">
-	        <tr><th>資料ID</th><th>資料名</th><th>返却</th></tr>
+	<table border="0" class=result>
+	        <tr><th id=lable1>資料ID</th><th id=lable>資料名</th><th id=lable2>返却</th></tr>
 	        <c:forEach items="${rent_list }" var="rent">
-	        	<tr><td>${rent.book_id }</td><td>${rent.title }</td>
-	        	<td><form action ="/Library_15/MemberServlet" method="post">
+	        	<tr><td class=resulttd>${rent.book_id }</td><td class=resulttd>${rent.title }
+	        	<td class=resulttd><form action ="/Library_15/MemberServlet" method="post">
 	        	<input type="hidden" name="member_id" value="${info.member_id }">
-	        	<input type="hidden" name="book_id" value="${rent.book_id }"> 
-	        	<button name="action" value="return">返却</button>
+	        	<input type="hidden" name="book_id" value="${rent.book_id }">
+	        	
+	        	<button name="action" value="return" class=btn-hover-20>返却</button>
 	        	</form></td>
 	        	</tr>
 	        </c:forEach>

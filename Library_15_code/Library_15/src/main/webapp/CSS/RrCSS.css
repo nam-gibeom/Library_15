@@ -3,7 +3,7 @@
 	text-decoration: underline;
 	font-size: 150%;
 	margin-top:20px;
-	  margin-left:-1100px;       
+	  margin-left:-850px;       
 	  padding: 0;
 }
 
@@ -19,16 +19,40 @@
 	
 
 }
+#lable1 {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+		font-size: 130%;
+
+}
 
 .result {
 	font-size: 120%;
 	border-collapse: collapse;
-	border: solid 1px black;
-	width: 600px;
+	
+	width: 500px;
 	height: auto;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
-	margin: -50em 0em 0em 0em;
+	margin: 4em 0em 0em 0em;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+}
+.result1 {
+	font-size: 120%;
+	border-collapse: collapse;
+	
+	width: 200px;
+	height: auto;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	margin: 4em 0em 0em 0em;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 }
@@ -40,6 +64,7 @@
 	word-break: break-all;
 	padding: 0;
 	text-align: center;
+	
 	/*実線 1px 黒*/
 }
 
@@ -52,7 +77,7 @@
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	 box-sizing: border-box;
-	 margin: 0em 0em 0em 0em;
+	 margin: 4em 0em 0em 0em;
 	 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 
@@ -153,8 +178,9 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	width: 100px;
-	margin: 0 auto 32px;
+	width: 40;
+	height: 30px;
+	margin: 2em auto 32px;
 	padding: .9em 2em;
 	font-weight: 600;
 	text-decoration: none;
@@ -183,7 +209,10 @@
 }
 .tables-wrapper {
     display: flex;        /* 横並びの基本 */
-    gap: 16px;            /* テーブル間の隙間 */
+    gap: 10em;            /* テーブル間の隙間 */
     align-items: flex-start;
   }
-
+  #max::placeholder {
+    font-size: 60%;
+    color: #999; /* 必要なら色も変更可能 */
+  }

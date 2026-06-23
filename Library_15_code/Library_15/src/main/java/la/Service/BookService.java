@@ -14,6 +14,8 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.catalina.mbeans.ServiceMBean;
+
 import la.Bean.DiscardInfoBean;
 import la.Bean.OverdueBean;
 import la.Bean.RentBean;
@@ -111,7 +113,13 @@ public class BookService {
 		
 		if (type.equals("book_id")) {
 			type1 = "isbn";
-			value1 = dao.getIsbnByBook((Integer.parseInt(value)));
+			try {
+				value1 = dao.getIsbnByBook((Integer.parseInt(value)));
+			} catch (NumberFormatException e) {
+				List<SearchBean> null_bean = new ArrayList<SearchBean>();
+				return null_bean; 
+			}
+			
 		} else if (type.equals("isbn")) {
 			type1 = "isbn";
 			value1 = value;
