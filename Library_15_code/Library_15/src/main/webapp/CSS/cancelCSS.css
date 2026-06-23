@@ -220,4 +220,9 @@ margin: 4em 0em 0em 0em;
 	background-color: olivedrab;
 	color: #FFFFEE;
 }
+.center{
+  	text-align: center;
+	font:bold ;
+	color:red;
+  }
 

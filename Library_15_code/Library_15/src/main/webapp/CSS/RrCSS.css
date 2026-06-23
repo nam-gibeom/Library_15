@@ -220,5 +220,6 @@
 
   .center{
   	text-align: center;
-  	
+	font:bold ;
+	color:red;
   }

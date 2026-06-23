@@ -30,7 +30,6 @@
 	border-collapse: collapse;
 	margin: 4em 0em 0em 0em;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-
 }
 
 .resulttd{
@@ -182,3 +181,8 @@
 	color: #FFFFEE;
 }
 
+.center{
+  	text-align: center;
+	font:bold ;
+	color:red;
+  }

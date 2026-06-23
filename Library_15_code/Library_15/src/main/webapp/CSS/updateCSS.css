@@ -167,7 +167,11 @@ text-align: center;
 	background-color: olivedrab;
 	color: #FFFFEE;
 }
-
+.center{
+  	text-align: center;
+	font:bold ;
+	color:red;
+  }
 
 /*.btn-hover-20:hover {*/
 /*	background-color: #fff;*/
