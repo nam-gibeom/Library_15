@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +10,7 @@
 <title>siryouhaiki layout</title>
 </head>
 <body>
-    <form action="/Library_15/BookServlet1" method="GET">
+    <form action="/Library_15/BookServlet" method="GET">
 	<table border="1">
 		<tr>
 			<td><option>資料ID</option></td>
@@ -17,30 +20,30 @@
 	</table>
 	<br>
 	<br>
-
+	<c:if test="${show }">
 	<table border="1">
-		<tr>
-			<th>資料ID</th>
-			<th>ISBN番号</th>
-			<th>資料名</th>
-			<th>入荷年月日</th>
-			<th>廃棄年月日</th>
-			<th>備考</th>
+	<tr>
+		<th>資料ID</th>
+		<th>ISBN番号</th>
+		<th>資料名</th>
+		<th>入荷年月日</th>
+		<th>廃棄年月日</th>
+		<th>備考</th>
+	</tr>
+	   
+	<tr>
+	    <td>${result.book_id}</td>
+	    <td>${result.isbn}</td>
+	    <td>${result.title}</td>
+	    <td>${result.arrival_date}</td>
+	    <td>${result.discard_date}</td>
+	    <td>${result.remarks}</td>
 		</tr>
-     
-		<tr>
-		    <td>${result.book_id}</td>
-		    <td>${result.isbn}</td>
-		    <td>${result.title}</td>
-		    <td>${result.arrival_date}</td>
-		    <td>${result.discard_date}</td>
-		    <td>${result.remarks}</td>
-		</tr>
-
+	
 	</table>
 	<br>
 	
-	<form action="/Library_15/BookServlet1" method="POST">
+	<form action="/Library_15/BookServlet" method="POST">
 	<input type="hidden" name="book_id1" value="${result.book_id}">
 	<input type="radio" name="remarks" value="紛失">紛失
 	<input type="radio" name="remarks" value="老化">老化
@@ -51,5 +54,7 @@
 	<br>
 	<button name="action" value="discard">廃棄</button>
 	</form>
+	</c:if>
+
 </body>
 </html>
