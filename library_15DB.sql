@@ -234,6 +234,9 @@ INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date,
 INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(3, 36, DATE '20260611', DATE '20260626',null,null);
 INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(3, 66, DATE '20260613', DATE '20260628',null,null);
 INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(1, 93, DATE '20260613', DATE '20260628',null,null);
+INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(10, 97, DATE '20260601', DATE '20260616',null,null);
+INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(10, 100, DATE '20260601', DATE '20260616',null,null);
+INSERT INTO rentlist(member_id, book_id,rent_date, return_deadline, return_date, remarks ) VALUES(10, 1, DATE '20260601', DATE '20260616',null,null);
 
 
 ALTER TABLE categorylist OWNER TO postgres;
