@@ -26,6 +26,7 @@
 				</tr>
 			</table>
 		</form>
+		<p>${error }</p>
 		<br><br><br><br><br>
 
 
