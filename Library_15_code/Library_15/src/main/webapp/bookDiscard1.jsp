@@ -18,7 +18,7 @@
 			<td><button name="action" value="searchDiscard">検索</button></td>
 		</tr>
 	</table>
-	<br>
+	<p>${error }</p>
 	<br>
 	<c:if test="${show }">
 	<table border="1">

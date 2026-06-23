@@ -37,21 +37,27 @@ public class BookServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		try {
 	        BookService service = new BookService();
-	        if (action==null || action.equals("") || action.equals("overdue")){
+	        if (action==null || action.equals("") || action.equals("overdue")){ // 延滞
 	        	List<OverdueBean> result_list = service.searchOverdueBooks(request);
 	        	request.setAttribute("overdues", result_list);
 				gotoPage(request, response, "/top.jsp");
 				
-	        } else if (action.equals("booksearch")) {
-				
+	        } else if (action.equals("booksearch")) {  // 検索
 				String type = request.getParameter("type");
 				String value = request.getParameter("value");
 				List<SearchBean> result = service.searchBooks(type, value);
-				request.setAttribute("result", result);
-				request.setAttribute("show", true);
-				gotoPage(request, response, "/bookSearch.jsp");
+				if (result.isEmpty()) {
+					request.setAttribute("error", "資料IDは数字で入力してください。");
+					gotoPage(request, response, "/bookSearch.jsp");
+				} else {
+					request.setAttribute("result", result);
+					request.setAttribute("show", true);
+					gotoPage(request, response, "/bookSearch.jsp");
+				}
+
 				
-			} else if (action.equals("addsearch")) {
+				
+			} else if (action.equals("addsearch")) { // 資料登録
 				String isbn = request.getParameter("isbn");
 				if (service.isIsbnExist(isbn)) {
 					catalogListBean result_bean = service.getStockInfoByIsbn(isbn);
@@ -63,13 +69,14 @@ public class BookServlet extends HttpServlet {
 					request.setAttribute("exist_false", true);
 					gotoPage(request, response, "/bookAdd.jsp");
 				}
+				
 			} else if (action.equals("add1")) { // 既存の目録にあったものを在庫に登録
 				String isbn = request.getParameter("isbn");
 				System.out.println(isbn);
 				service.addStock(isbn);
 				gotoPage(request, response, "/bookAdd.jsp");
 				
-			} else if (action.equals("add2")) {
+			} else if (action.equals("add2")) { // 既存の目録にないものを登録
 				String isbn = request.getParameter("isbn");
 				String title = request.getParameter("title");
 				String category_name = request.getParameter("category_name");
@@ -82,15 +89,21 @@ public class BookServlet extends HttpServlet {
 				service.addStock(isbn);
 				gotoPage(request, response, "/bookAdd.jsp");
 			
-			} else if (action.equals("rentsearch")) {
-				int member_id = Integer.parseInt(request.getParameter("member_id"));
-				List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
-				request.setAttribute("member_id", member_id);
-				request.setAttribute("rent_list", Result_list);
-				request.setAttribute("show", true);
-				gotoPage(request, response, "/bookRr.jsp");
+			} else if (action.equals("rentsearch")) { // 貸出・返却を探す
+				try {
+					int member_id = Integer.parseInt(request.getParameter("member_id"));
+					List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
+					request.setAttribute("member_id", member_id);
+					request.setAttribute("rent_list", Result_list);
+					request.setAttribute("show", true);
+					gotoPage(request, response, "/bookRr.jsp");
+				} catch (NumberFormatException e) {
+					request.setAttribute("error", "会員IDは数字で入力してください。");
+					gotoPage(request, response, "/bookRr.jsp");
+				}
+
 				
-			} else if (action.equals("return")) {
+			} else if (action.equals("return")) { // 返却ボタン
 				int book_id = Integer.parseInt(request.getParameter("book_id"));
 				int member_id = Integer.parseInt(request.getParameter("member_id"));
 				service.returnBook(member_id, book_id);
@@ -101,36 +114,54 @@ public class BookServlet extends HttpServlet {
 				request.setAttribute("show", true);
 				gotoPage(request, response, "/bookRr.jsp");
 				
-			} else if (action.equals("rent")) {
+			} else if (action.equals("rent")) { // 貸出ボタン
 				List<Integer> book_id_list = new ArrayList<Integer>();
-				
 				int member_id = Integer.parseInt(request.getParameter("member_id"));
 				for (int i = 1; i < 6; i++) {
 					try {
-						book_id_list.add(Integer.parseInt(request.getParameter("book_id" + i)));
-					} catch (Exception e) {
-						break;
-					}	
-				}
-				
+						String book_id = request.getParameter("book_id" + i);
+						if (book_id == null || book_id.equals("")) {
+							continue;
+						} else {
+							int num = Integer.parseInt(book_id);
+							book_id_list.add(num);
+						}
+					} catch (NumberFormatException e) {
+						e.printStackTrace();
+						List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
+						request.setAttribute("member_id", member_id);
+						request.setAttribute("rent_list", Result_list);
+						request.setAttribute("show", true);
+						request.setAttribute("error1", "error");
+						gotoPage(request, response, "/bookRr.jsp");
+					}
+
+					}
+			
 				List<RentInfoBean> result_list =  service.rentBooksById(member_id, book_id_list);
 				request.setAttribute("rent_result", result_list);
 				gotoPage(request, response, "/bookConfirm.jsp");
-				
 					
+
+
 			} else if (action.equals("rentconfirm")) {
 				gotoPage(request, response, "/bookRr.jsp");
 				
 			} else if (action.equals("searchDiscard")) {
+				try {
+					int book_id = Integer.parseInt(request.getParameter("book_id"));
+					
+					DiscardInfoBean result = service.searchDiscard(book_id);
+					request.setAttribute("result", result);
+					String current_date = service.getCurrentDate(); // 20260622
+					request.setAttribute("current_date", current_date);
+					request.setAttribute("show", true);
+					gotoPage(request, response, "/bookDiscard.jsp");
+				} catch (NumberFormatException e) {
+					request.setAttribute("error", "会員IDは数字で入力してください。");
+					gotoPage(request, response, "/bookDiscard.jsp");
+				}
 				
-				int book_id = Integer.parseInt(request.getParameter("book_id"));
-				
-				DiscardInfoBean result = service.searchDiscard(book_id);
-				request.setAttribute("result", result);
-				String current_date = service.getCurrentDate(); // 20260622
-				request.setAttribute("current_date", current_date);
-				request.setAttribute("show", true);
-				gotoPage(request, response, "/bookDiscard.jsp");
 				
 			} else if(action.equals("discard")) {
 				

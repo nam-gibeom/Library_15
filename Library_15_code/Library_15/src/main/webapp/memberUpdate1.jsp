@@ -19,6 +19,7 @@
         <button class="btn-hover-20">検索</button></td></tr>
          </table>
 </form>
+<p>${error }</p>
          
          
 <c:if test="${show }">

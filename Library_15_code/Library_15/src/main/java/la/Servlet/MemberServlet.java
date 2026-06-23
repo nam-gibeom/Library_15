@@ -39,43 +39,73 @@ public class MemberServlet extends HttpServlet {
 		String action = request.getParameter("action");
 		
 		if(action.equals("searchupdate")) {
-		int member_id = Integer.parseInt(request.getParameter("memberid"));
-		MemberService service = new MemberService();
-		MemberBean bean = service.SearchAndMove(member_id);
-		request.setAttribute("info", bean);
-		request.setAttribute("show", true);
-		gotoPage(request, response,"/memberUpdate.jsp" );
+			try {
+				int member_id = Integer.parseInt(request.getParameter("memberid"));
+				MemberService service = new MemberService();
+				MemberBean bean = service.SearchAndMove(member_id);
+				request.setAttribute("info", bean);
+				request.setAttribute("show", true);
+				gotoPage(request, response,"/memberUpdate.jsp" );
+			} catch (NumberFormatException e) {
+				request.setAttribute("error", "会員IDは数字で入力してください。");
+				gotoPage(request, response,"/memberUpdate.jsp" );
+			}
+		
 			
 		}else if(action.equals("searchcancel")) {
-			int member_id = Integer.parseInt(request.getParameter("memberid"));
+			try {
+				int member_id = Integer.parseInt(request.getParameter("memberid"));
+				
+				MemberService service = new MemberService();
+				BookService service_book = new BookService();
 			
-			MemberService service = new MemberService();
-			BookService service_book = new BookService();
+				List<RentInfoBean> book_bean = service_book.showCurrentrentList(member_id);
+				MemberBean bean = service.SearchAndMove(member_id);
+				
+				request.setAttribute("rent_list", book_bean);
+				request.setAttribute("show", true);
+				request.setAttribute("info", bean);
+				gotoPage(request, response,"/memberCancel.jsp" );
+			} catch (NumberFormatException e) {
+				request.setAttribute("error", "会員IDは数字で入力してください。");
+				gotoPage(request, response,"/memberCancel.jsp" );
+			}
 		
-			List<RentInfoBean> book_bean = service_book.showCurrentrentList(member_id);
-			MemberBean bean = service.SearchAndMove(member_id);
-			
-			request.setAttribute("rent_list", book_bean);
-			request.setAttribute("show", true);
-			request.setAttribute("info", bean);
-			gotoPage(request, response,"/memberCancel.jsp" );
 			
 		}else if(action.equals("regist")) {
-			String name = request.getParameter("name");
-			String address = request.getParameter("address");
-			String tel = request.getParameter("tel");
-			String mail = request.getParameter("mail");
+			try {
+				String name = request.getParameter("name");
+				String address = request.getParameter("address");
+				String tel = request.getParameter("tel");
+				String mail = request.getParameter("mail");
 			
-			String birthy = request.getParameter("birthy");
-			String birthm = request.getParameter("birthm");
-			String birthd = request.getParameter("birthd");
+
+				int birthy = Integer.parseInt(request.getParameter("birthy"));
+				int birthm = Integer.parseInt(request.getParameter("birthm"));
+				int birthd = Integer.parseInt(request.getParameter("birthd"));
+				
+				String birth = birthy +"-"+ birthm +"-"+ birthd;
+				
+				MemberService service = new MemberService();
+				MemberBean bean = service.addMemberService(name, address, tel, mail, birth);
+				request.setAttribute("info", bean);
+				gotoPage(request, response, "/registResult.jsp");
 			
-			String birth = birthy +"-"+ birthm +"-"+ birthd;
+			} catch (NumberFormatException e) {
+				String name = request.getParameter("name");
+				String address = request.getParameter("address");
+				String tel = request.getParameter("tel");
+				String mail = request.getParameter("mail");
+				
+				request.setAttribute("name", name);
+				request.setAttribute("address", address);
+				request.setAttribute("tel", tel);
+				request.setAttribute("mail", mail);
+				request.setAttribute("error", "生年月日は数字で入力してください。");
+				
+				gotoPage(request, response, "/memberRegist.jsp");
+			}
 			
-			MemberService service = new MemberService();
-			MemberBean bean = service.addMemberService(name, address, tel, mail, birth);
-			request.setAttribute("info", bean);
-			gotoPage(request, response, "/registResult.jsp");
 			
 		}else if(action.equals("update")) {
 			int id =Integer.parseInt(request.getParameter("memberid"));
