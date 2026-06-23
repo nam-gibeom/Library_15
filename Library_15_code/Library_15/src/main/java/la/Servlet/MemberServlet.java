@@ -1,6 +1,7 @@
 package la.Servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import la.Bean.MemberBean;
+import la.Bean.RentInfoBean;
 import la.Dao.DAOException;
+import la.Service.BookService;
 import la.Service.MemberService;
 
 /**
@@ -46,9 +49,14 @@ public class MemberServlet extends HttpServlet {
 		}else if(action.equals("searchcancel")) {
 			int member_id = Integer.parseInt(request.getParameter("memberid"));
 			
-			
 			MemberService service = new MemberService();
+			BookService service_book = new BookService();
+		
+			List<RentInfoBean> book_bean = service_book.showCurrentrentList(member_id);
 			MemberBean bean = service.SearchAndMove(member_id);
+			
+			request.setAttribute("rent_list", book_bean);
+			request.setAttribute("show", true);
 			request.setAttribute("info", bean);
 			gotoPage(request, response,"/memberCancel.jsp" );
 			
@@ -97,6 +105,25 @@ public class MemberServlet extends HttpServlet {
 		}else if(action.equals("confirm")) {
 	
 			gotoPage(request, response, "/memberRegist.jsp");
+		
+		} else if (action.equals("return")) {
+
+			int book_id = Integer.parseInt(request.getParameter("book_id"));
+			int member_id = Integer.parseInt(request.getParameter("member_id"));
+			
+			BookService book_service = new BookService();
+			MemberService service = new MemberService();
+			
+			book_service.returnBook(member_id, book_id);
+			List<RentInfoBean> book_bean = book_service.showCurrentrentList(member_id);
+			MemberBean bean = service.SearchAndMove(member_id);
+			
+			request.setAttribute("rent_list", book_bean);
+			request.setAttribute("show", true);
+			request.setAttribute("info", bean);
+			gotoPage(request, response,"/memberCancel.jsp" );
+			
+			
 		}
 		
 		

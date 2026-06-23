@@ -33,7 +33,7 @@
 	
 	
 	<c:if test="${show}">
-	<c:if test="${fn:length(rent_list) > 1 }">
+	<c:if test="${fn:length(rent_list) >= 1 }">
 	<h2>返却</h2>
 	<table border="1">
 	<tr><th>資料ID</th><th>資料名</th><th>返却</th></tr>
