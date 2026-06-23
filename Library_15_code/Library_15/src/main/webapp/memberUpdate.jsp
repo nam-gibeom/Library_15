@@ -6,14 +6,11 @@
     <title>メイン画面</title>
     <style>
     
- body {
-  height: 100%;
-  margin: 0; 
-}
+ 
 .container {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+
 }
 
 
@@ -33,8 +30,8 @@
   background-color: #FFFFEE;
   
   display: flex;
-  flex-direction: column;         
-  justify-content: space-around;  
+      flex-direction: column;     
+
   align-items: center;
 }
         
