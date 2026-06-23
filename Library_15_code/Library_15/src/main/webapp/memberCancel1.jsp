@@ -51,7 +51,7 @@
 		<input type="hidden" name="id" value="${info.member_id }">
 		
 		<input type="hidden" id="actionname" name="action" value="">
-<button type="button" class=btn-hover-20 onclick="popapp()">退会</button>
+<button type="button" class=button-hover-20 onclick="popapp()">退会</button>
 		</form>
 	</c:if>
 	

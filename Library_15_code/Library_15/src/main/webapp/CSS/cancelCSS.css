@@ -154,7 +154,7 @@ margin: 4em 0em 0em 0em;
 
 
 .btn-hover-20 {
-	display: flex;
+	    display: flex;
 	    justify-content: center;
 	    align-items: center;
 	    width: 100%;
@@ -163,7 +163,7 @@ margin: 4em 0em 0em 0em;
 	    text-decoration: none;
 	    transition: all 0.3s ease;
 	    z-index: 1;
-	box-sizing: border-box;
+	    box-sizing: border-box;
 	    border: none; /* 칸 테두리와 겹치지 않게 */
 	    background-color: #fff; /* 칸 배경색과 맞추기 */
 	    color: #6b8e23; /* 텍스트 색상 */
@@ -191,8 +191,9 @@ margin: 4em 0em 0em 0em;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	width: 100px;
-	margin: 0 auto 32px;
+	width: 40;
+	height:30px;
+	margin: 2em auto 32px;
 	padding: .9em 2em;
 	font-weight: 600;
 	text-decoration: none;
