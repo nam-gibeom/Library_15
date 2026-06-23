@@ -1,9 +1,13 @@
-/*table {*/
-/*  width: 80%;*/
-/*  height: 80%;         */
-/*  table-layout: fixed;   */
-/*  border-collapse: collapse; */
-/*}*/
+.titletop{
+	color:grey;
+	text-decoration: underline;
+	font-size: 150%;
+	margin-top:20px;
+	  margin-left:-1100px;       
+	  padding: 0;
+}
+
+
 
 table {
 	font-size: 120%;
@@ -16,14 +20,6 @@ table {
 	margin: 4em 1em 0em 1.5em;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
-
-/*th, */
-/*td {*/
-/*  width: 16%;*/
-/*  vertical-align: middle;           */
-/*  word-break: break-all; */
-/*  padding: 0;*/
-/*}*/
 
 table th,
 table td {
