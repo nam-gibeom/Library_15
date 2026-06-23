@@ -112,3 +112,8 @@ td {
 	background-color: olivedrab;
 	color: #FFFFEE;
 }
+.center{
+  	text-align: center;
+	font:bold ;
+	color:red;
+  }

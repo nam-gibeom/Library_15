@@ -25,7 +25,7 @@
      </td><td class="resulttd"><input type="text" name="value" id=max></td><td class="resulttd"><button name="action" value="booksearch" class=btn-hover-20>検索</button></td></tr>
       </table>
 </form>
-<p>${error }</p>
+<div class=center>${error }</div>
 
 <c:if test="${show }">
 <table border="1" class=result>
