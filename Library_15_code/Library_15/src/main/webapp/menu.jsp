@@ -19,8 +19,11 @@
 <!--		<h2 class=right>新宿図書館</h2>-->
 
 <!--	</div>-->
-<div class = name>職員：${names}さんようこそ</div>
-	
+<h3 class = admin>職員：${names}さん</h3>
+		<form action="/Library_15/MenuServlet" method="post">
+		<input type="hidden" name="action" value="logout">
+		<button id=logout>ログアウト</button>
+	</form>
 
 <div class="menu">
 	<dl>
@@ -58,10 +61,7 @@
 		</dd>
 	</dl>
 
-	<form action="/Library_15/MenuServlet" method="post">
-		<input type="hidden" name="action" value="logout">
-		<button id=logout>ログアウト</button>
-	</form>
+	
 </div>
 
 
