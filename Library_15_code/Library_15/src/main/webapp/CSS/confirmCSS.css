@@ -1,0 +1,232 @@
+.titletop{
+	color:grey;
+	text-decoration: underline;
+	font-size: 150%;
+	margin-top:20px;
+	  margin-left:-850px;       
+	  padding: 0;
+}
+
+#lable {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+		
+
+}
+#lable1 {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+		width: 5em;
+
+}
+#lable2 {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+	width: 4em;
+
+}
+
+.result {
+	font-size: 120%;
+	border-collapse: collapse;
+	border: solid 1px black;
+	width: 300px;
+	height: 50px;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	margin: 4em 0em 0em 0em;
+	text-align: center;
+
+
+}
+
+.resulttd{
+	border: solid 2px olivedrab;
+
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+	
+
+}
+.resulttd1{
+	border: solid 2px olivedrab;
+
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+width: 3em;
+text-align: center;
+}
+
+
+
+.search {
+	font-size: 120%;
+	border-collapse: collapse;
+	border: solid 1px black;
+	width: 600px;
+	height: 20px;
+	/* ここを自由に調整 */
+	border-collapse: collapse;
+	 box-sizing: border-box;
+	 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+margin: 4em 0em 0em 0em;
+
+}
+
+
+.searchtd {
+	border: solid 2px olivedrab;
+
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+}
+
+#max {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+
+	border: none;
+	outline: none;
+	background-color: #FFFFEE;
+	font-size: 125%;
+}
+#max2 {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+
+	border: none;
+	outline: none;
+	background-color: #FFFFEE;
+	font-size: 125%;
+	text-align: center;
+}
+
+#ymd {
+	border: none;
+	outline: none;
+	background-color: #FFFFEE;
+	text-align: center;
+	font-size: 125%;
+
+}
+
+.btn {
+	display: inline-block;
+	color: darkolivegreen;
+	text-decoration: none;
+	background-color: rgb(215, 235, 171);
+	border-radius: 0.4em;
+	padding: 0.5em 1em;
+	transition: 0.5s;
+}
+.btn-wrapper {
+    width: 100%;
+    height: 100%;
+    display: block; /* flex だとボタンが縮むことがある */
+    padding: 0;     /* 余白があるとボタンがはみ出す */
+}
+
+
+.btn-hover-20 {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    width: 100%;
+	    height: 100%;
+	    font-weight: 600;
+	    text-decoration: none;
+	    transition: all 0.3s ease;
+	    z-index: 1;
+	    box-sizing: border-box;
+	    border: none; /* 칸 테두리와 겹치지 않게 */
+	    background-color: #fff; /* 칸 배경색과 맞추기 */
+	    color: #6b8e23; /* 텍스트 색상 */
+	    cursor: pointer;
+		margin:0;
+		padding:0;
+		
+}
+
+.btn-hover-20 span {
+	position: relative;
+	z-index: 2;
+}
+
+
+
+.btn-hover-20:hover {
+/*	background-color: darkolivegreen;*/
+	background-color: olivedrab;
+	color: #FFFFEE;
+}
+
+.button-hover-20 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 90px;
+	height:30px;
+	margin: 2em auto 32px;
+	padding: .9em 2em;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	z-index: 1;
+	border-radius: 5px;
+}
+
+.button-hover-20 span {
+	position: relative;
+	z-index: 2;
+}
+
+.button-hover-20 {
+	border: 1px solid olivedrab;
+	background-color: white;
+	color: olivedrab;
+	
+	
+}
+
+.button-hover-20:hover {
+/*	background-color: darkolivegreen;*/
+	background-color: olivedrab;
+	color: #FFFFEE;
+}
+.center{
+  	text-align: center;
+	font:bold ;
+	color:red;
+	margin-top:1em;
+  }
+center2{
+	text-align: center;
+	
+}
