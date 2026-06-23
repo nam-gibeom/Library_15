@@ -35,21 +35,23 @@
 	
 	
 	<c:if test="${show}">
-	<c:if test="${fn:length(rent_list) > 1 }">
-	<h2>返却　　　　　　　貸出</h2>
+	<c:if test="${fn:length(rent_list) >= 1 }">
+	
 	<div class=tables-wrapper>
-	<table border="1" class=test>
-	<tr><th>資料ID</th><th>資料名</th><th>返却</th></tr>
+	返却
+	<table border="0" class=result >
+	<tr><th colspan=3 border=0 box-shadow=none><h2>返却</h2></th></tr>
+	<tr><th id=lable>資料ID</th><th id=lable>資料名</th><th id=lable>返却</th></tr>
 
 	<c:forEach items="${rent_list }" var="rent">
 		<tr><td id=lable>${rent.book_id }</td>
-		<td>${rent.title }</td>
-		<td id=lable>
-		<form action="/Library_15/BookServlet">
+		<td class=resulttd>${rent.title }</td>
+		<td class=resulttd>
+		<form action="/Library_15/BookServlet" method="post">
 		<input type="hidden" name="book_id" value="${rent.book_id }">
 		<input type="hidden" name="member_id" value="${member_id }">
 		<button name="action" value="return">返却</button>
-		</form>
+		</form></td>
 		</tr>
 	</c:forEach>
 	</tr>

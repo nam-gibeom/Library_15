@@ -14,12 +14,12 @@
 .result {
 	font-size: 120%;
 	border-collapse: collapse;
-	border: solid 1px black;
-	width: 600px;
+	
+	width: 500px;
 	height: auto;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
-	margin: -50em 0em 0em 0em;
+	margin: 0em 0em 0em 0em;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 }
@@ -31,6 +31,7 @@
 	word-break: break-all;
 	padding: 0;
 	text-align: center;
+	
 	/*実線 1px 黒*/
 }
 
@@ -43,7 +44,7 @@
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	 box-sizing: border-box;
-	 margin: 0em 0em 0em 0em;
+	 margin: 4em 0em 0em 0em;
 	 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 
@@ -174,7 +175,7 @@
 }
 .tables-wrapper {
     display: flex;        /* 横並びの基本 */
-    gap: 16px;            /* テーブル間の隙間 */
+    gap: 5em;            /* テーブル間の隙間 */
     align-items: flex-start;
   }
 

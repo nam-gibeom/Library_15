@@ -10,15 +10,41 @@
 		
 
 }
+#lable1 {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+		width: 5em;
+
+}
+#lable2 {
+	background-color: rgb(215, 235, 171);
+	color: darkolivegreen;
+	text-align: center;
+	border: solid 2px olivedrab;
+
+		vertical-align: middle;
+		word-break: break-all;
+		padding: 0;
+	width: 4em;
+
+}
+
 .result {
 	font-size: 120%;
 	border-collapse: collapse;
 	border: solid 1px black;
 	width: 600px;
-	height: 400px;
+	height: 50px;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
-	
+	margin: 4em 0em 0em 0em;
+	text-align: center;
 
 
 }
@@ -30,8 +56,21 @@
 	word-break: break-all;
 	padding: 0;
 	/*実線 1px 黒*/
+	
 
 }
+.resulttd1{
+	border: solid 2px olivedrab;
+
+	vertical-align: middle;
+	word-break: break-all;
+	padding: 0;
+	/*実線 1px 黒*/
+width: 3em;
+text-align: center;
+}
+
+
 
 .search {
 	font-size: 120%;
@@ -67,6 +106,17 @@ margin: 4em 0em 0em 0em;
 	background-color: #FFFFEE;
 	font-size: 125%;
 }
+#max2 {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+
+	border: none;
+	outline: none;
+	background-color: #FFFFEE;
+	font-size: 125%;
+	text-align: center;
+}
 
 #ymd {
 	border: none;
@@ -86,6 +136,13 @@ margin: 4em 0em 0em 0em;
 	padding: 0.5em 1em;
 	transition: 0.5s;
 }
+.btn-wrapper {
+    width: 100%;
+    height: 100%;
+    display: block; /* flex だとボタンが縮むことがある */
+    padding: 0;     /* 余白があるとボタンがはみ出す */
+}
+
 
 .btn-hover-20 {
 	display: flex;
