@@ -11,28 +11,28 @@
 <body>
  <form action ="/Library_15/MemberServlet" method="post">
 <table border="1"class="search">
-        <tr><td id=lable>会員ID</td><td><input type="text" id="max" name ="memberid"></td><td>
+        <tr><td id=lable>会員ID</td><td class=resulttd><input type="text" id="max" name ="memberid"></td><td class=resulttd>
         <input type="hidden" name="action" value="searchcancel">
-        <button>検索</button></td></tr>
+        <button class=btn-hover-20>検索</button></td></tr>
          </table>
 </form>         
 <br>
 
 
  <form action ="/Library_15/MemberServlet" method="post">
-<table border="1">
-<tr><td id=lable>会員ID</td><td><input type="text" size="2" id="max" name = "id" value=${info.member_id }></td><td><input type="text" id="ymd" name="name" value=${info.member_name }>さん</td>
-<td>
+<table border="1" class="search">
+<tr><td id=lable>会員ID</td><td class=resulttd><input type="text" size="2" id="max" name = "id" value=${info.member_id }></td><td class=resulttd><input type="text" id="ymd" name="name" value=${info.member_name }>さん</td>
+<td class=resulttd>
 <input type="hidden" name="action" value="cancel">
-<button>退会</button></td></tr>
+<button class=btn-hover-20>退会</button></td></tr>
  </table>
 </form>
 <br>
 
 
-<table border="1">
-        <tr><td><input type="text" size="1" id="max" value="(ID)"></td><td><input type="text" size="5" id="max" value="(資料ID)"></td><td><input type="text" size="5" id="max" value="資料名"></td>
-        <td><input type="text" size="5" id="max" value="貸出日"></td><td><button>返却</button></td></tr>
+<table border="1" class="search">
+        <tr><td class=resulttd><input type="text" size="1" id="max" value="(ID)"></td><td class=resulttd><input type="text" size="5" id="max" value="(資料ID)"></td><td class=resulttd><input type="text" size="5" id="max" value="資料名"></td>
+        <td class=resulttd><input type="text" size="5" id="max" value="貸出日"></td><td class=resulttd><button class=btn-hover-20>返却</button></td></tr>
 </table><br>
 
 貸出が2点あるため退会できません　
