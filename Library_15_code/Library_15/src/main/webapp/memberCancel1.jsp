@@ -47,13 +47,27 @@
 </c:if>
 
 	<c:if test="${show && fn:length(rent_list) == 0 }">
-		<form action="/Library_15/MemberServlet" method="post">
+		<form id="form" action="/Library_15/MemberServlet" method="post">
 		<input type="hidden" name="id" value="${info.member_id }">
-		<button name="action" value="cancel">退会</button>
+		
+		<input type="hidden" id="actionname" name="action" value="">
+<button type="button" class=btn-hover-20 onclick="popapp()">退会</button>
 		</form>
 	</c:if>
 	
-
+	<script>
+        function popapp() {
+            // confirm()trueかfalse
+            let result = confirm("このデータで登録してもよろしいですか？");
+            
+            if (result) {
+                document.getElementById("actionname").value = "cancel";
+                document.getElementById("form").submit();
+            } else {
+                //alert("戻る");
+            }
+        }
+    </script>
 
 </body>
 </html>
