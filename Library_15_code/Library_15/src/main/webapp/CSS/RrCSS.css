@@ -217,3 +217,8 @@
     font-size: 60%;
     color: #999; /* 必要なら色も変更可能 */
   }
+
+  .center{
+  	text-align: center;
+  	
+  }

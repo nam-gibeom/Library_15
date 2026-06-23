@@ -16,7 +16,7 @@
 		vertical-align: middle;
 		word-break: break-all;
 		padding: 0;
-	
+	width: fit-content;
 
 }
 
@@ -24,7 +24,7 @@
 	font-size: 120%;
 	border-collapse: collapse;
 	border: solid 1px black;
-	width: 600px;
+	width: 800px;
 	height: auto;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
