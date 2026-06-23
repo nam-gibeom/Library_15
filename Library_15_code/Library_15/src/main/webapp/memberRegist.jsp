@@ -5,7 +5,10 @@
 <meta charset="UTF-8">
     <title>メイン画面</title>
     <style>
-    
+    body {
+  height: 100%;
+  margin: 0; 
+}
 .container {
   display: flex;
   width: 100%;

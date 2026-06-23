@@ -13,9 +13,9 @@
 <body>
  <form action ="/Library_15/MemberServlet" method="post">
 <table border="1"class="search">
-        <tr><td id=lable>会員ID</td><td><input type="text" id="max" name ="memberid"></td><td>
+        <tr><td id=lable>会員ID</td><td class=resulttd><input type="text" id="max" name ="memberid"></td><td class=resulttd>
         <input type="hidden" name="action" value="searchcancel">
-        <button>検索</button></td></tr>
+        <button class=btn-hover-20>検索</button></td></tr>
          </table>
 </form>         
 

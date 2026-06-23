@@ -15,6 +15,7 @@ table {
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	margin: -8em 1em 0em 1.5em;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 
 }
@@ -90,7 +91,7 @@ table td {
 }
 
 .btn-hover-20:hover {
-/*	background-color: darkolivegreen;*/
+
 	background-color: olivedrab;
 	color: #FFFFEE;
 }

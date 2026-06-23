@@ -16,10 +16,10 @@
 	border-collapse: collapse;
 	border: solid 1px black;
 	width: 600px;
-	height: 400px;
+	height: auto;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
-	margin: 3em 0em 0em 0em;
+	margin: -50em 0em 0em 0em;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 }
@@ -30,6 +30,7 @@
 	vertical-align: middle;
 	word-break: break-all;
 	padding: 0;
+	text-align: center;
 	/*実線 1px 黒*/
 }
 
@@ -42,7 +43,7 @@
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	 box-sizing: border-box;
-	 margin: 3em 0em 0em 0em;
+	 margin: -19em 0em 0em 0em;
 	 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 
@@ -68,6 +69,20 @@
 	background-color: #FFFFEE;
 	font-size: 125%;
 }
+#max2 {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+
+	border: none;
+	outline: none;
+	
+	font-size: 110%;
+	background-color: rgb(215, 235, 171);
+		color: darkolivegreen;
+		text-align: center;
+}
+
 
 #ymd {
 	border: none;
@@ -158,8 +173,3 @@
 	color: #FFFFEE;
 }
 
-
-/*.btn-hover-20:hover {*/
-/*	background-color: #fff;*/
-/*	color: darkolivegreen;*/
-/*}*/

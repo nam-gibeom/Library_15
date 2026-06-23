@@ -1,4 +1,21 @@
+.admin {
+	padding-right: 200px;
+	white-space: nowrap;
+	color: #505050;
+	padding: 0.5em 2.5em 0.5em 2em;
+	/*上・右・下・左*/
+	display: inline-block;
+	line-height: 1.3;
+	background: #CCFFFF;
+	vertical-align: middle;
 
+}
+
+.admin:before {
+	content: '●';
+	color: white;
+	margin-right: 8px;
+}
 
 .member {
 	padding-right: 200px;
@@ -57,25 +74,31 @@
 		
 	}
 	
-	.name{
-		color: #505050;
-		margin: 1em 0.5em 0em 0.5em;/*上・右・下・左*/
-	}
+
 	
 	
 	.menu {
-		width: 100%;
-	  padding: 0;
-	  margin: 0;  
-	  gap: 20px;           
+		height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	overflow-y: auto;/*スクロールバー*/
+	text-align: center;          
 	}
-	dt,
-	dd {
-		font-weight: bold;
-	  flex: 1;
-	  margin: 0;
-	  text-align: center;
-	}
+	  .menu dt h3 {
+    margin: 0;
+	text-align: center;
+  }
+
+  .menu dd {
+	font-weight: bold;
+    margin-left: 15px;   
+    margin-top: 2px;     
+    margin-bottom: 2px;
+    padding: 0;
+	text-align: center;
+	flex: 1;
+  }
 	
 	.menu a {
 		display: block;        
