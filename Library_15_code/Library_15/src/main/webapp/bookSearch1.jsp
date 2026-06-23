@@ -23,14 +23,15 @@
      </td><td class="resulttd"><input type="text" name="value" id=max></td><td class="resulttd"><button name="action" value="booksearch" class=btn-hover-20>検索</button></td></tr>
       </table>
 </form>
-	
+		<c:if test="${show }">
 		<table border="1" class=result>
-        <tr><th id= lable>資料名</th><th id= lable>類目名</th><th id= lable>出版日</th><th id= lable>貸出日数</th><th id= lable>貸出可能</th></tr>
-        <c:forEach var="result1" items="${result }">
-        	<tr><td class="resulttd">${result1.title }</td><td class="resulttd">${result1.category_name }</td><td class="resulttd">${result1.publish_date }</td><td class="resulttd">${result1.canRentDay }</td><td class="resulttd">${result1.rentAvailable }</td></tr>
-        </c:forEach>
-        
+	        <tr><th id= lable>資料名</th><th id= lable>類目名</th><th id= lable>出版日</th><th id= lable>貸出日数</th><th id= lable>貸出可能</th></tr>
+	        <c:forEach var="result1" items="${result }">
+	        	<tr><td class="resulttd">${result1.title }</td><td class="resulttd">${result1.category_name }</td><td class="resulttd">${result1.publish_date }</td><td class="resulttd">${result1.canRentDay }</td><td class="resulttd">${result1.rentAvailable }</td></tr>
+	        </c:forEach>
         </table>
+		</c:if>
+
 	
 </body>
 </html>
