@@ -30,6 +30,7 @@
 		</tr>
 	</table>
 	</form>
+	<p>${error }</p>
 	
 	
 	<c:if test="${show}">
@@ -65,6 +66,7 @@
 	<input type="hidden" name="member_id" value="${member_id }">
 	<button name="action" value="rent">貸出</button>
 	</form>
+	<p>${error1 }</p>
 	</c:if>
 	
 	

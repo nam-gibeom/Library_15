@@ -17,7 +17,8 @@
         <input type="hidden" name="action" value="searchcancel">
         <button class=btn-hover-20>検索</button></td></tr>
          </table>
-</form>         
+</form>
+<p>${error }</p>         
 
 <c:if test="${show }">
 	<table border="1">
