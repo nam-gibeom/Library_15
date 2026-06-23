@@ -1,6 +1,6 @@
 .admin {
 	padding-right: 200px;
-
+	white-space: nowrap;
 	color: #505050;
 	padding: 0.5em 2.5em 0.5em 2em;
 	/*上・右・下・左*/
