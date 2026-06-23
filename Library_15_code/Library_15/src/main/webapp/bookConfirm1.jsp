@@ -2,13 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
+
 .login {
 	max-width: 400px;
-	margin: 0 auto;
+	margin: 4em auto;
 	padding: 2rem;
 	background: #fff;
 	border-radius: 12px;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	text-align:center;
 }
 
 .login h2 {
@@ -85,23 +87,26 @@
 <head>
 <meta charset="UTF-8">
 <title>siryoukasidasi kakuninn</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/CSS/confirmCSS.css">
 </head>
 <body>
 
 
 	<div class="login">
-		<h1>貸出確認</h1>
+	<div class=center2>
+		<h1 >貸出確認</h1></div>
 			<div class="form-group">
-			<table border="1">
-				<tr><th>資料ID</th><th>資料名</th><th>返却期日</th></tr>
+			<table border="1" class=result>
+				<tr><th id=lable>資料ID</th><th id=lable>資料名</th><th id=lable>返却期日</th></tr>
 
 			<c:forEach items="${rent_result}" var="info">
-				<tr><td>${info.book_id }</td><td>${info.title }</td><td>${info.return_deadline }</td></tr>
+				<tr><td class=resulttd>${info.book_id }</td><td class=resulttd>${info.title }</td><td class=resulttd>${info.return_deadline }</td></tr>
 			</c:forEach>
 			</table>
 			</div>
 		<form action="/Library_15/BookServlet" method="post">
-			<button name="action" value="rentconfirm"> 完了</button>
+			<button name="action" class=button-hover-20 value="rentconfirm"> 完了</button>
 		</form>
 	</div>
 
