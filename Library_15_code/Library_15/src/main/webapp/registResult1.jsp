@@ -4,7 +4,7 @@
 <style type="text/css">
 .login {
 	max-width: 400px;
-	margin: 0 auto;
+	margin: 4em auto;
 	padding: 2rem;
 	background: #fff;
 	border-radius: 12px;
@@ -78,6 +78,40 @@
 	font-size: 14px;
 	color: #666;
 }
+
+.button-hover-20 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100px;
+	margin: 0 auto 32px;
+	padding: .9em 2em;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	z-index: 1;
+	border-radius: 5px;
+}
+
+.button-hover-20 span {
+	position: relative;
+	z-index: 2;
+}
+
+.button-hover-20 {
+	border: 1px solid olivedrab;
+	background-color: white;
+	color: olivedrab;
+	
+	
+}
+
+.button-hover-20:hover {
+/*	background-color: darkolivegreen;*/
+	background-color: olivedrab;
+	color: #FFFFEE;
+}
 </style>
 
 
@@ -102,7 +136,7 @@
 
 	<form action="/Library_15/MemberServlet" method="post">
 		<input type="hidden" name="action" value="confirm">
-		<button>完了</button>
+		<button class = button-hover-20>完了</button>
 	</form>
 </div>
 
