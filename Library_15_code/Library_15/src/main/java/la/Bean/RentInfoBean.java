@@ -2,6 +2,24 @@ package la.Bean;
 
 public class RentInfoBean {
 	int book_id;
+	int member_id;
+	
+	public RentInfoBean(int book_id, int member_id) {
+		super();
+		this.book_id = book_id;
+		this.member_id = member_id;
+	}
+
+	public int getMember_id() {
+		return member_id;
+	}
+
+
+
+	public void setMember_id(int member_id) {
+		this.member_id = member_id;
+	}
+
 	String title;
 	String return_deadline;
 	

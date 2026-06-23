@@ -47,7 +47,7 @@ public class BookServlet extends HttpServlet {
 				String value = request.getParameter("value");
 				List<SearchBean> result = service.searchBooks(type, value);
 				if (result.isEmpty()) {
-					request.setAttribute("error", "資料IDは数字で入力してください。");
+					request.setAttribute("error", "資料が存在しません");
 					gotoPage(request, response, "/bookSearch.jsp");
 				} else {
 					request.setAttribute("result", result);
@@ -137,10 +137,21 @@ public class BookServlet extends HttpServlet {
 					}
 
 					}
-			
-				List<RentInfoBean> result_list =  service.rentBooksById(member_id, book_id_list);
-				request.setAttribute("rent_result", result_list);
-				gotoPage(request, response, "/bookConfirm.jsp");
+				List<RentInfoBean> already_rented_list = service.checkRentedBook(book_id_list);
+				if (already_rented_list.isEmpty()) {
+					List<RentInfoBean> result_list =  service.rentBooksById(member_id, book_id_list);
+					request.setAttribute("rent_result", result_list);
+					gotoPage(request, response, "/bookConfirm.jsp");
+				} else {
+					List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
+					request.setAttribute("member_id", member_id);
+					request.setAttribute("rent_list", Result_list);
+					request.setAttribute("show", true);
+					request.setAttribute("rented_list", already_rented_list);
+					gotoPage(request, response, "/bookRr.jsp");
+				}
+				
+
 					
 
 
@@ -152,11 +163,18 @@ public class BookServlet extends HttpServlet {
 					int book_id = Integer.parseInt(request.getParameter("book_id"));
 					
 					DiscardInfoBean result = service.searchDiscard(book_id);
-					request.setAttribute("result", result);
-					String current_date = service.getCurrentDate(); // 20260622
-					request.setAttribute("current_date", current_date);
-					request.setAttribute("show", true);
-					gotoPage(request, response, "/bookDiscard.jsp");
+					
+					if (result != null) {
+						request.setAttribute("result", result);
+						String current_date = service.getCurrentDate(); // 20260622
+						request.setAttribute("current_date", current_date);
+						request.setAttribute("show", true);
+						gotoPage(request, response, "/bookDiscard.jsp");
+					} else {
+						request.setAttribute("error", "資料が存在しません。もう一度確認してください");
+						gotoPage(request, response, "/bookDiscard.jsp");
+					}
+
 				} catch (NumberFormatException e) {
 					request.setAttribute("error", "会員IDは数字で入力してください。");
 					gotoPage(request, response, "/bookDiscard.jsp");

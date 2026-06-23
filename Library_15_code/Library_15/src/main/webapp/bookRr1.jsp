@@ -40,7 +40,6 @@
 	<c:if test="${fn:length(rent_list) >= 1 }">
 	
 	<div class=tables-wrapper>
-	返却
 	<table border="0" class=result >
 	<tr><th colspan=3 border=0 box-shadow=none><h2>返却</h2></th></tr>
 	<tr><th id=lable>資料ID</th><th id=lable>資料名</th><th id=lable>返却</th></tr>
@@ -59,9 +58,6 @@
 	</tr>
 	</table>
 	</c:if>
-
-
-
 	<form action="/Library_15/BookServlet" method="post">
 	<table class=test>
 	<tr><th>資料ID</th></tr>
@@ -73,6 +69,7 @@
 	<button name="action" value="rent">貸出</button>
 	</form>
 	<p>${error1 }</p>
+	<p><c:forEach items="${rented_list }" var="rent">Warning：資料ID「${rent.book_id }」はすでに会員ID「${rent.member_id }」が借りています</c:forEach><br></p>
 	</c:if>
 	</div>
 	
