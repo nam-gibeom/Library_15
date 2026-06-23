@@ -26,7 +26,7 @@
 				</tr>
 			</table>
 		</form>
-		<p>${error }</p>
+		<div class=center>${error }</div>
 		<br><br><br><br><br>
 
 
