@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>siryou touroku</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/CSS/RrCSS.css">
 <style>
 .hidden {
 	display: none;
@@ -20,12 +22,13 @@
 
 </head>
 <body>
+	<div class = titletop>資料＞貸出・返却</div>
 	<form action="/Library_15/BookServlet" method="post">
-		<table border="1">
+		<table border="1"class=search>
 		<tr>
-			<td>会員ID</td>
-			<td><input type="text" name="member_id" value="${member_id }"></td>
-			<td><button name="action" value="rentsearch">検索</button>
+			<td id= lable>会員ID</td>
+			<td class=searchtd><input type="text" id=max name="member_id" value="${member_id }"></td>
+			<td class=searchtd><button name="action" class=btn-hover-20 value="rentsearch">検索</button>
 			</td>
 		</tr>
 	</table>
@@ -35,32 +38,35 @@
 	
 	<c:if test="${show}">
 	<c:if test="${fn:length(rent_list) >= 1 }">
-	<h2>返却</h2>
-	<table border="1">
-	<tr><th>資料ID</th><th>資料名</th><th>返却</th></tr>
+	
+	<div class=tables-wrapper>
+	返却
+	<table border="0" class=result >
+	<tr><th colspan=3 border=0 box-shadow=none><h2>返却</h2></th></tr>
+	<tr><th id=lable>資料ID</th><th id=lable>資料名</th><th id=lable>返却</th></tr>
 
 	<c:forEach items="${rent_list }" var="rent">
-		<tr><td>${rent.book_id }</td>
-		<td>${rent.title }</td>
-		<td>
-		<form action="/Library_15/BookServlet">
+		<tr><td id=lable>${rent.book_id }</td>
+		<td class=resulttd>${rent.title }</td>
+		<td class=resulttd>
+		<form action="/Library_15/BookServlet" method="post">
 		<input type="hidden" name="book_id" value="${rent.book_id }">
 		<input type="hidden" name="member_id" value="${member_id }">
 		<button name="action" value="return">返却</button>
-		</form>
+		</form></td>
 		</tr>
 	</c:forEach>
 	</tr>
 	</table>
 	</c:if>
-	
 
-	<h2>貸出</h2>
+
+
 	<form action="/Library_15/BookServlet" method="post">
-	<table >
+	<table class=test>
 	<tr><th>資料ID</th></tr>
 	<c:forEach begin="1" end="${5 - fn:length(rent_list)}" var="i">
-		<tr><th><input type="text" name="book_id${i }"></th></tr>
+		<tr><th ><input type="text" name="book_id${i }"></th></tr>
 	</c:forEach>
 	</table>
 	<input type="hidden" name="member_id" value="${member_id }">
@@ -68,7 +74,7 @@
 	</form>
 	<p>${error1 }</p>
 	</c:if>
-	
+	</div>
 	
 
 

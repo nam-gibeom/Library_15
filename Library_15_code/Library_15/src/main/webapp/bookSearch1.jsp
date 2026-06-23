@@ -12,6 +12,7 @@
 	href="${pageContext.request.contextPath}/CSS/booksearchCSS.css">
 </head>
 <body>
+    <div class = titletop>資料＞資料検索</div>
 <form action="/Library_15/BookServlet" method="post">
 	<table border="1" class= "search">
      <tr><td id= lable>

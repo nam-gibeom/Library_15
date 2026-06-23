@@ -12,6 +12,7 @@
 	href="${pageContext.request.contextPath}/CSS/registcss.css">
 </head>
 <body>
+    <div class = titletop>会員＞会員登録</div>
 <form id="form" action ="/Library_15/MemberServlet" method="post">
 <table border="1" >
             <tr><th id = lable colspan="2">会員登録申請</th></tr>

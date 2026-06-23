@@ -13,6 +13,7 @@
 
 </head>
 <body>
+	<div class = titletop>資料＞延滞状況</div>
 	<table border="1">
 		<tr>
 			<th id = lable colspan="5">延滞者一覧</th>

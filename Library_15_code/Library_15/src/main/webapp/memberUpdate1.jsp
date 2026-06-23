@@ -11,6 +11,7 @@
 	href="${pageContext.request.contextPath}/CSS/updateCSS.css">
 </head>
 <body>
+    <div class = titletop>会員＞会員変更</div>
  <form action ="/Library_15/MemberServlet" method="post">
 <table border="1" class="search">
         <tr><td id=lable>会員ID</td><td class="resulttd"><input type="text" id="max" name="memberid"></td><td class="resulttd">
