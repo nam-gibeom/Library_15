@@ -70,7 +70,7 @@
 							<option name="総記">総記</option>
 							<option name="哲学">哲学</option>
 							<option name="歴史">歴史</option>
-							<option 　name="社会科学">社会科学</option>
+							<option name="社会科学">社会科学</option>
 							<option name="自然科学">自然科学</option>
 							<option name="技術">技術</option>
 							<option name="産業">産業</option>
