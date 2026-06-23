@@ -19,7 +19,7 @@
 	height: auto;
 	/* ここを自由に調整 */
 	border-collapse: collapse;
-	margin: -50em 0em 0em 0em;
+	margin: 4em 0em 0em 0em;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 }
@@ -43,7 +43,7 @@
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	 box-sizing: border-box;
-	 margin: -19em 0em 0em 0em;
+	 margin: 4em 0em 0em 0em;
 	 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 
 

@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>siryou touroku</title>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/CSS/RrCSS.css">
 <style>
 .hidden {
 	display: none;
@@ -21,11 +23,11 @@
 </head>
 <body>
 	<form action="/Library_15/BookServlet" method="post">
-		<table border="1">
+		<table border="1"class=search>
 		<tr>
-			<td>会員ID</td>
-			<td><input type="text" name="member_id" value="${member_id }"></td>
-			<td><button name="action" value="rentsearch">検索</button>
+			<td id= lable>会員ID</td>
+			<td class=searchtd><input type="text" id=max name="member_id" value="${member_id }"></td>
+			<td class=searchtd><button name="action" class=btn-hover-20 value="rentsearch">検索</button>
 			</td>
 		</tr>
 	</table>
@@ -34,14 +36,15 @@
 	
 	<c:if test="${show}">
 	<c:if test="${fn:length(rent_list) > 1 }">
-	<h2>返却</h2>
-	<table border="1">
+	<h2>返却　　　　　　　貸出</h2>
+	<div class=tables-wrapper>
+	<table border="1" class=test>
 	<tr><th>資料ID</th><th>資料名</th><th>返却</th></tr>
 
 	<c:forEach items="${rent_list }" var="rent">
-		<tr><td>${rent.book_id }</td>
+		<tr><td id=lable>${rent.book_id }</td>
 		<td>${rent.title }</td>
-		<td>
+		<td id=lable>
 		<form action="/Library_15/BookServlet">
 		<input type="hidden" name="book_id" value="${rent.book_id }">
 		<input type="hidden" name="member_id" value="${member_id }">
@@ -52,21 +55,21 @@
 	</tr>
 	</table>
 	</c:if>
-	
 
-	<h2>貸出</h2>
+
+
 	<form action="/Library_15/BookServlet" method="post">
-	<table >
+	<table class=test>
 	<tr><th>資料ID</th></tr>
 	<c:forEach begin="1" end="${5 - fn:length(rent_list)}" var="i">
-		<tr><th><input type="text" name="book_id${i }"></th></tr>
+		<tr><th ><input type="text" name="book_id${i }"></th></tr>
 	</c:forEach>
 	</table>
 	<input type="hidden" name="member_id" value="${member_id }">
 	<button name="action" value="rent">貸出</button>
 	</form>
 	</c:if>
-	
+	</div>
 	
 
 
