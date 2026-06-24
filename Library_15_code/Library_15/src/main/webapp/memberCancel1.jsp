@@ -30,6 +30,7 @@
 </c:if>
 	
 <c:if test="${show && fn:length(rent_list) > 0 }">
+<div class=center1>まだ貸出の資料が「${fn:length(rent_list) }冊」 ありますので、退会できません。</div>
 	<table border="0" class=result>
 	        <tr><th id=lable1>資料ID</th><th id=lable>資料名</th><th id=lable2>返却</th></tr>
 	        <c:forEach items="${rent_list }" var="rent">
@@ -43,7 +44,7 @@
 	        	</tr>
 	        </c:forEach>
 	</table>
-	<p>まだ貸出の資料が「${fn:length(rent_list) }冊」 ありますので、退会できません。</p>
+	
 </c:if>
 
 	<c:if test="${show && fn:length(rent_list) == 0 }">
