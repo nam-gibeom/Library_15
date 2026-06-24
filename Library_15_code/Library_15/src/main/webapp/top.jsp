@@ -39,7 +39,7 @@
       overflow-x: hidden;
       display: flex; /*flexbox*/
       flex-direction: column;         
-      justify-content: space-around;  
+
       align-items: center;
     }
 

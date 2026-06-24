@@ -40,7 +40,7 @@
       word-break: break-all; /* 文字が長すぎる場合の自動改行対策 */
       display: flex; /*flexbox*/
       flex-direction: column;         
-      justify-content: space-around;  
+  
       align-items: center;
     }
 
