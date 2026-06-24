@@ -118,9 +118,19 @@ public class BookServlet extends HttpServlet {
 					gotoPage(request, response, "/bookAdd.jsp");
 				}
 				
-				service.addCatalog(isbn, title, category_name, author, publisher, publish_date);
-				service.addStock(isbn);
-				gotoPage(request, response, "/bookAdd.jsp");
+				if ((Integer.parseInt(publish_date.substring(4, 6)) >= 1 ) && (Integer.parseInt(publish_date.substring(4, 6)) <= 12 ) && (Integer.parseInt(publish_date.substring(6)) >= 1 ) && (Integer.parseInt(publish_date.substring(6)) <= 31 )) {
+					service.addCatalog(isbn, title, category_name, author, publisher, publish_date);
+					service.addStock(isbn);
+					gotoPage(request, response, "/bookAdd.jsp");
+				} else { //　数字計算失敗
+					request.setAttribute("isbn", isbn);
+					request.setAttribute("exist_false", true);
+					request.setAttribute("error", "出版日を確認してください");
+					gotoPage(request, response, "/bookAdd.jsp");
+					
+				}
+				
+
 			
 			} else if (action.equals("rentsearch")) { // 貸出・返却を探す
 				try {
