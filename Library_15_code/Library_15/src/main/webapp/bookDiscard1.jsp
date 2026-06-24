@@ -31,7 +31,7 @@
 
 
 		<c:if test="${show }">
-		<form action="/Library_15/BookServlet" method="POST">
+		<form id="form" action="/Library_15/BookServlet" method="POST">
 		<table border="1" class=result>
 			<tr>
 				<th id=lable>資料ID</th>
@@ -74,10 +74,26 @@
 		</table>
 
 		<input type="hidden" name = "book_id" value="${result.book_id }">
-		<button name="action" value="discard" class="button-hover-20">廃棄</button>
+<!--		<button name="action" value="discard" class="button-hover-20">廃棄</button>-->
+		
+		<input type="hidden" id="actionname" name="action" value="">
+<button type="button" class=button-hover-20 onclick="popapp()">廃棄</button>
 		</form>
 		</c:if>
 		
+		<script>
+        function popapp() {
+            // confirm()trueかfalse
+            let result = confirm("このデータで登録してもよろしいですか？");
+            
+            if (result) {
+                document.getElementById("actionname").value = "discard";
+                document.getElementById("form").submit();
+            } else {
+                //alert("戻る");
+            }
+        }
+    </script>
 
 </body>
 </html>
