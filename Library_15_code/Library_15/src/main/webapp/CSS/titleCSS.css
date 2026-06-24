@@ -1,7 +1,10 @@
 .logo{
 	display: flex;
 }
+#title{
+	 color: #FFFFEE;
 
+}
 
 
 	.logo img {
@@ -14,6 +17,7 @@
 	    
 	  max-width: 50px;
 	  max-height: 50px; 
+	  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 	}
 	
 
