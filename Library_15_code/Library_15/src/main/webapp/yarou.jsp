@@ -102,7 +102,7 @@ th {
 				</tr>
 				<tr>
 					<td class=resulttd>平</td>
-					<td class=resulttd>プロジェクトリーダー</td>
+					<td class=resulttd>プロジェクトリーダー・ドキュメントリーダー</td>
 					
 				</tr>
 				<tr>
