@@ -11,7 +11,9 @@
 <body>
 	<div class="top">
 		<div class="logo">
+			<a href="yarou.jsp">
 			<img   src="logo.jpeg" alt="やろうロゴ">
+			</a>
 		</div>
 		<h2 id=title>新宿図書館</h2>
 		</div>
