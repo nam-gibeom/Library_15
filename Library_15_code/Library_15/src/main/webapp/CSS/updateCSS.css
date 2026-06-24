@@ -72,7 +72,7 @@ text-align: center;
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
-
+	
 	border: none;
 	outline: none;
 	background-color: #FFFFEE;
@@ -85,7 +85,7 @@ text-align: center;
 	background-color: #FFFFEE;
 	text-align: center;
 	font-size: 125%;
-
+	color: grey;
 }
 
 .btn {
