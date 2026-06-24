@@ -24,6 +24,9 @@ table{
   border-collapse: collapse;
   font-family: sans-serif;
   color: #333;
+  border: #333;
+  margin-top:2em;
+  
 }
 
 th {
@@ -31,11 +34,13 @@ th {
   color: #fff;
   padding: 12px;
   text-align: left;
+
 }
 
-td {
+.resulttd {
   padding: 12px;
   border-bottom: 1px solid #ddd;
+  
 }
 .btn-hover-20 {
 	display: flex;
@@ -50,6 +55,10 @@ td {
 	transition: all 0.3s ease;
 	z-index: 1;
 	border-radius: 5px;
+		border: 1px solid #2c3e50;
+	background-color: white;
+	color: #2c3e50;
+	margin-top:1em;
 }
 
 .btn-hover-20 span {
@@ -57,13 +66,6 @@ td {
 	z-index: 2;
 }
 
-.btn-hover-20 {
-	border: 1px solid #2c3e50;
-	background-color: white;
-	color: #2c3e50;
-	
-	
-}
 
 .btn-hover-20:hover {
 
@@ -77,6 +79,11 @@ td {
   
   align-items: center;
  
+}
+.resulttd1{
+
+ padding: 12px;
+  border-bottom: 1px solid #333;
 }
 
 </style>
@@ -114,12 +121,12 @@ td {
 					
 				</tr>
 				<tr>
-					<td class=resulttd>若松</td>
-					<td class=resulttd>テストリーダー</td>
+					<td class=resulttd1>若松</td>
+					<td class=resulttd1>テストリーダー</td>
 					
 				</tr>
 			</table>
-			<form action="top.jsp">
+			<form action="login.jsp">
 			<button class = btn-hover-20>戻る</button>
 		</form>
 </body>
