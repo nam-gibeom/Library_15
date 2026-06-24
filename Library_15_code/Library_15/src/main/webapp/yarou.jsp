@@ -1,0 +1,126 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	img {
+	
+		width: 500px; /* 横幅を300pxに固定 */
+  height: auto; /* 高さは自動調整 */
+	}
+body{
+	display: flex;
+  align-items: center; 
+  flex-direction: column;
+  background-color:#EEFFFF;
+  
+}
+table{
+  width: 60%;
+  border-collapse: collapse;
+  font-family: sans-serif;
+  color: #333;
+}
+
+th {
+  background-color: #2c3e50; /* 見出しの背景色 */
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+.btn-hover-20 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100px;
+	margin: 0 auto 32px;
+	padding: .9em 2em;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.3s ease;
+	z-index: 1;
+	border-radius: 5px;
+}
+
+.btn-hover-20 span {
+	position: relative;
+	z-index: 2;
+}
+
+.btn-hover-20 {
+	border: 1px solid #2c3e50;
+	background-color: white;
+	color: #2c3e50;
+	
+	
+}
+
+.btn-hover-20:hover {
+
+	background-color:#2c3e50;
+	color: #FFFFEE;
+}
+
+.lable{
+	background:#2c3e50;
+  color:#FFFFEE;
+  
+  align-items: center;
+ 
+}
+
+</style>
+</head>
+<body>
+
+<h1 class = lable>15班　やろうチーム</h1>
+
+<img   src="IMG_4341.JPG" alt="やろうロゴ">
+
+<table border="1" class=result2>
+				<tr>
+					<th id = lable1>名前</th>
+					<th id = lable1>役割</th>
+					
+				</tr>
+				<tr>
+					<td class=resulttd>平</td>
+					<td class=resulttd>プロジェクトリーダー</td>
+					
+				</tr>
+				<tr>
+					<td class=resulttd>ナム</td>
+					<td class=resulttd>テクニカルリーダー</td>
+					
+				</tr>
+				<tr>
+					<td class=resulttd>コウ</td>
+					<td class=resulttd>データベースリーダー</td>
+					
+				</tr>
+				<tr>
+					<td class=resulttd>ジャン</td>
+					<td class=resulttd>デザインリーダー</td>
+					
+				</tr>
+				<tr>
+					<td class=resulttd>若松</td>
+					<td class=resulttd>テストリーダー</td>
+					
+				</tr>
+			</table>
+			<form action="top.jsp">
+			<button class = btn-hover-20>戻る</button>
+		</form>
+</body>
+</html>
