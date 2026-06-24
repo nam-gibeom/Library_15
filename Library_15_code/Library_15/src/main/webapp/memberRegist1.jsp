@@ -25,6 +25,7 @@
  </table>
 <br>
 <div class=center>${error }</div>
+<br>
  <input type="hidden" id="actionname" name="action" value="">
 <button type="button" class=btn-hover-20 onclick="popapp()">登録</button>
 

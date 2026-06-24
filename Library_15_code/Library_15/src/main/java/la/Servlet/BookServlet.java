@@ -248,6 +248,17 @@ public class BookServlet extends HttpServlet {
 				int book_id = Integer.parseInt(request.getParameter("book_id"));
 				String discard_date = request.getParameter("discard_date");
 				String remarks = request.getParameter("remarks");
+				if (remarks == null || remarks.equals("")) { // 理由を選択しなかった場合、エラー処理
+					DiscardInfoBean result = service.searchDiscard(book_id);
+					request.setAttribute("result", result);
+					String current_date = service.getCurrentDate(); // 20260622
+					request.setAttribute("current_date", current_date);
+					request.setAttribute("show", true);
+					request.setAttribute("error", "廃棄理由を選択してください。");
+					gotoPage(request, response, "/bookDiscard.jsp");
+					return;
+				} 
+				
 				String other = request.getParameter("other");
 				if(remarks.equals("others")) {
 					service.discardBook(book_id,discard_date,other);
