@@ -21,7 +21,7 @@
 <tr><td id = lable width="30%">住所</td><td ><input type="text" name="address" id="max" value="${address }"></td></tr>
 <tr><td id = lable width="30%">電話番号</td><td ><input type="text" name="tel" id="max" value="${tel }"></td></tr>
 <tr><td id = lable width="30%">E-mail</td><td ><input type="text" name="mail" id="max" value="${mail }"></td></tr>
-<tr><td id = lable>生年月日</td><td text-align=center><input type="text" size="4"name="birthy" id="ymd">年<input type="text" size="1" name="birthm" id="ymd">月<input type="text" size="1" name="birthd" id="ymd">日</td></tr>
+<tr><td id = lable>生年月日</td><td text-align=center><input type="text" size="4" name="birthy" id="ymd">年<input type="text" size="1" name="birthm" id="ymd">月<input type="text" size="1" name="birthd" id="ymd">日</td></tr>
  </table>
 <br>
 <p>${error }</p>

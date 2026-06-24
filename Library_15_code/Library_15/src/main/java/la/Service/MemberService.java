@@ -66,8 +66,21 @@ public class MemberService {
 			e.printStackTrace();
 	}
 	}
-
+	
+	public boolean isMemberExist(int member_id) throws DAOException {
+		MemberDAO dao = new MemberDAO();
+		MemberBean bean = dao.findAll(member_id);
+		if (bean == null) {
+			return false;
+		} else {
+			return true;
+		}
+		
 	}
+	
+	
+
+}
 
 
 	

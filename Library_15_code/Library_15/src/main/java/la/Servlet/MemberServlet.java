@@ -84,57 +84,111 @@ public class MemberServlet extends HttpServlet {
 		
 			
 		}else if(action.equals("regist")) {
-			try {
-				String name = request.getParameter("name");
-				String address = request.getParameter("address");
-				String tel = request.getParameter("tel");
-				String mail = request.getParameter("mail");
 			
-
-				int birthy = Integer.parseInt(request.getParameter("birthy"));
-				int birthm = Integer.parseInt(request.getParameter("birthm"));
-				int birthd = Integer.parseInt(request.getParameter("birthd"));
-				
-				String birth = birthy +"-"+ birthm +"-"+ birthd;
-				
+			String name = request.getParameter("name");
+			if (name == null || name.equals("")) { // 名前が空欄の場合
+				request.setAttribute("error", "名前を入力してください。");
+				gotoPage(request, response, "/memberRegist.jsp");
+				return;
+			} 
+			String address = request.getParameter("address");
+			String tel = request.getParameter("tel");
+			String mail = request.getParameter("mail");
+			int birthy = 0;
+			int birthm = 0;
+			int birthd = 0;
+			
+			try { // 数字が文字列かを確認
+				birthy = Integer.parseInt(request.getParameter("birthy"));
+				birthm = Integer.parseInt(request.getParameter("birthm"));
+				birthd = Integer.parseInt(request.getParameter("birthd"));
+			} catch (NumberFormatException e) {
+				request.setAttribute("error", "生年月日は数字で入力してください。");
+				gotoPage(request, response, "/memberRegist.jsp");
+				return;
+			}
+			
+			String birth = "";
+			if ((String.valueOf(birthy).length() == 4) && (birthm <= 12 && birthm >= 1) && (birthd >= 1 && birthd <= 31)) { // 生年月日は範囲内の数字で記入されてもらったかを確認
+				birth = birthy +"-"+ birthm +"-"+ birthd;
 				MemberService service = new MemberService();
 				MemberBean bean = service.addMemberService(name, address, tel, mail, birth);
 				request.setAttribute("info", bean);
 				gotoPage(request, response, "/registResult.jsp");
-			
-			} catch (NumberFormatException e) {
-				String name = request.getParameter("name");
-				String address = request.getParameter("address");
-				String tel = request.getParameter("tel");
-				String mail = request.getParameter("mail");
-				
+			} else {
 				request.setAttribute("name", name);
 				request.setAttribute("address", address);
 				request.setAttribute("tel", tel);
 				request.setAttribute("mail", mail);
-				request.setAttribute("error", "生年月日は数字で入力してください。");
-				
+				request.setAttribute("error", "正しい生年月日を入力してください。");
 				gotoPage(request, response, "/memberRegist.jsp");
 			}
+
+			
+			
+		
+			
+
+
 			
 			
 		}else if(action.equals("update")) {
-			int id =Integer.parseInt(request.getParameter("memberid"));
+			MemberService service = new MemberService();
+			int member_id =Integer.parseInt(request.getParameter("memberid"));
+			MemberBean bean = service.SearchAndMove(member_id);
+			
 			String name = request.getParameter("name");
+			if (name == null || name.equals("")) { // 名前が空欄の場合
+				request.setAttribute("error", "更新に失敗しました。名前を入力してください。");
+				request.setAttribute("info", bean);
+				request.setAttribute("show", true);
+				gotoPage(request, response, "/memberUpdate.jsp");
+				return;
+			} 
 			String address = request.getParameter("address");
 			String tel = request.getParameter("tel");
 			String mail = request.getParameter("mail");
+			int birthy = 0;
+			int birthm = 0;
+			int birthd = 0;
 			
-			String birthy = request.getParameter("birthy");
-			String birthm = request.getParameter("birthm");
-			String birthd = request.getParameter("birthd");
+			try { // 数字が文字列かを確認
+				birthy = Integer.parseInt(request.getParameter("birthy"));
+				birthm = Integer.parseInt(request.getParameter("birthm"));
+				birthd = Integer.parseInt(request.getParameter("birthd"));
+			} catch (NumberFormatException e) {
+				request.setAttribute("error", "更新に失敗しました。生年月日は数字で入力してください。");
+				request.setAttribute("info", bean);
+				request.setAttribute("show", true);
+				gotoPage(request, response, "/memberUpdate.jsp");
+				return;
+			}
 			
-			String birth = birthy +"-"+ birthm +"-"+ birthd;
-			
-			
-			MemberService service = new MemberService();
-			service.updateMemberService(id, name, address, tel, mail, birth);
-			gotoPage(request, response, "/memberUpdate.jsp");
+			String birth = "";
+			if ((String.valueOf(birthy).length() == 4) && (birthm <= 12 && birthm >= 1) && (birthd >= 1 && birthd <= 31)) { // 生年月日は範囲内の数字で記入されてもらったかを確認
+				birth = birthy +"-"+ birthm +"-"+ birthd;
+				service.updateMemberService(member_id, name, address, tel, mail, birth);
+				gotoPage(request, response, "/memberUpdate.jsp");
+			} else {
+				request.setAttribute("error", "更新に失敗しました。正しい生年月日を入力してください。");
+				request.setAttribute("info", bean);
+				request.setAttribute("show", true);
+				gotoPage(request, response, "/memberUpdate.jsp");
+			}
+//			String address = request.getParameter("address");
+//			String tel = request.getParameter("tel");
+//			String mail = request.getParameter("mail");
+//			
+//			String birthy = request.getParameter("birthy");
+//			String birthm = request.getParameter("birthm");
+//			String birthd = request.getParameter("birthd");
+//			
+//			String birth = birthy +"-"+ birthm +"-"+ birthd;
+//			
+//			
+//			MemberService service = new MemberService();
+//			service.updateMemberService(id, name, address, tel, mail, birth);
+//			gotoPage(request, response, "/memberUpdate.jsp");
 			
 		}else if(action.equals("cancel")) {
 			int id =Integer.parseInt(request.getParameter("id"));

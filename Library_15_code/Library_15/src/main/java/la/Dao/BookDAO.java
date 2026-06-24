@@ -537,5 +537,26 @@ public class BookDAO {
 		}
     }
     
+    public List<Integer> getCurrentBookID() throws DAOException {
+    	String sql = "select book_id from stocklist where discard_date is null";
+    	
+    	try (Connection con = DriverManager.getConnection(url, user, pass);
+      			 // PreparedStatementオブジェクトの取得
+    		PreparedStatement st = con.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();) {
+    		
+    		List<Integer> list = new ArrayList<Integer>();
+    		
+    		while (rs.next()) {
+    			int book_id = rs.getInt("book_id");
+    			list.add(book_id);
+    		}
+    		return list;
+    		
+    	} catch (SQLException e) {
+			throw new DAOException("レコードの取得に失敗しました");
+		}
+    }
+    
 }
 

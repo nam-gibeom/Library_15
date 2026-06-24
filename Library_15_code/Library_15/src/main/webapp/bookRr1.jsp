@@ -36,7 +36,15 @@
 	</form>
 	<div class=center>${error }</div>
 	</div>
-	<div class=center>${error1 }</div>
+	<div class=center>
+	<c:forEach items="${rented_list }" var="rented">
+	すでに資料ID「${rented.book_id }」は会員ID「${rented.member_id }」が借りています。<br>
+	</c:forEach>
+	<c:forEach items="${already_exists }" var="exist">
+	資料ID「${exist}」は存在しない番号です。もう一度確認してください。<br>
+	</c:forEach>
+	
+	</div>
 
 	<c:if test="${show}">
 	<c:if test="${fn:length(rent_list) > 0 }">

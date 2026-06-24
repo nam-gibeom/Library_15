@@ -278,4 +278,12 @@ public class BookService {
 			String return_deadline = format.format(bb.toInstant().atZone(ZoneId.systemDefault()));
 			return return_deadline;
 		}
+		
+		// 存在する資料のIdを取得
+		public List<Integer> getExistBookId() throws DAOException {
+			BookDAO dao = new BookDAO();
+			List<Integer> list = dao.getCurrentBookID();
+			return list;
+			
+		}
 }

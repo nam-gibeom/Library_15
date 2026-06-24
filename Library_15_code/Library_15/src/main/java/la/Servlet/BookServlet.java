@@ -18,6 +18,7 @@ import la.Bean.SearchBean;
 import la.Bean.catalogListBean;
 import la.Dao.DAOException;
 import la.Service.BookService;
+import la.Service.MemberService;
 
 
 @WebServlet("/BookServlet")
@@ -45,6 +46,16 @@ public class BookServlet extends HttpServlet {
 	        } else if (action.equals("booksearch")) {  // 検索
 				String type = request.getParameter("type");
 				String value = request.getParameter("value");
+				if (type.equals("book_id")) { // 資料IDで検索する際に、数字じゃなく文字列であればエラー発生
+					try {
+						Integer.parseInt(value);
+					} catch (NumberFormatException e) {
+						request.setAttribute("error", "資料IDは数字で入力してください");
+						gotoPage(request, response, "/bookSearch.jsp");
+					}
+					return;
+				}
+				
 				List<SearchBean> result = service.searchBooks(type, value);
 				if (result.isEmpty()) {
 					request.setAttribute("error", "資料が存在しません");
@@ -89,8 +100,24 @@ public class BookServlet extends HttpServlet {
 				String author = request.getParameter("author");
 				String publisher = request.getParameter("publisher");
 				String publish_date = request.getParameter("publish_date");
-				System.out.println(isbn);
-				System.out.println(title);
+				
+				try { // 出版日が数字じゃない場合
+					Integer.parseInt(publish_date);
+				} catch (NumberFormatException e) {
+					request.setAttribute("isbn", isbn);
+					request.setAttribute("exist_false", true);
+					request.setAttribute("error", "出版日は数字で入力してください");
+					gotoPage(request, response, "/bookAdd.jsp");
+					return;
+				}
+				
+				if (publish_date.length() != 8) {
+					request.setAttribute("isbn", isbn);
+					request.setAttribute("exist_false", true);
+					request.setAttribute("error", "出版日は8桁 (例：20260624)で入力してください");
+					gotoPage(request, response, "/bookAdd.jsp");
+				}
+				
 				service.addCatalog(isbn, title, category_name, author, publisher, publish_date);
 				service.addStock(isbn);
 				gotoPage(request, response, "/bookAdd.jsp");
@@ -98,11 +125,20 @@ public class BookServlet extends HttpServlet {
 			} else if (action.equals("rentsearch")) { // 貸出・返却を探す
 				try {
 					int member_id = Integer.parseInt(request.getParameter("member_id"));
-					List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
-					request.setAttribute("member_id", member_id);
-					request.setAttribute("rent_list", Result_list);
-					request.setAttribute("show", true);
-					gotoPage(request, response, "/bookRr.jsp");
+					
+					MemberService member_service = new MemberService();
+					if (member_service.isMemberExist(member_id)) { // 会員が存在する場合
+						List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
+						request.setAttribute("member_id", member_id);
+						request.setAttribute("rent_list", Result_list);
+						request.setAttribute("show", true);
+						gotoPage(request, response, "/bookRr.jsp");
+					} else { // 会員が存在しない場合
+						request.setAttribute("error", "会員を見つけられません。もう一度確認してください。");
+						gotoPage(request, response, "/bookRr.jsp");
+					}
+					
+	
 				} catch (NumberFormatException e) {
 					request.setAttribute("error", "会員IDは数字で入力してください。");
 					gotoPage(request, response, "/bookRr.jsp");
@@ -132,33 +168,53 @@ public class BookServlet extends HttpServlet {
 							int num = Integer.parseInt(book_id);
 							book_id_list.add(num);
 						}
-					} catch (NumberFormatException e) {
+					} catch (NumberFormatException e) { // 貸出に文字列を記入したらエラー発生
 						e.printStackTrace();
 						List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
 						request.setAttribute("member_id", member_id);
 						request.setAttribute("rent_list", Result_list);
 						request.setAttribute("show", true);
-						request.setAttribute("error1", "資料IDは数字で入力してください");
+						request.setAttribute("error", "資料IDは数字で入力してください");
 						gotoPage(request, response, "/bookRr.jsp");
 					}
 
+				}
+				// 資料が存在かどうかを確認
+				List<Integer> current_bookid_list = service.getExistBookId();
+				List<Integer> cant_Borrow_List = new ArrayList<Integer>();
+				
+				for (int bookid : book_id_list) {
+					if (current_bookid_list.contains(bookid)) { // 存在する場合
+						continue;
+					} else {
+						cant_Borrow_List.add(bookid);
 					}
-				List<RentInfoBean> already_rented_list = service.checkRentedBook(book_id_list);
-				if (already_rented_list.isEmpty()) {
-					List<RentInfoBean> result_list =  service.rentBooksById(member_id, book_id_list);
-					request.setAttribute("rent_result", result_list);
-					gotoPage(request, response, "/bookConfirm.jsp");
-				} else {
+				}
+				if (!cant_Borrow_List.isEmpty()) { // 存在しない資料を見つけた時、エラーreturn
 					List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
 					request.setAttribute("member_id", member_id);
 					request.setAttribute("rent_list", Result_list);
 					request.setAttribute("show", true);
+					request.setAttribute("already_exists", cant_Borrow_List);
+					gotoPage(request, response, "/bookRr.jsp");
+				} 
+				
+				List<RentInfoBean> already_rented_list = service.checkRentedBook(book_id_list);
+				if (already_rented_list.isEmpty()) { // 誰も借りてない状態だと、確認画面へ進
+					List<RentInfoBean> result_list =  service.rentBooksById(member_id, book_id_list);
+					request.setAttribute("rent_result", result_list);
+					gotoPage(request, response, "/bookConfirm.jsp");
+					
+				} else { // すでに借りている資料なら遷移せず、できないことを表示
+					List<RentInfoBean> Result_list = service.showCurrentrentList(member_id);
+					request.setAttribute("member_id", member_id);
+					request.setAttribute("rent_list", Result_list);
+					request.setAttribute("show", true);
+					request.setAttribute("error", "すでに資料を借りている会員が存在します。");
 					request.setAttribute("rented_list", already_rented_list);
 					gotoPage(request, response, "/bookRr.jsp");
 				}
 				
-
-					
 
 
 			} else if (action.equals("rentconfirm")) {
