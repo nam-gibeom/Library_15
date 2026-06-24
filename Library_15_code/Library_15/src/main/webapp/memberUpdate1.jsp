@@ -44,10 +44,10 @@
 	<script>
         function popapp() {
             // confirm()trueかfalse
-            let result = confirm("このデータで登録してもよろしいですか？");
+            let result = confirm("このデータで変更してもよろしいですか？");
             
             if (result) {
-                alert("登録が完了しました");
+
 
                 document.getElementById("actionname").value = "update";
                 document.getElementById("form").submit();
