@@ -158,15 +158,6 @@
 	position: relative;
 	z-index: 2;
 }
-
-.btn-hover-20 {
-	border: 1px solid olivedrab;
-	background-color: white;
-	color: olivedrab;
-	
-	
-}
-
 .btn-hover-20:hover {
 /*	background-color: darkolivegreen;*/
 	background-color: olivedrab;
