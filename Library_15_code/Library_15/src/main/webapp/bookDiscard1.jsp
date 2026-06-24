@@ -31,6 +31,7 @@
 
 
 		<c:if test="${show }">
+		<form action="/Library_15/BookServlet" method="POST">
 		<table border="1" class=result>
 			<tr>
 				<th id=lable>資料ID</th>
@@ -52,9 +53,9 @@
 
 
 			
-
+				
 				<tr>
-					<input type="hidden" name="book_id1" value="${result.book_id}">
+				
 					<td class=resulttd><name="remarks">廃棄理由</td>
 					<td class=resulttd colspan="5"><input type="radio" name="remarks" value="紛失">紛失
 					<input type="radio" name="remarks" value="老化">老化
@@ -71,7 +72,7 @@
 				</tr>
 
 		</table>
-		<form action="/Library_15/BookServlet" method="POST">
+
 		<input type="hidden" name = "book_id" value="${result.book_id }">
 		<button name="action" value="discard" class="button-hover-20">廃棄</button>
 		</form>

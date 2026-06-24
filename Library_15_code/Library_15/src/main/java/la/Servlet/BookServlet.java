@@ -189,7 +189,7 @@ public class BookServlet extends HttpServlet {
 				
 			} else if(action.equals("discard")) {
 				
-				int book_id = Integer.parseInt(request.getParameter("book_id1"));
+				int book_id = Integer.parseInt(request.getParameter("book_id"));
 				String discard_date = request.getParameter("discard_date");
 				String remarks = request.getParameter("remarks");
 				String other = request.getParameter("other");
