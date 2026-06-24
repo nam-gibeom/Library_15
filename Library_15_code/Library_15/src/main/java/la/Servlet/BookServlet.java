@@ -52,8 +52,8 @@ public class BookServlet extends HttpServlet {
 					} catch (NumberFormatException e) {
 						request.setAttribute("error", "資料IDは数字で入力してください");
 						gotoPage(request, response, "/bookSearch.jsp");
+						return;
 					}
-					return;
 				}
 				
 				List<SearchBean> result = service.searchBooks(type, value);
