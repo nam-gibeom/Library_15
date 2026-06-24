@@ -88,10 +88,11 @@
 	font-size: 125%;
 }
 #max1 {
-	width: 60%;
-	height: 100%;
+	width: 20%;
+	height: 75%;
 	box-sizing: border-box;
 	border: none;
+	border-bottom: 2px solid black;
 	outline: none;
 	background-color: #FFFFEE;
 	font-size: 125%;
@@ -138,13 +139,7 @@
 	z-index: 2;
 }
 
-.btn-hover-20 {
-	border: 1px solid olivedrab;
-	background-color: white;
-	color: olivedrab;
-	
-	
-}
+
 
 .btn-hover-20:hover {
 /*	background-color: darkolivegreen;*/

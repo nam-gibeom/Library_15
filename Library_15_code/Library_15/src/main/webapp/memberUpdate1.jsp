@@ -26,7 +26,7 @@
 	<form id="form" action ="/Library_15/MemberServlet" method="post">
 	<table border="1" class=result>
 		<tr><th id=lable colspan="2">会員情報</th></tr>
-		<tr><td id=lable >氏名</td><td class="resulttd"><input type="text" id="ymd" name="name"value=${info.member_name }></td></tr>
+		<tr><td id=lable >氏名</td><td class="resulttd"><input type="text" id="ymd" name="name" value=${info.member_name }></td></tr>
 		<tr><td id=lable>住所</td><td class="resulttd"><input type="text" id="ymd" name="address" value=${info.member_address }></td></tr>
 		<tr><td id=lable>電話番号</td><td class="resulttd"><input type="text" id="ymd" name="tel" value=${info.member_tel } ></td></tr>
 		<tr><td id=lable>E-mail</td><td class="resulttd"><input type="text" id="ymd" name="mail" value=${info.member_mail } ></td></tr>

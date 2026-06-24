@@ -13,7 +13,7 @@
 		<div class="logo">
 			<img   src="logo.jpeg" alt="やろうロゴ">
 		</div>
-		<h2 >新宿図書館</h2>
+		<h2 id=title>新宿図書館</h2>
 		</div>
 </body>
 </html>
