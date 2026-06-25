@@ -63,6 +63,7 @@
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	margin: 1em 1em 0em 1.5em;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 	
 }
 .center{
@@ -100,6 +101,7 @@
 	/* ここを自由に調整 */
 	border-collapse: collapse;
 	margin: 0em 1em 0em 1.5em;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 	
 }
 
