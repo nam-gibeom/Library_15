@@ -17,7 +17,7 @@ INSERT INTO adminlist VALUES('2912', 'ジャン', '2912' );
 INSERT INTO adminlist VALUES('26011', '平', '26011' );
 INSERT INTO adminlist VALUES('2918', 'ナム', '2918' );
 INSERT INTO adminlist VALUES('0627', '若松', '0627' );
-
+INSERT INTO adminlist VALUES('ncd', 'ゲスト', 'ncd' );
 
 
 
