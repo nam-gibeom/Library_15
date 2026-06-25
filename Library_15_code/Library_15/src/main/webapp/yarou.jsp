@@ -92,6 +92,16 @@ th {
   color: red;           
   text-decoration: none;     
 }
+.guest{
+font-weight:bold;
+font-size:20px;
+
+}
+.guest1{
+font-weight:bold;
+font-size:20px;
+margin-top:-1em;
+}
 </style>
 </head>
 <body>
@@ -100,6 +110,9 @@ th {
 	
     
     <img id="img" src="IMG_4341.JPG" alt="写真">
+    
+    <p id="result-text" class =guest ></p>
+    <p id="result1-text" class=guest1></p>
 
     <script>
        
@@ -111,6 +124,10 @@ th {
             
             if (imgElement.src.includes('IMG_4341.JPG')) {
                 imgElement.src = 'QR1.png';
+
+                document.getElementById("result-text").textContent = "社員ID：ncd";
+                document.getElementById("result1-text").textContent = "パスワード：ncd";
+                
             } else {
                 imgElement.src = 'IMG_4341.JPG';
             }
