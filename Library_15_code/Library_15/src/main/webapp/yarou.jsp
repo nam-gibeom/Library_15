@@ -110,7 +110,7 @@ th {
             
             
             if (imgElement.src.includes('IMG_4341.JPG')) {
-                imgElement.src = 'QR.png';
+                imgElement.src = 'QR1.png';
             } else {
                 imgElement.src = 'IMG_4341.JPG';
             }
